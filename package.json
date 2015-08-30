@@ -17,11 +17,11 @@
   "dependencies": {
     "@cycle/core": "^3.1.0",
     "@cycle/dom": "^5.0.1",
-    "atom-color": "file:../atom-color",
-    "atom-flex-layout": "file:../atom-flex-layout",
-    "atom-layout": "file:../atom-layout",
-    "atom-styles": "file:../atom-styles",
-    "atom-typography": "file:../atom-typography",
+    "atom-color": "git://github.com/CyclicMaterials/atom-color",
+    "atom-flex-layout": "git://github.com/CyclicMaterials/atom-flex-layout",
+    "atom-layout": "git://github.com/CyclicMaterials/atom-layout",
+    "atom-styles": "git://github.com/CyclicMaterials/atom-styles",
+    "atom-typography": "git://github.com/CyclicMaterials/atom-typography",
     "ramda": "^0.17.1"
   },
   "devDependencies": {
