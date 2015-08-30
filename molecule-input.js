@@ -9,8 +9,8 @@ const dialogueName = `molecule-Input`;
 function intent(DOM) {
   return {
     isFocused$: Rx.Observable.merge(
-      DOM.get(`INPUT`, `focus`).map(() => true),
-      DOM.get(`INPUT`, `blur`).map(() => false)
+      DOM.select(`INPUT`).events(`focus`).map(() => true),
+      DOM.select(`INPUT`).events(`blur`).map(() => false)
     ).startWith(false),
   };
 }
