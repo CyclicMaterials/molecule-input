@@ -1,0 +1,113 @@
+@import "atom-typography/atom-typography.css";
+@import "atom-styles/atom-default-theme";
+@import "atom-color/atom-color.css";
+@import "atom-flex-layout/atom-flex-layout.css";
+@import "atom-layout/atom-layout.css";
+
+.molecule-InputContainer {
+  display: block;
+  padding: 8px 0;
+}
+
+.molecule-InputContainer.isDisabled {
+  pointer-events: none;
+  opacity: 0.33;
+}
+
+.molecule-InputContainer_underline {
+  position: relative;
+}
+
+.molecule-InputContainer_focusedLine {
+  height: 2px;
+  transform-origin: center center;
+  transform: scale3d(0, 1, 1);
+  background: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
+}
+
+.molecule-InputContainer_underline.isHighlighted .molecule-InputContainer_focusedLine {
+  transform: none;
+  transition: 0.25s;
+}
+
+.molecule-InputContainer_underline.isInvalid .molecule-InputContainer_focusedLine {
+  background: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
+  transform: none;
+  transition: 0.25s;
+}
+
+.molecule-InputContainer_unfocusedLine {
+  height: 1px;
+  background: var(--molecule-InputContainer-color, var(--secondary-text-color));
+}
+
+.molecule-InputContainer.isDisabled .molecule-InputContainer_unfocusedLine {
+  border-bottom: 1px dashed;
+  border-color: var(--molecule-InputContainer-color, var(--secondary-text-color));
+  background: transparent;
+}
+
+.molecule-InputContainer_inputContent {
+  position: relative;
+}
+
+.molecule-InputContainer_inputContent label,
+.molecule-InputContainer_inputContent .molecule-Input_label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: var(--molecule-InputContainer-label, var(--secondary-text-color));
+}
+
+.molecule-InputContainer_inputContent.isFloatingLabel label,
+.molecule-InputContainer_inputContent.isFloatingLabel .molecule-Input_label {
+  transform: translate3d(0, -75%, 0) scale(0.75);
+  transform-origin: left top;
+  transition: 0.25s;
+}
+
+.molecule-InputContainer_inputContent.isHighlightedLabel label,
+.molecule-InputContainer_inputContent.isHighlightedLabel .molecule-Input_label {
+  color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
+}
+
+.molecule-InputContainer_inputContent.isInvalid label,
+.molecule-InputContainer_inputContent.isInvalid .molecule-Input_label {
+  color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
+}
+
+.molecule-InputContainer_inputContent.isHiddenLabel label,
+.molecule-InputContainer_inputContent.isHiddenLabel .molecule-Input_label {
+  visibility: hidden;
+}
+
+.molecule-InputContainer_inputContent input,
+.molecule-InputContainer_inputContent textarea,
+.molecule-InputContainer_inputContent .molecule-Input_input {
+  position: relative;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--molecule-InputContainer-input-color, var(--primary-text-color));
+}
+
+/* Firefox sets min-width on the input, which can cause layout issues. */
+.molecule-InputContainer_inputContent input {
+  min-width: 0;
+}
+
+.molecule-InputContainer_inputContent textarea {
+  resize: none;
+}
+
+.molecule-InputContainer_addOnContent.isInvalid * {
+  color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
+}
+
+.molecule-InputContainer_addOnContent.isHighlighted * {
+  color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
+}

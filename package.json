@@ -1,0 +1,50 @@
+{
+  "name": "molecule-input",
+  "version": "0.0.1",
+  "author": "Frederik Krautwald",
+  "description": "A Material Design text field",
+  "license": "MIT",
+  "bugs": "https://github.com/CyclicMaterials/molecule-input/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CyclicMaterials/molecule-input"
+  },
+  "keywords": [
+    "cyclejs",
+    "input",
+    "Material Design"
+  ],
+  "dependencies": {
+    "@cycle/core": "^3.1.0",
+    "@cycle/dom": "^5.0.1",
+    "atom-color": "file:../atom-color",
+    "atom-flex-layout": "file:../atom-flex-layout",
+    "atom-layout": "file:../atom-layout",
+    "atom-styles": "file:../atom-styles",
+    "atom-typography": "file:../atom-typography",
+    "ramda": "^0.17.1"
+  },
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-runtime": "^5.8.20",
+    "babelify": "^6.2.0",
+    "browserify": "^11.0.1",
+    "cssnext": "^1.8.3",
+    "eslint": "1.0.x",
+    "eslint-config-cycle": "^3.0.0",
+    "eslint-plugin-cycle": "^1.0.1",
+    "eslint-plugin-no-class": "^0.1.0",
+    "faucet": "0.0.1",
+    "postcss": "^4.0.0",
+    "postcss-cli": "^1.0.0",
+    "tape": "^4.2.0"
+  },
+  "scripts": {
+    "lint": "eslint *.js",
+    "test": "npm run lint && babel-node *.test.js | faucet",
+    "css": "postcss -c postcss.config.json",
+    "browserify": "browserify demo/main.js -t [ babelify --optional runtime ] --outfile demo/bundle.js",
+    "build": "npm run css && npm run browserify",
+    "start": "npm install && npm run build && echo 'Open demo/index.html in your browser'"
+  }
+}

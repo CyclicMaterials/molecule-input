@@ -1,0 +1,9 @@
+@import "../molecule-input.css";
+
+body {
+  padding: 40px;
+}
+
+.molecule-Input.short {
+  width: 200px;
+}
