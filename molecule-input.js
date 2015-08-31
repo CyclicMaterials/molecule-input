@@ -2,6 +2,7 @@
 
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
+import {combineClassNames} from './functions.js';
 import moleculeInputContainer from './molecule-input-container.js';
 
 const dialogueName = `molecule-Input`;
@@ -25,19 +26,13 @@ function model(actions) {
 }
 
 function view({state$, props$, namespace}) {
-  const classNameSeparator = ` `;
-
   const label$ = props$.map(
     (props) => {
       const {label} = props;
 
       return (// eslint-disable-line
         <label
-          className=
-            {[
-              namespace,
-              `${dialogueName}_label`,
-            ].join(classNameSeparator).trim()}
+          className={combineClassNames(namespace, `${dialogueName}_label`)}
           hidden={!label}>
           {label}
         </label>
@@ -49,11 +44,7 @@ function view({state$, props$, namespace}) {
     () => {
       return (// eslint-disable-line
         <input
-          className=
-            {[
-              namespace,
-              `${dialogueName}_input`,
-            ].join(classNameSeparator).trim()}/>
+          className={combineClassNames(namespace, `${dialogueName}_input`)}/>
       );
     }
   );
@@ -62,11 +53,18 @@ function view({state$, props$, namespace}) {
     state => {
       const {isFocused} = state;
 
-      return moleculeInputContainer({
-        label$, input$, props$: Rx.Observable.just({
+      const spec = {
+        label$,
+        input$,
+        props$: Rx.Observable.just({
           isFocused,
         }),
-      }, namespace);
+      };
+
+      return moleculeInputContainer(
+        spec,
+        namespace
+      );
     }
   );
 
@@ -76,10 +74,7 @@ function view({state$, props$, namespace}) {
       (inputContainerVTree) => {
         return (// eslint-disable-line
           <div
-            className={[
-              namespace,
-              dialogueName,
-            ].join(classNameSeparator).trim()}>
+            className={combineClassNames(namespace, dialogueName)}>
             {inputContainerVTree}
           </div>
         );

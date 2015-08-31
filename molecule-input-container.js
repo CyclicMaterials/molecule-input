@@ -3,6 +3,9 @@
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import R from 'ramda';
+import {combineClassNames} from './functions.js';
+
+const dialogueName = `molecule-InputContainer`;
 
 function isLabelTagName(tagName) {
   return tagName === `LABEL`;
@@ -14,32 +17,27 @@ function isInputOrTextareaTagName(tagName) {
 
 const classNameProperty = R.prop(`className`);
 
-function moleculeInputContainer({props$, label$, input$}, optNamespace = ``) {
-  const namespace = optNamespace.trim();
+function addClassNamesToVNode(vnode, ...classNames) {
+  const cloneVNode = Object.assign(vnode);
 
-  const classNameSeparator = ` `;
+  cloneVNode.properties.className = combineClassNames(
+    classNameProperty(vnode.properties),
+    classNames
+  );
 
+  return cloneVNode;
+}
+
+function view({label$, input$, props$, namespace}) {
   const labelVTree$ = label$
-    .filter(vnode => {return isLabelTagName(vnode.tagName);})
-    .map(vnode => {
-      const labelVNode = Object.assign(vnode);
-      labelVNode.properties.className =
-        `${classNameProperty(vnode.properties)} atom-Typography--subhead`;
-
-      return labelVNode;
-    });
+    .filter(vnode => isLabelTagName(vnode.tagName))
+    .map(vnode => addClassNamesToVNode(vnode, `atom-Typography--subhead`));
 
   const inputVTree$ = input$
-    .filter(vnode => {return isInputOrTextareaTagName(vnode.tagName);})
-    .map(vnode => {
-      const inputVNode = Object.assign(vnode);
-      inputVNode.properties.className =
-        `${classNameProperty(vnode.properties)} atom-Typography--subhead`;
+    .filter(vnode => isInputOrTextareaTagName(vnode.tagName))
+    .map(vnode => addClassNamesToVNode(vnode, `atom-Typography--subhead`));
 
-      return inputVNode;
-    });
-
-  const vtree$ = Rx.Observable.combineLatest(
+  return Rx.Observable.combineLatest(
     props$,
     labelVTree$,
     inputVTree$,
@@ -50,64 +48,64 @@ function moleculeInputContainer({props$, label$, input$}, optNamespace = ``) {
 
       return ( // eslint-disable-line
         <div
-          className={[
-            namespace,
-            `molecule-InputContainer`,
-          ].join(classNameSeparator).trim()}>
+          className={combineClassNames(namespace, dialogueName)}>
 
           <div
-            className={[
+            className={combineClassNames(
               namespace,
-              `molecule-InputContainer_floatedLabelPlaceholder`,
-              `atom-Typography--caption`,
-            ].join(classNameSeparator).trim()}>&nbsp;</div>
+              `${dialogueName}_floatedLabelPlaceholder`,
+              `atom-Typography--caption`
+              )}>&nbsp;</div>
 
           <div
-            className={[
+            className={combineClassNames(
               namespace,
-              `molecule-InputContainer_inputContent`,
+              `${dialogueName}_inputContent`,
               `atom-FlexLayout--horizontal`,
-              `atom-FlexLayout--end`,
-            ].join(classNameSeparator).trim()}>
+              `atom-FlexLayout--end`
+            )}>
             <div
-              className={[
+              className={combineClassNames(
                 namespace,
-                `molecule-InputContainer_labelAndInputContainer`,
+                `${dialogueName}_labelAndInputContainer`,
                 `atom-FlexLayout`,
-                `atom-Layout--relative`,
-              ].join(classNameSeparator).trim()}>
+                `atom-Layout--relative`
+              )}>
               {labelVTree}
               {inputVTree}
             </div>
           </div>
 
           <div
-            className={[
+            className={combineClassNames(
               namespace,
-              `molecule-InputContainer_underline`,
-              underlineClassMod,
-            ].join(classNameSeparator).trim()}>
+              `${dialogueName}_underline`,
+              underlineClassMod
+            )}>
             <div
-              className={[
+              className={combineClassNames(
                 namespace,
-                `molecule-InputContainer_unfocusedLine`,
-                `atom-Layout--fit`,
-              ].join(classNameSeparator).trim()}></div>
+                `${dialogueName}_unfocusedLine`,
+                `atom-Layout--fit`
+              )}></div>
             <div
-              className={[
+              className={combineClassNames(
                 namespace,
-                `molecule-InputContainer_focusedLine`,
-                `atom-Layout--fit`,
-              ].join(classNameSeparator).trim()}></div>
+                `${dialogueName}_focusedLine`,
+                `atom-Layout--fit`
+              )}></div>
           </div>
 
         </div>
       );
     }
   );
+}
+function moleculeInputContainer({props$, label$, input$}, optNamespace = ``) {
+  const namespace = optNamespace.trim();
 
   return {
-    DOM: vtree$,
+    DOM: view({label$, input$, props$, namespace}),
   };
 }
 
