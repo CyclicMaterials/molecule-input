@@ -5,37 +5,48 @@ import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import R from 'ramda';
 import {combineClassNames} from './functions.js';
 
-const dialogueName = `molecule-InputContainer`;
+const DIALOGUE_NAME = `molecule-InputContainer`;
 
-function isLabelTagName(tagName) {
-  return tagName === `LABEL`;
-}
-
-function isInputOrTextareaTagName(tagName) {
-  return tagName === `INPUT` || tagName === `TEXTAREA`;
-}
+const isVNodeOfTagName = R.curry(function isVNodeOfTagName(tagName, vnode) {
+  return tagName === vnode.tagName;
+});
 
 const classNameProperty = R.prop(`className`);
 
-function addClassNamesToVNode(vnode, ...classNames) {
-  const cloneVNode = Object.assign(vnode);
+const augmentVNodeWithClassNames = R.curry(
+  function augmentVNodeWithClassNames(classNames, vnode) {
+    const cloneVNode = Object.assign(vnode);
 
-  cloneVNode.properties.className = combineClassNames(
-    classNameProperty(vnode.properties),
-    classNames
-  );
+    cloneVNode.properties.className = combineClassNames(
+      classNameProperty(vnode.properties),
+      classNames
+    );
 
-  return cloneVNode;
-}
+    return cloneVNode;
+  }
+);
 
 function view({label$, input$, props$, namespace}) {
+  const augmentVNodeWithTypographyClassName =
+    augmentVNodeWithClassNames(`atom-Typography--subhead`);
+
+  const isVNodeLabel = isVNodeOfTagName(`LABEL`);
+
+  const isVNodeInput = isVNodeOfTagName(`INPUT`);
+
+  const isVNodeTextarea = isVNodeOfTagName(`TEXTAREA`);
+
+  const isVNodeInputOrTextarea = function isVNodeInputOrTextarea(vnode) {
+    return isVNodeInput(vnode) || isVNodeTextarea(vnode);
+  };
+
   const labelVTree$ = label$
-    .filter(vnode => isLabelTagName(vnode.tagName))
-    .map(vnode => addClassNamesToVNode(vnode, `atom-Typography--subhead`));
+    .filter(isVNodeLabel)
+    .map(augmentVNodeWithTypographyClassName);
 
   const inputVTree$ = input$
-    .filter(vnode => isInputOrTextareaTagName(vnode.tagName))
-    .map(vnode => addClassNamesToVNode(vnode, `atom-Typography--subhead`));
+    .filter(isVNodeInputOrTextarea)
+    .map(augmentVNodeWithTypographyClassName);
 
   return Rx.Observable.combineLatest(
     props$,
@@ -48,26 +59,26 @@ function view({label$, input$, props$, namespace}) {
 
       return ( // eslint-disable-line
         <div
-          className={combineClassNames(namespace, dialogueName)}>
+          className={combineClassNames(namespace, DIALOGUE_NAME)}>
 
           <div
             className={combineClassNames(
               namespace,
-              `${dialogueName}_floatedLabelPlaceholder`,
+              `${DIALOGUE_NAME}_floatedLabelPlaceholder`,
               `atom-Typography--caption`
               )}>&nbsp;</div>
 
           <div
             className={combineClassNames(
               namespace,
-              `${dialogueName}_inputContent`,
+              `${DIALOGUE_NAME}_inputContent`,
               `atom-FlexLayout--horizontal`,
               `atom-FlexLayout--end`
             )}>
             <div
               className={combineClassNames(
                 namespace,
-                `${dialogueName}_labelAndInputContainer`,
+                `${DIALOGUE_NAME}_labelAndInputContainer`,
                 `atom-FlexLayout`,
                 `atom-Layout--relative`
               )}>
@@ -79,19 +90,19 @@ function view({label$, input$, props$, namespace}) {
           <div
             className={combineClassNames(
               namespace,
-              `${dialogueName}_underline`,
+              `${DIALOGUE_NAME}_underline`,
               underlineClassMod
             )}>
             <div
               className={combineClassNames(
                 namespace,
-                `${dialogueName}_unfocusedLine`,
+                `${DIALOGUE_NAME}_unfocusedLine`,
                 `atom-Layout--fit`
               )}></div>
             <div
               className={combineClassNames(
                 namespace,
-                `${dialogueName}_focusedLine`,
+                `${DIALOGUE_NAME}_focusedLine`,
                 `atom-Layout--fit`
               )}></div>
           </div>

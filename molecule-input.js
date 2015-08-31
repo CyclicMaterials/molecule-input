@@ -5,7 +5,7 @@ import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import {combineClassNames} from './functions.js';
 import moleculeInputContainer from './molecule-input-container.js';
 
-const dialogueName = `molecule-Input`;
+const DIALOGUE_NAME = `molecule-Input`;
 
 function intent(DOM) {
   return {
@@ -32,7 +32,7 @@ function view({state$, props$, namespace}) {
 
       return (// eslint-disable-line
         <label
-          className={combineClassNames(namespace, `${dialogueName}_label`)}
+          className={combineClassNames(namespace, `${DIALOGUE_NAME}_label`)}
           hidden={!label}>
           {label}
         </label>
@@ -44,7 +44,7 @@ function view({state$, props$, namespace}) {
     () => {
       return (// eslint-disable-line
         <input
-          className={combineClassNames(namespace, `${dialogueName}_input`)}/>
+          className={combineClassNames(namespace, `${DIALOGUE_NAME}_input`)}/>
       );
     }
   );
@@ -74,7 +74,7 @@ function view({state$, props$, namespace}) {
       (inputContainerVTree) => {
         return (// eslint-disable-line
           <div
-            className={combineClassNames(namespace, dialogueName)}>
+            className={combineClassNames(namespace, DIALOGUE_NAME)}>
             {inputContainerVTree}
           </div>
         );
