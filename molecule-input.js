@@ -13,21 +13,24 @@ function intent(DOM) {
       DOM.select(`INPUT`).events(`focus`).map(() => true),
       DOM.select(`INPUT`).events(`blur`).map(() => false)
     ).startWith(false),
+    value$: DOM.select(`INPUT`).events(`input`).map(e => e.target.value)
+      .startWith(``),
   };
 }
 
-function model(actions) {
-  const isFocused$ = actions.isFocused$;
+function model(props$, actions) {
+  const {isFocused$, value$} = actions;
 
   return Rx.Observable.combineLatest(
     isFocused$,
-    isFocused => ({isFocused})
+    value$,
+    (isFocused, value) => ({isFocused, value})
   );
 }
 
-function view({state$, props$, namespace}) {
+function view({DOM, state$, props$, namespace}) {
   const label$ = props$.map(
-    (props) => {
+    props => {
       const {label} = props;
 
       return (// eslint-disable-line
@@ -40,24 +43,20 @@ function view({state$, props$, namespace}) {
     }
   );
 
-  const input$ = props$.map(
-    () => {
-      return (// eslint-disable-line
-        <input
-          className={combineClassNames(namespace, `${DIALOGUE_NAME}_input`)}/>
-      );
-    }
+  const input$ = Rx.Observable.just(
+    <input className={combineClassNames(namespace, `${DIALOGUE_NAME}_input`)}/>
   );
 
   const inputContainer$ = state$.map(
     state => {
-      const {isFocused} = state;
+      const {isFocused, value} = state;
 
       const spec = {
+        DOM,
         label$,
         input$,
         props$: Rx.Observable.just({
-          isFocused,
+          isFocused, inputValue: value,
         }),
       };
 
@@ -71,7 +70,7 @@ function view({state$, props$, namespace}) {
   return inputContainer$
     .map(inputContainer => inputContainer.DOM)
     .map(
-      (inputContainerVTree) => {
+      inputContainerVTree => {
         return (// eslint-disable-line
           <div
             className={combineClassNames(namespace, DIALOGUE_NAME)}>
@@ -85,10 +84,10 @@ function view({state$, props$, namespace}) {
 function moleculeInput({DOM, props$}, optNamespace = ``) {
   const namespace = optNamespace.trim();
   const actions = intent(DOM);
-  const state$ = model(actions);
+  const state$ = model(props$, actions);
 
   return {
-    DOM: view({state$, props$, namespace}),
+    DOM: view({DOM, state$, props$, namespace}),
   };
 }
 

@@ -27,9 +27,6 @@ const augmentVNodeWithClassNames = R.curry(
 );
 
 function view({label$, input$, props$, namespace}) {
-  const augmentVNodeWithTypographyClassName =
-    augmentVNodeWithClassNames(`atom-Typography--subhead`);
-
   const isVNodeLabel = isVNodeOfTagName(`LABEL`);
 
   const isVNodeInput = isVNodeOfTagName(`INPUT`);
@@ -39,6 +36,9 @@ function view({label$, input$, props$, namespace}) {
   const isVNodeInputOrTextarea = function isVNodeInputOrTextarea(vnode) {
     return isVNodeInput(vnode) || isVNodeTextarea(vnode);
   };
+
+  const augmentVNodeWithTypographyClassName =
+    augmentVNodeWithClassNames(`atom-Typography--subhead`);
 
   const labelVTree$ = label$
     .filter(isVNodeLabel)
@@ -53,7 +53,19 @@ function view({label$, input$, props$, namespace}) {
     labelVTree$,
     inputVTree$,
     (props, labelVTree, inputVTree) => {
-      const {isFocused} = props;
+      const {isFocused, inputValue} = props;
+
+      const hasInputContent = !!inputValue || inputValue === 0;
+
+      const isLabelFloating = hasInputContent;
+
+      const inputContentClassMods = [];
+      if (isLabelFloating) {
+        inputContentClassMods.push(`isFloatingLabel`);
+      }
+      if (isLabelFloating && isFocused) {
+        inputContentClassMods.push(`isHighlightedLabel`);
+      }
 
       const underlineClassMod = isFocused ? `isHighlighted` : ``;
 
@@ -72,6 +84,7 @@ function view({label$, input$, props$, namespace}) {
             className={combineClassNames(
               namespace,
               `${DIALOGUE_NAME}_inputContent`,
+              inputContentClassMods.join(` `),
               `atom-FlexLayout--horizontal`,
               `atom-FlexLayout--end`
             )}>
@@ -112,7 +125,11 @@ function view({label$, input$, props$, namespace}) {
     }
   );
 }
-function moleculeInputContainer({props$, label$, input$}, optNamespace = ``) {
+
+function moleculeInputContainer(
+  {DOM, props$, label$, input$},
+  optNamespace = ``
+) {
   const namespace = optNamespace.trim();
 
   return {
