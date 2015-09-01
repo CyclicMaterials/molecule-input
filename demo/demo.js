@@ -9,14 +9,23 @@ function demo({DOM}) {
     label: `label`,
   })}, `demo-TextInput--label`);
 
+  const textInputDemoPassword = moleculeInput({DOM, props$: Rx.Observable.just({
+    label: `password`, type: `password`,
+  })}, `demo-TextInput--password`);
+
   return {
     DOM: Rx.Observable.combineLatest(
       textInputDemoLabel.DOM,
-      (textInputDemoLabelVTree) => ( // eslint-disable-line
+      textInputDemoPassword.DOM,
+      (
+        textInputDemoLabelVTree,
+        textInputDemoPasswordVTree
+      ) => ( // eslint-disable-line
         <div>
           <h4>Text input</h4>
           <section>
             {textInputDemoLabelVTree}
+            {textInputDemoPasswordVTree}
           </section>
         </div>
       )

@@ -7,18 +7,21 @@ import moleculeInputContainer from './molecule-input-container.js';
 
 const DIALOGUE_NAME = `molecule-Input`;
 
-function intent(DOM) {
+function intent(DOM, optNamespace) {
+  const namespace = optNamespace ? `.${optNamespace}` : ``;
+
   return {
     isFocused$: Rx.Observable.merge(
-      DOM.select(`INPUT`).events(`focus`).map(() => true),
-      DOM.select(`INPUT`).events(`blur`).map(() => false)
+      DOM.select(`INPUT${namespace}`).events(`focus`).map(() => true),
+      DOM.select(`INPUT${namespace}`).events(`blur`).map(() => false)
     ).startWith(false),
-    value$: DOM.select(`INPUT`).events(`input`).map(e => e.target.value)
+    value$: DOM.select(`INPUT${namespace}`).events(`input`)
+      .map(e => e.target.value)
       .startWith(``),
   };
 }
 
-function model(props$, actions) {
+function model(actions) {
   const {isFocused$, value$} = actions;
 
   return Rx.Observable.combineLatest(
@@ -43,8 +46,16 @@ function view({DOM, state$, props$, namespace}) {
     }
   );
 
-  const input$ = Rx.Observable.just(
-    <input className={combineClassNames(namespace, `${DIALOGUE_NAME}_input`)}/>
+  const input$ = props$.map(
+    props => {
+      const {type} = props;
+
+      return (// eslint-disable-line
+        <input
+          className={combineClassNames(namespace, `${DIALOGUE_NAME}_input`)}
+          type={type}/>
+      );
+    }
   );
 
   const inputContainer$ = state$.map(
@@ -83,8 +94,9 @@ function view({DOM, state$, props$, namespace}) {
 
 function moleculeInput({DOM, props$}, optNamespace = ``) {
   const namespace = optNamespace.trim();
-  const actions = intent(DOM);
-  const state$ = model(props$, actions);
+
+  const actions = intent(DOM, namespace);
+  const state$ = model(actions);
 
   return {
     DOM: view({DOM, state$, props$, namespace}),
