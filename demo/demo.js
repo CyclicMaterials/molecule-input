@@ -13,19 +13,27 @@ function demo({DOM}) {
     label: `password`, type: `password`,
   })}, `demo-TextInput--password`);
 
+  const textInputDemoNoFloatingLabel =
+    moleculeInput({DOM, props$: Rx.Observable.just({
+      label: `label (isNoFloatingLabel)`, isNoFloatingLabel: true,
+    })}, `demo-TextInput--noFloatingLabel`);
+
   return {
     DOM: Rx.Observable.combineLatest(
       textInputDemoLabel.DOM,
       textInputDemoPassword.DOM,
+      textInputDemoNoFloatingLabel.DOM,
       (
         textInputDemoLabelVTree,
-        textInputDemoPasswordVTree
+        textInputDemoPasswordVTree,
+        textInputDemoNoFloatingLabelVTree
       ) => ( // eslint-disable-line
         <div>
           <h4>Text input</h4>
           <section>
             {textInputDemoLabelVTree}
             {textInputDemoPasswordVTree}
+            {textInputDemoNoFloatingLabelVTree}
           </section>
         </div>
       )

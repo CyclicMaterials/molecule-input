@@ -53,11 +53,11 @@ function view({label$, input$, props$, namespace}) {
     labelVTree$,
     inputVTree$,
     (props, labelVTree, inputVTree) => {
-      const {isFocused, inputValue} = props;
+      const {isNoFloatingLabel, isFocused, inputValue} = props;
 
       const hasInputContent = !!inputValue || inputValue === 0;
 
-      const isLabelFloating = hasInputContent;
+      const isLabelFloating = !isNoFloatingLabel && hasInputContent;
 
       const inputContentClassMods = [];
       if (isLabelFloating) {
@@ -65,6 +65,9 @@ function view({label$, input$, props$, namespace}) {
       }
       if (isLabelFloating && isFocused) {
         inputContentClassMods.push(`isHighlightedLabel`);
+      }
+      if (isNoFloatingLabel && hasInputContent) {
+        inputContentClassMods.push(`isHiddenLabel`);
       }
 
       const underlineClassMod = isFocused ? `isHighlighted` : ``;

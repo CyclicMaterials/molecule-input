@@ -58,16 +58,20 @@ function view({DOM, state$, props$, namespace}) {
     }
   );
 
-  const inputContainer$ = state$.map(
-    state => {
+  const inputContainer$ = state$.combineLatest(
+    props$,
+    (state, props) => {
       const {isFocused, value} = state;
+      const {isNoFloatingLabel} = props;
 
       const spec = {
         DOM,
         label$,
         input$,
         props$: Rx.Observable.just({
-          isFocused, inputValue: value,
+          isNoFloatingLabel,
+          isFocused,
+          inputValue: value,
         }),
       };
 
