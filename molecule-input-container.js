@@ -53,13 +53,16 @@ function view({label$, input$, props$, namespace}) {
     labelVTree$,
     inputVTree$,
     (props, labelVTree, inputVTree) => {
-      const {isNoFloatingLabel, isFocused, inputValue} = props;
+      const {isNoFloatingLabel, isDisabled, isFocused, inputValue} = props;
+
+      const containerClassMod = isDisabled ? `isDisabled` : ``;
 
       const hasInputContent = !!inputValue || inputValue === 0;
 
       const isLabelFloating = !isNoFloatingLabel && hasInputContent;
 
       const inputContentClassMods = [];
+
       if (isLabelFloating) {
         inputContentClassMods.push(`isFloatingLabel`);
       }
@@ -74,7 +77,7 @@ function view({label$, input$, props$, namespace}) {
 
       return ( // eslint-disable-line
         <div
-          className={combineClassNames(namespace, DIALOGUE_NAME)}>
+          className={combineClassNames(namespace, DIALOGUE_NAME, containerClassMod)}>
 
           <div
             className={combineClassNames(

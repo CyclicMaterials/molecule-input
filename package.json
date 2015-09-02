@@ -22,7 +22,8 @@
     "atom-layout": "git://github.com/CyclicMaterials/atom-layout",
     "atom-styles": "git://github.com/CyclicMaterials/atom-styles",
     "atom-typography": "git://github.com/CyclicMaterials/atom-typography",
-    "ramda": "^0.17.1"
+    "ramda": "^0.17.1",
+    "template-demo-pages": "git://github.com/CyclicMaterials/template-demo-pages"
   },
   "devDependencies": {
     "babel": "^5.8.21",

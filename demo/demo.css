@@ -1,4 +1,5 @@
 @import "../molecule-input.css";
+@import "template-demo-pages/template-demo-pages";
 
 body {
   padding: 40px;

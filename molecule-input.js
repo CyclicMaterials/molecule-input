@@ -48,21 +48,22 @@ function view({DOM, state$, props$, namespace}) {
 
   const input$ = props$.map(
     props => {
-      const {type} = props;
+      const {type, isDisabled} = props;
 
       return (// eslint-disable-line
         <input
           className={combineClassNames(namespace, `${DIALOGUE_NAME}_input`)}
-          type={type}/>
+          type={type}
+          disabled={isDisabled}/>
       );
     }
   );
 
-  const inputContainer$ = state$.combineLatest(
-    props$,
-    (state, props) => {
+  const inputContainer$ = props$.combineLatest(
+    state$,
+    (props, state) => {
+      const {isNoFloatingLabel, isDisabled} = props;
       const {isFocused, value} = state;
-      const {isNoFloatingLabel} = props;
 
       const spec = {
         DOM,
@@ -70,6 +71,7 @@ function view({DOM, state$, props$, namespace}) {
         input$,
         props$: Rx.Observable.just({
           isNoFloatingLabel,
+          isDisabled,
           isFocused,
           inputValue: value,
         }),

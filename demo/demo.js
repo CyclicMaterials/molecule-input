@@ -5,35 +5,43 @@ import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import moleculeInput from '../molecule-input.js';
 
 function demo({DOM}) {
-  const textInputDemoLabel = moleculeInput({DOM, props$: Rx.Observable.just({
+  const textInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({
     label: `label`,
   })}, `demo-TextInput--label`);
 
-  const textInputDemoPassword = moleculeInput({DOM, props$: Rx.Observable.just({
+  const textInputPassword = moleculeInput({DOM, props$: Rx.Observable.just({
     label: `password`, type: `password`,
   })}, `demo-TextInput--password`);
 
-  const textInputDemoNoFloatingLabel =
+  const textInputNoFloatingLabel =
     moleculeInput({DOM, props$: Rx.Observable.just({
       label: `label (isNoFloatingLabel)`, isNoFloatingLabel: true,
     })}, `demo-TextInput--noFloatingLabel`);
 
+  const textInputDisabled =
+    moleculeInput({DOM, props$: Rx.Observable.just({
+      label: `disabled`, isDisabled: true,
+    })}, `demo-TextInput--disabled`);
+
   return {
     DOM: Rx.Observable.combineLatest(
-      textInputDemoLabel.DOM,
-      textInputDemoPassword.DOM,
-      textInputDemoNoFloatingLabel.DOM,
+      textInputLabel.DOM,
+      textInputPassword.DOM,
+      textInputNoFloatingLabel.DOM,
+      textInputDisabled.DOM,
       (
-        textInputDemoLabelVTree,
-        textInputDemoPasswordVTree,
-        textInputDemoNoFloatingLabelVTree
+        textInputLabelVTree,
+        textInputPasswordVTree,
+        textInputNoFloatingLabelVTree,
+        textInputDisabledVTree
       ) => ( // eslint-disable-line
-        <div>
+        <div className={`template-DemoPages_sectionContainer isVertical`}>
           <h4>Text input</h4>
-          <section>
-            {textInputDemoLabelVTree}
-            {textInputDemoPasswordVTree}
-            {textInputDemoNoFloatingLabelVTree}
+          <section className={`template-DemoPages_verticalSection`}>
+            {textInputLabelVTree}
+            {textInputPasswordVTree}
+            {textInputNoFloatingLabelVTree}
+            {textInputDisabledVTree}
           </section>
         </div>
       )
