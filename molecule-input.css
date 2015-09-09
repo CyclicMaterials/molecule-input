@@ -1,5 +1,5 @@
 @import "molecule-input-container.css";
-@import "atom-styles/atom-default-theme.css";
+@import "@cyclic/atom-styles/atom-default-theme.css";
 
 .molecule-input {
   display: block;

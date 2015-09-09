@@ -1,8 +1,8 @@
-@import "atom-typography/atom-typography.css";
-@import "atom-styles/atom-default-theme";
-@import "atom-color/atom-color.css";
-@import "atom-flex-layout/atom-flex-layout.css";
-@import "atom-layout/atom-layout.css";
+@import "@cyclic/atom-typography/atom-typography.css";
+@import "@cyclic/atom-styles/atom-default-theme";
+@import "@cyclic/atom-color/atom-color.css";
+@import "@cyclic/atom-flex-layout/atom-flex-layout.css";
+@import "@cyclic/atom-layout/atom-layout.css";
 
 .molecule-InputContainer {
   display: block;
