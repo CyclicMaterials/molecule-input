@@ -27,7 +27,7 @@ function demo({DOM}) {
   const textareaLabel =
     moleculeTextarea({DOM, props$: Rx.Observable.just({
       label: `textarea label`,
-    })}, `demo-Textarea--label`);
+    })});
 
   return {
     DOM: Rx.Observable.combineLatest(

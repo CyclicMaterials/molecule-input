@@ -8,10 +8,14 @@ import atomAutogrowTextarea from '@cyclic/atom-autogrow-textarea';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
 
-function intent(DOM, optNamespace) {
-  const namespace = optNamespace ? `.${optNamespace}` : ``;
+let idSuffix = 0;
 
-  const selector = `TEXTAREA${namespace}`;
+function makeCycleId() {
+  return `${DIALOGUE_NAME}-${idSuffix++}`;
+}
+
+function intent({DOM, cycleId}) {
+  const selector = `TEXTAREA.${cycleId}`;
 
   return {
     isFocused$: Rx.Observable.merge(
@@ -24,24 +28,30 @@ function intent(DOM, optNamespace) {
   };
 }
 
-function model(actions) {
+function model({props$, actions}) {
   const {isFocused$, value$} = actions;
 
-  return Rx.Observable.combineLatest(
+  return props$.combineLatest(
     isFocused$,
     value$,
-    (isFocused, value) => ({isFocused, value})
+    (props, isFocused, value) => ({
+      isFocused,
+      value,
+      label: props.label,
+      isNoFloatingLabel: props.isNoFloatingLabel,
+      isDisabled: props.isDisabled,
+    })
   );
 }
 
-function view({DOM, state$, props$, namespace}) {
-  const label$ = props$.map(
-    (props) => {
-      const {label} = props;
+function view({DOM, state$, cycleId}) {
+  const label$ = state$.map(
+    (state) => {
+      const {label} = state;
 
       return (// eslint-disable-line
         <label
-          className={combineClassNames(namespace, `${DIALOGUE_NAME}_label`)}
+          className={combineClassNames(cycleId, `${DIALOGUE_NAME}_label`)}
           hidden={!label}>
           {label}
         </label>
@@ -49,19 +59,17 @@ function view({DOM, state$, props$, namespace}) {
     }
   );
 
-  const textarea$ = props$.map(
-    (props) => {
+  const textarea$ = state$.map(
+    (state) => {
       return atomAutogrowTextarea(
-        {DOM, props$: Rx.Observable.just(props)}, namespace);
+        {DOM, props$: Rx.Observable.just(state), optCycleId: cycleId});
     }
   );
 
-  const inputContainer$ = props$.combineLatest(
-    state$,
+  const inputContainer$ = state$.combineLatest(
     textarea$,
-    (props, state, textarea) => {
-      const {isNoFloatingLabel, isDisabled} = props;
-      const {isFocused, value} = state;
+    (state, textarea) => {
+      const {isFocused, value, isNoFloatingLabel, isDisabled} = state;
 
       const spec = {
         DOM,
@@ -77,7 +85,7 @@ function view({DOM, state$, props$, namespace}) {
 
       return moleculeInputContainer(
         spec,
-        namespace
+        cycleId
       );
     }
   );
@@ -88,7 +96,7 @@ function view({DOM, state$, props$, namespace}) {
       (inputContainerVTree) => {
         return (// eslint-disable-line
           <div
-            className={combineClassNames(namespace, DIALOGUE_NAME)}>
+            className={combineClassNames(cycleId, DIALOGUE_NAME)}>
             {inputContainerVTree}
           </div>
         );
@@ -96,15 +104,15 @@ function view({DOM, state$, props$, namespace}) {
   );
 }
 
-function moleculeTextArea({DOM, props$}, optNamespace = ``) {
-  const namespace = optNamespace.trim();
+function moleculeTextarea({DOM, props$, optCycleId = makeCycleId()}) {
+  const cycleId = optCycleId.trim();
 
-  const actions = intent(DOM, namespace);
-  const state$ = model(actions);
+  const actions = intent({DOM, cycleId});
+  const state$ = model({props$, actions});
 
   return {
-    DOM: view({DOM, state$, props$, namespace}),
+    DOM: view({DOM, state$, cycleId}),
   };
 }
 
-export default moleculeTextArea;
+export default moleculeTextarea;
