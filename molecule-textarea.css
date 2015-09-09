@@ -1,0 +1,5 @@
+@import "atom-autogrow-textarea/atom-autogrow-textarea.css";
+
+.molecule-Textarea {
+  display: block;
+}

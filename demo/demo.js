@@ -3,6 +3,7 @@
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import moleculeInput from '../molecule-input.js';
+import moleculeTextarea from '../molecule-textarea.js';
 
 function demo({DOM}) {
   const textInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({
@@ -23,17 +24,24 @@ function demo({DOM}) {
       label: `disabled`, isDisabled: true,
     })}, `demo-TextInput--disabled`);
 
+  const textareaLabel =
+    moleculeTextarea({DOM, props$: Rx.Observable.just({
+      label: `textarea label`,
+    })}, `demo-Textarea--label`);
+
   return {
     DOM: Rx.Observable.combineLatest(
       textInputLabel.DOM,
       textInputPassword.DOM,
       textInputNoFloatingLabel.DOM,
       textInputDisabled.DOM,
+      textareaLabel.DOM,
       (
         textInputLabelVTree,
         textInputPasswordVTree,
         textInputNoFloatingLabelVTree,
-        textInputDisabledVTree
+        textInputDisabledVTree,
+        textareaLabelVTree
       ) => ( // eslint-disable-line
         <div className={`template-DemoPages_sectionContainer isVertical`}>
           <h4>Text input</h4>
@@ -42,6 +50,11 @@ function demo({DOM}) {
             {textInputPasswordVTree}
             {textInputNoFloatingLabelVTree}
             {textInputDisabledVTree}
+          </section>
+
+          <h4>Text area</h4>
+          <section className={`template-DemoPages_verticalSection`}>
+            {textareaLabelVTree}
           </section>
         </div>
       )

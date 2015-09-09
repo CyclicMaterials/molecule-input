@@ -2,56 +2,15 @@
 
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import R from 'ramda';
-import {combineClassNames} from './functions.js';
+import combineClassNames from 'util-combine-class-names';
 
 const DIALOGUE_NAME = `molecule-InputContainer`;
 
-const isVNodeOfTagName = R.curry(function isVNodeOfTagName(tagName, vnode) {
-  return tagName === vnode.tagName;
-});
-
-const classNameProperty = R.prop(`className`);
-
-const augmentVNodeWithClassNames = R.curry(
-  function augmentVNodeWithClassNames(classNames, vnode) {
-    const cloneVNode = Object.assign(vnode);
-
-    cloneVNode.properties.className = combineClassNames(
-      classNameProperty(vnode.properties),
-      classNames
-    );
-
-    return cloneVNode;
-  }
-);
-
 function view({label$, input$, props$, namespace}) {
-  const isVNodeLabel = isVNodeOfTagName(`LABEL`);
-
-  const isVNodeInput = isVNodeOfTagName(`INPUT`);
-
-  const isVNodeTextarea = isVNodeOfTagName(`TEXTAREA`);
-
-  const isVNodeInputOrTextarea = function isVNodeInputOrTextarea(vnode) {
-    return isVNodeInput(vnode) || isVNodeTextarea(vnode);
-  };
-
-  const augmentVNodeWithTypographyClassName =
-    augmentVNodeWithClassNames(`atom-Typography--subhead`);
-
-  const labelVTree$ = label$
-    .filter(isVNodeLabel)
-    .map(augmentVNodeWithTypographyClassName);
-
-  const inputVTree$ = input$
-    .filter(isVNodeInputOrTextarea)
-    .map(augmentVNodeWithTypographyClassName);
-
   return Rx.Observable.combineLatest(
     props$,
-    labelVTree$,
-    inputVTree$,
+    label$,
+    input$,
     (props, labelVTree, inputVTree) => {
       const {isNoFloatingLabel, isDisabled, isFocused, inputValue} = props;
 
@@ -98,8 +57,9 @@ function view({label$, input$, props$, namespace}) {
               className={combineClassNames(
                 namespace,
                 `${DIALOGUE_NAME}_labelAndInputContainer`,
-                `atom-FlexLayout`,
-                `atom-Layout--relative`
+                `atom-FlexLayout_flex`,
+                `atom-Layout--relative`,
+                `atom-Typography--subhead`
               )}>
               {labelVTree}
               {inputVTree}

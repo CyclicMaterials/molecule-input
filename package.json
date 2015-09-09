@@ -14,16 +14,23 @@
     "input",
     "Material Design"
   ],
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
   "dependencies": {
     "@cycle/core": "^3.1.0",
     "@cycle/dom": "^5.0.1",
+    "atom-autogrow-textarea": "git://github.com/CyclicMaterials/atom-autogrow-textarea",
     "atom-color": "git://github.com/CyclicMaterials/atom-color",
     "atom-flex-layout": "git://github.com/CyclicMaterials/atom-flex-layout",
     "atom-layout": "git://github.com/CyclicMaterials/atom-layout",
     "atom-styles": "git://github.com/CyclicMaterials/atom-styles",
     "atom-typography": "git://github.com/CyclicMaterials/atom-typography",
     "ramda": "^0.17.1",
-    "template-demo-pages": "git://github.com/CyclicMaterials/template-demo-pages"
+    "template-demo-pages": "git://github.com/CyclicMaterials/template-demo-pages",
+    "util-combine-class-names": "git://github.com/CyclicMaterials/util-combine-class-names"
   },
   "devDependencies": {
     "babel": "^5.8.21",
@@ -44,7 +51,7 @@
     "lint": "eslint *.js",
     "test": "npm run lint && babel-node *.test.js | faucet",
     "css": "postcss -c postcss.config.json",
-    "browserify": "browserify demo/main.js -t [ babelify --optional runtime ] --outfile demo/bundle.js",
+    "browserify": "browserify demo/main.js -d -t [ babelify --optional runtime ] --outfile demo/bundle.js",
     "build": "npm run css && npm run browserify",
     "start": "npm install && npm run build && echo 'Open demo/index.html in your browser'"
   }

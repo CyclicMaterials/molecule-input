@@ -58,6 +58,7 @@
   right: 0;
   left: 0;
   color: var(--molecule-InputContainer-label, var(--secondary-text-color));
+  font: inherit;
 }
 
 .molecule-InputContainer_inputContent.isFloatingLabel label,
@@ -84,6 +85,7 @@
 
 .molecule-InputContainer_inputContent input,
 .molecule-InputContainer_inputContent textarea,
+.molecule-InputContainer_inputContent .atom-AutogrowTextarea,
 .molecule-InputContainer_inputContent .molecule-Input_input {
   position: relative;
   outline: none;
@@ -93,6 +95,7 @@
   background: transparent;
   border: none;
   color: var(--molecule-InputContainer-input-color, var(--primary-text-color));
+  font: inherit;
 }
 
 /* Firefox sets min-width on the input, which can cause layout issues. */
