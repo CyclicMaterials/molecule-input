@@ -36,7 +36,10 @@ function view({label$, input$, props$, namespace}) {
 
       return ( // eslint-disable-line
         <div
-          className={combineClassNames(namespace, DIALOGUE_NAME, containerClassMod)}>
+          className={combineClassNames(
+            namespace,
+            DIALOGUE_NAME,
+            containerClassMod)}>
 
           <div
             className={combineClassNames(
