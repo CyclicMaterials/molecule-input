@@ -2,9 +2,9 @@
 
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import combineClassNames from 'util-combine-class-names';
+import combineClassNames from '@cyclic/util-combine-class-names';
 import moleculeInputContainer from './molecule-input-container.js';
-import atomAutogrowTextarea from 'atom-autogrow-textarea';
+import atomAutogrowTextarea from '@cyclic/atom-autogrow-textarea';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
 

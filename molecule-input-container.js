@@ -2,7 +2,7 @@
 
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import combineClassNames from 'util-combine-class-names';
+import combineClassNames from '@cyclic/util-combine-class-names';
 
 const DIALOGUE_NAME = `molecule-InputContainer`;
 
