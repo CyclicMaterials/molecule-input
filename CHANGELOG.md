@@ -1,3 +1,35 @@
+# v2.0.0 (2015-09-09)
+
+
+## Bug Fixes
+
+- **molecule-textarea:** LABEL for TEXTAREA doesn’t float on input
+  ([1e9b5073](https://github.com/CyclicMaterials/molecule-input/commits/1e9b507391bab38923e1184b55033eb9a0ef07fc),
+   [#3](https://github.com/CyclicMaterials/molecule-input/issues/3))
+
+
+## Breaking Changes
+
+- **molecule-textarea:** due to [1e9b5073](https://github.com/CyclicMaterials/molecule-input/commits/1e9b507391bab38923e1184b55033eb9a0ef07fc),
+ 
+`moleculeTextarea` function signature has changed.
+
+Before:
+
+```js
+moleculeTextArea({DOM, props$}, optNamespace = ``)
+```
+
+After:
+
+```js
+moleculeTextarea({DOM, props$, optCycleId = makeCycleId()})
+```
+
+Closes #3
+
+
+
 # v1.0.0 (2015-09-09)
 
 
