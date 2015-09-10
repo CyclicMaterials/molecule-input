@@ -4,23 +4,24 @@ import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import combineClassNames from '@cyclic/util-combine-class-names';
 import moleculeInputContainer from './molecule-input-container.js';
-import atomAutogrowTextarea from '@cyclic/atom-autogrow-textarea';
+import atomAutogrowTextarea, {DIALOGUE_NAME as atomAutogrowTextareaName}
+  from '@cyclic/atom-autogrow-textarea';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
 
-let idSuffix = 0;
+let cycleIdSuffix = 0;
 
 function makeCycleId() {
-  return `${DIALOGUE_NAME}-${idSuffix++}`;
+  return `${DIALOGUE_NAME}-${cycleIdSuffix++}`;
 }
 
 function intent({DOM, cycleId}) {
-  const selector = `TEXTAREA.${cycleId}`;
+  const selector = `.${cycleId}.${atomAutogrowTextareaName}`;
 
   return {
     isFocused$: Rx.Observable.merge(
-      DOM.select(selector).events(`focus`).map(() => true),
-      DOM.select(selector).events(`blur`).map(() => false)
+      DOM.select(selector).events(`focus`, true).map(() => true),
+      DOM.select(selector).events(`blur`, true).map(() => false)
     ).startWith(false),
     value$: DOM.select(selector).events(`input`)
       .map(e => e.target.value)
@@ -114,5 +115,7 @@ function moleculeTextarea({DOM, props$, optCycleId = makeCycleId()}) {
     DOM: view({DOM, state$, cycleId}),
   };
 }
+
+export {DIALOGUE_NAME};
 
 export default moleculeTextarea;
