@@ -84,10 +84,7 @@ function view({DOM, state$, cycleId}) {
         }),
       };
 
-      return moleculeInputContainer(
-        spec,
-        cycleId
-      );
+      return moleculeInputContainer(spec, cycleId);
     }
   );
 
