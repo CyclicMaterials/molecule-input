@@ -110,6 +110,8 @@ function moleculeTextarea({DOM, props$, optCycleId = makeCycleId()}) {
 
   return {
     DOM: view({DOM, state$, cycleId}),
+    cycleId,
+    state$,
   };
 }
 
