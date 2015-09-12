@@ -2,25 +2,21 @@
 
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
+import cuid from 'cuid';
 import combineClassNames from '@cyclic/util-combine-class-names';
 import moleculeInputContainer from './molecule-input-container.js';
-import atomAutogrowTextarea from '@cyclic/atom-autogrow-textarea';
+import atomAutogrowTextarea, {DIALOGUE_NAME as atomAutogrowTextareaName}
+  from '@cyclic/atom-autogrow-textarea';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
 
-let idSuffix = 0;
-
-function makeCycleId() {
-  return `${DIALOGUE_NAME}-${idSuffix++}`;
-}
-
-function intent({DOM, cycleId}) {
-  const selector = `TEXTAREA.${cycleId}`;
+function intent({DOM, id}) {
+  const selector = `.${id} .${atomAutogrowTextareaName}`;
 
   return {
     isFocused$: Rx.Observable.merge(
-      DOM.select(selector).events(`focus`).map(() => true),
-      DOM.select(selector).events(`blur`).map(() => false)
+      DOM.select(selector).events(`focus`, true).map(() => true),
+      DOM.select(selector).events(`blur`, true).map(() => false)
     ).startWith(false),
     value$: DOM.select(selector).events(`input`)
       .map(e => e.target.value)
@@ -35,6 +31,7 @@ function model({props$, actions}) {
     isFocused$,
     value$,
     (props, isFocused, value) => ({
+      className: props.className,
       isFocused,
       value,
       label: props.label,
@@ -44,14 +41,14 @@ function model({props$, actions}) {
   );
 }
 
-function view({DOM, state$, cycleId}) {
+function view({DOM, state$, id}) {
   const label$ = state$.map(
     (state) => {
       const {label} = state;
 
       return (// eslint-disable-line
         <label
-          className={combineClassNames(cycleId, `${DIALOGUE_NAME}_label`)}
+          className={`${DIALOGUE_NAME}_label`}
           hidden={!label}>
           {label}
         </label>
@@ -61,58 +58,59 @@ function view({DOM, state$, cycleId}) {
 
   const textarea$ = state$.map(
     (state) => {
-      return atomAutogrowTextarea(
-        {DOM, props$: Rx.Observable.just(state), optCycleId: cycleId});
+      const spec = {
+        maxRows: state.maxRows,
+        rows: state.rows,
+      };
+      return atomAutogrowTextarea({DOM, props$: Rx.Observable.just(spec)});
     }
   );
 
   const inputContainer$ = state$.combineLatest(
+    label$,
     textarea$,
-    (state, textarea) => {
+    (state, label, textarea) => {
       const {isFocused, value, isNoFloatingLabel, isDisabled} = state;
 
-      const spec = {
-        DOM,
-        label$,
-        input$: textarea.DOM,
-        props$: Rx.Observable.just({
-          isNoFloatingLabel,
-          isDisabled,
-          isFocused,
-          inputValue: value,
-        }),
-      };
+      const props$ = textarea.DOM.map((input) => ({
+        label,
+        input,
+        isNoFloatingLabel,
+        isDisabled,
+        isFocused,
+        inputValue: value,
+      }));
 
-      return moleculeInputContainer(
-        spec,
-        cycleId
-      );
+      return moleculeInputContainer({props$});
     }
   );
 
   return inputContainer$
     .map(inputContainer => inputContainer.DOM)
-    .map(
-      (inputContainerVTree) => {
-        return (// eslint-disable-line
-          <div
-            className={combineClassNames(cycleId, DIALOGUE_NAME)}>
-            {inputContainerVTree}
-          </div>
-        );
-      }
+    .combineLatest(state$, (inputContainerVTree, state) => {
+      return (// eslint-disable-line
+        <div
+          className={combineClassNames(id, DIALOGUE_NAME, state.className)}>
+          {inputContainerVTree}
+        </div>
+      );
+    }
   );
 }
 
-function moleculeTextarea({DOM, props$, optCycleId = makeCycleId()}) {
-  const cycleId = optCycleId.trim();
+function moleculeTextarea({DOM, props$}) {
+  const id = cuid();
 
-  const actions = intent({DOM, cycleId});
+  const actions = intent({DOM, id});
   const state$ = model({props$, actions});
 
   return {
-    DOM: view({DOM, state$, cycleId}),
+    DOM: view({DOM, state$, id}),
+    id,
+    state$,
   };
 }
+
+export {DIALOGUE_NAME};
 
 export default moleculeTextarea;

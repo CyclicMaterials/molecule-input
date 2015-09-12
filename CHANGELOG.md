@@ -1,3 +1,34 @@
+# v3.0.0 (2015-09-12)
+
+
+## Features
+
+- dialogue implementation consistency
+  ([01d0a357](https://github.com/CyclicMaterials/molecule-input/commits/01d0a357c4b3aa9424452a53f0bbc33d60891bcc),
+   [#4](https://github.com/CyclicMaterials/molecule-input/issues/4), [#5](https://github.com/CyclicMaterials/molecule-input/issues/5), [#6](https://github.com/CyclicMaterials/molecule-input/issues/6))
+- **molecule-textarea:**
+    - return `state$` and `cycleId`
+    ([5a0c1d89](https://github.com/CyclicMaterials/molecule-input/commits/5a0c1d892ebc6339d913f89057b8c0de7538d21a))
+    - listen for events on immediate child
+    ([1e9c4b9c](https://github.com/CyclicMaterials/molecule-input/commits/1e9c4b9c84810cdfd9bfd1e62e29f95e407e9411),
+     [#4](https://github.com/CyclicMaterials/molecule-input/issues/4))
+
+
+## Breaking Changes
+
+- due to [01d0a357](https://github.com/CyclicMaterials/molecule-input/commits/01d0a357c4b3aa9424452a53f0bbc33d60891bcc),
+ 
+
+Dialogue interfaces  no longer optional namespace parameter.
+Dialogues have an `id` and `state$` property.
+`DIALOGUE_NAME` is exposed through named export.
+
+Closes #4
+Closes #5
+Closes #6
+
+
+
 # v2.0.0 (2015-09-09)
 
 

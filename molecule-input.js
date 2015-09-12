@@ -2,111 +2,116 @@
 
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
+import cuid from 'cuid';
 import combineClassNames from '@cyclic/util-combine-class-names';
 import moleculeInputContainer from './molecule-input-container.js';
 
 const DIALOGUE_NAME = `molecule-Input`;
 
-function intent(DOM, optNamespace) {
-  const namespace = optNamespace ? `.${optNamespace}` : ``;
+function intent(DOM, id) {
+  const selector = `.${id} .${DIALOGUE_NAME}_input`;
 
   return {
     isFocused$: Rx.Observable.merge(
-      DOM.select(`INPUT${namespace}`).events(`focus`).map(() => true),
-      DOM.select(`INPUT${namespace}`).events(`blur`).map(() => false)
+      DOM.select(selector).events(`focus`).map(() => true),
+      DOM.select(selector).events(`blur`).map(() => false)
     ).startWith(false),
-    value$: DOM.select(`INPUT${namespace}`).events(`input`)
-      .map(e => e.target.value)
+    value$: DOM.select(selector).events(`input`)
+      .map((e) => e.target.value)
       .startWith(``),
   };
 }
 
-function model(actions) {
+function model(props$, actions) {
   const {isFocused$, value$} = actions;
 
-  return Rx.Observable.combineLatest(
+  return props$.combineLatest(
     isFocused$,
     value$,
-    (isFocused, value) => ({isFocused, value})
+    (props, isFocused, value) => {
+      const {className, label, type, isDisabled, isNoFloatingLabel} = props;
+
+      return {
+        className,
+        isFocused,
+        value,
+        label,
+        type,
+        isDisabled,
+        isNoFloatingLabel,
+      };
+    }
   );
 }
 
-function view({DOM, state$, props$, namespace}) {
-  const label$ = props$.map(
-    props => {
-      const {label} = props;
+function view({state$, id}) {
+  const label$ = state$.map((state) => {
+    const {label} = state;
 
-      return (// eslint-disable-line
-        <label
-          className={combineClassNames(namespace, `${DIALOGUE_NAME}_label`)}
-          hidden={!label}>
-          {label}
-        </label>
-      );
-    }
-  );
+    return (// eslint-disable-line
+      <label
+        className={`${DIALOGUE_NAME}_label`}
+        hidden={!label}>
+        {label}
+      </label>
+    );
+  });
 
-  const input$ = props$.map(
-    props => {
-      const {type, isDisabled} = props;
+  const input$ = state$.map((state) => {
+    const {type, isDisabled} = state;
 
-      return (// eslint-disable-line
-        <input
-          className={combineClassNames(namespace, `${DIALOGUE_NAME}_input`)}
-          type={type}
-          disabled={isDisabled}/>
-      );
-    }
-  );
+    return (// eslint-disable-line
+      <input
+        className={`${DIALOGUE_NAME}_input`}
+        type={type}
+        disabled={isDisabled}/>
+    );
+  });
 
-  const inputContainer$ = props$.combineLatest(
-    state$,
-    (props, state) => {
-      const {isNoFloatingLabel, isDisabled} = props;
-      const {isFocused, value} = state;
+  const inputContainer$ = state$.combineLatest(
+    label$,
+    input$,
+    (state, label, input) => {
+      const {isNoFloatingLabel, isDisabled, isFocused, value} = state;
 
-      const spec = {
-        DOM,
-        label$,
-        input$,
-        props$: Rx.Observable.just({
-          isNoFloatingLabel,
-          isDisabled,
-          isFocused,
-          inputValue: value,
-        }),
-      };
+      const props$ = Rx.Observable.just({
+        label,
+        input,
+        isNoFloatingLabel,
+        isDisabled,
+        isFocused,
+        inputValue: value,
+      });
 
-      return moleculeInputContainer(
-        spec,
-        namespace
-      );
+      return moleculeInputContainer({props$});
     }
   );
 
   return inputContainer$
-    .map(inputContainer => inputContainer.DOM)
-    .map(
-      inputContainerVTree => {
-        return (// eslint-disable-line
-          <div
-            className={combineClassNames(namespace, DIALOGUE_NAME)}>
-            {inputContainerVTree}
-          </div>
-        );
-      }
+    .map((inputContainer) => inputContainer.DOM)
+    .combineLatest(state$, (inputContainerVTree, state) => {
+      return (// eslint-disable-line
+        <div
+          className={combineClassNames(id, DIALOGUE_NAME, state.className)}>
+          {inputContainerVTree}
+        </div>
+      );
+    }
   );
 }
 
-function moleculeInput({DOM, props$}, optNamespace = ``) {
-  const namespace = optNamespace.trim();
-
-  const actions = intent(DOM, namespace);
-  const state$ = model(actions);
+function moleculeInput({DOM, props$}) {
+  const id = cuid();
+  const actions = intent(DOM, id);
+  const state$ = model(props$, actions);
 
   return {
-    DOM: view({DOM, state$, props$, namespace}),
+    DOM: view({DOM, state$, id}),
+    id,
+    state$,
   };
 }
+
+export {DIALOGUE_NAME};
 
 export default moleculeInput;
