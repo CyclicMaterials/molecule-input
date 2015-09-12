@@ -8,21 +8,21 @@ import moleculeTextarea from '../molecule-textarea.js';
 function demo({DOM}) {
   const textInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({
     label: `label`,
-  })}, `demo-TextInput--label`);
+  })});
 
   const textInputPassword = moleculeInput({DOM, props$: Rx.Observable.just({
     label: `password`, type: `password`,
-  })}, `demo-TextInput--password`);
+  })});
 
   const textInputNoFloatingLabel =
     moleculeInput({DOM, props$: Rx.Observable.just({
       label: `label (isNoFloatingLabel)`, isNoFloatingLabel: true,
-    })}, `demo-TextInput--noFloatingLabel`);
+    })});
 
   const textInputDisabled =
     moleculeInput({DOM, props$: Rx.Observable.just({
       label: `disabled`, isDisabled: true,
-    })}, `demo-TextInput--disabled`);
+    })});
 
   const textareaLabel =
     moleculeTextarea({DOM, props$: Rx.Observable.just({
