@@ -1,20 +1,27 @@
 import {Rx} from '@cycle/core';
 
 function intent({DOM, id}) {
+  const dialogueSelector = `.${id}`;
   const inputSelector = `.${id} INPUT`;
   const textareaSelector = `.${id} TEXTAREA`;
 
   return {
     isFocused$: Rx.Observable.merge(
-      DOM.select(inputSelector).events(`focus`).map(() => true),
-      DOM.select(inputSelector).events(`blur`).map(() => false)
-    ).merge(
-      DOM.select(textareaSelector).events(`focus`).map(() => true),
-      DOM.select(textareaSelector).events(`blur`).map(() => false)
+      DOM.select(dialogueSelector).events(`focus`, true).map(() => true),
+      DOM.select(dialogueSelector).events(`blur`, true).map(() => false)
     ).startWith(false),
-    value$: DOM.select(`.${id}`).events(`input`)
-      .map((e) => e.target.value)
-      .startWith(``),
+    value$: Rx.Observable.merge(
+      DOM.select(inputSelector).observable
+        .filter(elements => elements.length > 0)
+        .map(elements => elements[0].value)
+        .first(),
+      DOM.select(textareaSelector).observable
+        .filter(elements => elements.length > 0)
+        .map(elements => elements[0].value)
+        .first(),
+      DOM.select(dialogueSelector).events(`input`)
+        .map(e => e.target.value)
+    ).startWith(``),
   };
 }
 
