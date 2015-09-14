@@ -29,6 +29,15 @@ function demo({DOM}) {
       label: `textarea label`,
     })});
 
+  const validationInputRequiredAutoValidate =
+    moleculeInput({DOM, props$: Rx.Observable.just({
+      label: `inout validates on blur (required, autoValidate)`,
+      isRequired: true,
+      autoValidate: true,
+      pattern: /[a-zA-Z]*/,
+      errorMessage: `letters only!`,
+    })});
+
   return {
     DOM: Rx.Observable.combineLatest(
       textInputLabel.DOM,
@@ -36,12 +45,14 @@ function demo({DOM}) {
       textInputNoFloatingLabel.DOM,
       textInputDisabled.DOM,
       textareaLabel.DOM,
+      validationInputRequiredAutoValidate.DOM,
       (
         textInputLabelVTree,
         textInputPasswordVTree,
         textInputNoFloatingLabelVTree,
         textInputDisabledVTree,
-        textareaLabelVTree
+        textareaLabelVTree,
+        validationInputRequiredAutoValidateVTree
       ) => ( // eslint-disable-line
         <div className={`template-DemoPages_sectionContainer isVertical`}>
           <h4>Text input</h4>
@@ -55,6 +66,11 @@ function demo({DOM}) {
           <h4>Text area</h4>
           <section className={`template-DemoPages_verticalSection`}>
             {textareaLabelVTree}
+          </section>
+
+          <h4>Validation</h4>
+          <section className={`template-DemoPages_verticalSection`}>
+            {validationInputRequiredAutoValidateVTree}
           </section>
         </div>
       )
