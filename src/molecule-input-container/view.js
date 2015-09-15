@@ -1,7 +1,7 @@
 /** @jsx hJSX */
 
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import {DIALOGUE_NAME} from '../molecule-input-container.js';
+import {DIALOGUE_NAME} from './index';
 import combineClassNames from '@cyclic/util-combine-class-names';
 
 function renderFloatedLabelPlaceholder() {

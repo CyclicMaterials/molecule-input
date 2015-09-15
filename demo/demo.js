@@ -2,8 +2,8 @@
 
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import moleculeInput from '../molecule-input.js';
-import moleculeTextarea from '../molecule-textarea.js';
+import moleculeInput from '../src/molecule-input/index';
+import moleculeTextarea from '../src/molecule-textarea/index';
 
 function demo({DOM}) {
   const textInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({

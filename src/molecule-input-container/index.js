@@ -1,7 +1,7 @@
 import cuid from 'cuid';
-import intent from './molecule-input-container/intent.js';
-import model from './molecule-input-container/model.js';
-import view from './molecule-input-container/view.js';
+import intent from './intent';
+import model from './model';
+import view from './view';
 
 const DIALOGUE_NAME = `molecule-InputContainer`;
 

@@ -1,5 +1,5 @@
 import cuid from 'cuid';
-import view from './molecule-input/view.js';
+import view from './view';
 
 const DIALOGUE_NAME = `molecule-Input`;
 
