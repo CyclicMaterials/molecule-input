@@ -30,7 +30,8 @@
     "@cyclic/atom-typography": "^1.0.0",
     "@cyclic/template-demo-pages": "^1.0.0",
     "@cyclic/util-combine-class-names": "^2.0.0",
-    "cuid": "^1.3.8"
+    "cuid": "^1.3.8",
+    "fast.js": "^0.1.1"
   },
   "devDependencies": {
     "babel": "^5.8.21",
@@ -53,11 +54,16 @@
     "testJs": "npm run lint && babel-node *.test.js | faucet",
     "testCss": "npm run css",
     "test": "npm run testCss && npm run lint",
-    "css": "postcss -c postcss.config.json",
-    "browserify": "browserify demo/main.js -d -t babelify --outfile demo/bundle.js",
+    "css": "postcss -c postcss.config.json demo/demo.css -o demo/styles.css",
+    "browserify": "browserify demo/main.js -d --outfile demo/bundle.js",
     "build": "npm run lint && npm run css && npm run browserify",
     "deps": "npm install && validate-commit-msg",
     "start": "npm run deps && npm run build && echo 'Open demo/index.html in your browser'",
+    "compile-css": "for filename in src/**/*.css; do postcss -c postcss.config.json ${filename} -o lib/${filename#src/}; done",
+    "compile-lib": "babel -d lib/ src/",
+    "precompile": "rm -rf lib/ && mkdir -p lib",
+    "compile": "npm run compile-lib && npm run compile-css",
+    "prepublish": "npm run compile",
     "patch": "release patch",
     "minor": "release minor",
     "major": "release major"

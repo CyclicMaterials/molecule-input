@@ -31,7 +31,7 @@ function demo({DOM}) {
 
   const validationInputRequiredAutoValidate =
     moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `inout validates on blur (required, autoValidate)`,
+      label: `input validates on blur (required, autoValidate)`,
       isRequired: true,
       autoValidate: true,
       pattern: /[a-zA-Z]*/,

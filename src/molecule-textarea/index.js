@@ -1,23 +1,27 @@
 import cuid from 'cuid';
-import view from './view';
+import assign from 'fast.js/object/assign';
+import model from './../shared/model';
+import view from './../shared/view';
 import atomAutogrowTextarea from '@cyclic/atom-autogrow-textarea';
-import moleculeInputContainer from '../molecule-input-container/index';
-import renderLabel from '../shared/renderLabel.js';
+import moleculeInputContainer from './../molecule-input-container/index';
+import renderLabel from './../shared/renderLabel.js';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
 
 function moleculeTextarea({DOM, props$}) {
   const id = cuid();
-  const state$ = props$;
+  const state$ = model({props$, dialogueName: DIALOGUE_NAME});
 
   const inputContainerDOM = moleculeInputContainer({
     DOM, props$: state$.combineLatest(
-      atomAutogrowTextarea({DOM, props$: state$}).DOM,
+      atomAutogrowTextarea({DOM, props$: state$.map(
+        (state) => assign({}, state)
+      )}).DOM,
       (state, autogrowTextareaVTree) => {
-        const {label, isNoFloatingLabel, isDisabled} = state;
+        const {dialogueName, label, isNoFloatingLabel, isDisabled} = state;
 
         return {
-          label: renderLabel(DIALOGUE_NAME, label),
+          label: renderLabel(dialogueName, label),
           input: autogrowTextareaVTree,
           isNoFloatingLabel,
           isDisabled,
@@ -29,7 +33,7 @@ function moleculeTextarea({DOM, props$}) {
   return {
     DOM: view({id, state$, inputContainerDOM}),
     id,
-    state$,
+    state$: state$.map((state) => assign({}, state)),
   };
 }
 

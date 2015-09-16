@@ -1,13 +1,12 @@
-function model({props$, actions}) {
+import assign from 'fast.js/object/assign';
+
+function model({props$, actions, dialogueName}) {
   return props$.combineLatest(
     actions.isFocused$,
     actions.value$,
-    (props, isFocused, value) => {
-      props.isFocused = isFocused;
-      props.value = value;
-
-      return props;
-    }
+    (props, isFocused, value) => assign({}, props, {
+      dialogueName, isFocused, value,
+    })
   );
 }
 
