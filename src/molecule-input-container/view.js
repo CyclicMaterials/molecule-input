@@ -59,9 +59,15 @@ function renderInputContent(state) {
 }
 
 function renderUnderline(state) {
-  const {dialogueName, isFocused} = state;
+  const {dialogueName, isFocused, isInvalid} = state;
 
-  const underlineClassMod = isFocused ? `isHighlighted` : ``;
+  let underlineClassMod = ``;
+
+  if (isInvalid) {
+    underlineClassMod = `isInvalid`;
+  } else if (isFocused) {
+    underlineClassMod = `isHighlighted`;
+  }
 
   return (// eslint-disable-line
     <div className={combineClassNames(
@@ -77,21 +83,45 @@ function renderUnderline(state) {
   );
 }
 
-function view({state$, id}) {
-  return state$.map((state) => {
-    const {dialogueName, className, isDisabled} = state;
+function renderAddOns(state, addOns) {
+  const {dialogueName, isFocused, isInvalid} = state;
 
-    const containerClassMod = isDisabled ? `isDisabled` : ``;
+  let addOnContentClassMod = ``;
 
-    return ( // eslint-disable-line
-      <div className={combineClassNames(
-        id, dialogueName, className, containerClassMod)}>
-        {renderFloatedLabelPlaceholder(state)}
-        {renderInputContent(state)}
-        {renderUnderline(state)}
-      </div>
-    );
-  });
+  if (isInvalid) {
+    addOnContentClassMod = `isInvalid`;
+  } else if (isFocused) {
+    addOnContentClassMod = `isHighlighted`;
+  }
+
+  return (// eslint-disable-line
+    <div className={combineClassNames(
+      `${dialogueName}_addOnContent`,
+      addOnContentClassMod)}>
+      {addOns}
+    </div>
+  );
+}
+
+function view({state$, id, addOns$}) {
+  return state$.combineLatest(
+    addOns$,
+    (state, addOns) => {
+      const {dialogueName, className, isDisabled} = state;
+
+      const containerClassMod = isDisabled ? `isDisabled` : ``;
+
+      return ( // eslint-disable-line
+        <div className={combineClassNames(
+          id, dialogueName, className, containerClassMod)}>
+          {renderFloatedLabelPlaceholder(state)}
+          {renderInputContent(state)}
+          {renderUnderline(state)}
+          {renderAddOns(state, addOns)}
+        </div>
+      );
+    }
+  );
 }
 
 export default view;

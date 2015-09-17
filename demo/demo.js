@@ -33,8 +33,15 @@ function demo({DOM}) {
     moleculeInput({DOM, props$: Rx.Observable.just({
       label: `input validates on blur (required, autoValidate)`,
       isRequired: true,
-      autoValidate: true,
-      pattern: /[a-zA-Z]*/,
+      isAutoValidating: true,
+      errorMessage: `needs some text!`,
+    })});
+
+  const validationInputAutoValidatePattern =
+    moleculeInput({DOM, props$: Rx.Observable.just({
+      label: `only type letters (autoValidate)`,
+      isAutoValidating: true,
+      pattern: `[a-zA-Z]*`,
       errorMessage: `letters only!`,
     })});
 
@@ -46,13 +53,15 @@ function demo({DOM}) {
       textInputDisabled.DOM,
       textareaLabel.DOM,
       validationInputRequiredAutoValidate.DOM,
+      validationInputAutoValidatePattern.DOM,
       (
         textInputLabelVTree,
         textInputPasswordVTree,
         textInputNoFloatingLabelVTree,
         textInputDisabledVTree,
         textareaLabelVTree,
-        validationInputRequiredAutoValidateVTree
+        validationInputRequiredAutoValidateVTree,
+        validationInputAutoValidatePatternVTree
       ) => ( // eslint-disable-line
         <div className={`template-DemoPages_sectionContainer isVertical`}>
           <h4>Text input</h4>
@@ -71,6 +80,7 @@ function demo({DOM}) {
           <h4>Validation</h4>
           <section className={`template-DemoPages_verticalSection`}>
             {validationInputRequiredAutoValidateVTree}
+            {validationInputAutoValidatePatternVTree}
           </section>
         </div>
       )

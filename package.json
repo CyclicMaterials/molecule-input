@@ -64,8 +64,8 @@
     "precompile": "rm -rf lib/ && mkdir -p lib",
     "compile": "npm run compile-lib && npm run compile-css",
     "prepublish": "npm run compile",
-    "patch": "release patch",
-    "minor": "release minor",
-    "major": "release major"
+    "patch": "git checkout master && release patch && npm publish --access=public",
+    "minor": "git checkout master && release minor && npm publish --access=public",
+    "major": "git checkout master && release major && npm publish --access=public"
   }
 }

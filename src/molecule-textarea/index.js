@@ -14,19 +14,15 @@ function moleculeTextarea({DOM, props$}) {
 
   const inputContainerDOM = moleculeInputContainer({
     DOM, props$: state$.combineLatest(
-      atomAutogrowTextarea({DOM, props$: state$.map(
-        (state) => assign({}, state)
-      )}).DOM,
-      (state, autogrowTextareaVTree) => {
-        const {dialogueName, label, isNoFloatingLabel, isDisabled} = state;
-
-        return {
-          label: renderLabel(dialogueName, label),
-          input: autogrowTextareaVTree,
-          isNoFloatingLabel,
-          isDisabled,
-        };
-      }
+      atomAutogrowTextarea({
+        DOM, props$: state$.map(
+          (state) => assign({}, state)
+        ),
+      }).DOM,
+      (state, autogrowTextareaVTree) => assign({}, state, {
+        label: renderLabel(state),
+        input: autogrowTextareaVTree,
+      })
     ),
   }).DOM;
 
