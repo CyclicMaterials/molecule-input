@@ -39,7 +39,7 @@
     "browserify": "^11.0.1",
     "cli-release": "^1.0.3",
     "cssnext": "^1.8.3",
-    "eslint": "1.0.x",
+    "eslint": "1.0.0",
     "eslint-config-cycle": "^3.0.0",
     "eslint-plugin-cycle": "^1.0.1",
     "eslint-plugin-no-class": "^0.1.0",
