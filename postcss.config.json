@@ -1,7 +1,5 @@
 {
   "use": ["cssnext"],
-  "input": "demo/demo.css",
-  "output": "demo/styles.css",
   "cssnext": {
     "browsers": [
       "ie >= 10",

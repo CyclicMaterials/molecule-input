@@ -1,5 +1,5 @@
-@import "../molecule-input.css";
-@import "../molecule-textarea.css";
+@import "../src/molecule-input";
+@import "../src/molecule-textarea";
 @import "@cyclic/template-demo-pages/template-demo-pages.css";
 
 body {

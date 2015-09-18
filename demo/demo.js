@@ -2,8 +2,8 @@
 
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import moleculeInput from '../molecule-input.js';
-import moleculeTextarea from '../molecule-textarea.js';
+import moleculeInput from '../src/molecule-input/index';
+import moleculeTextarea from '../src/molecule-textarea/index';
 
 function demo({DOM}) {
   const textInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({
@@ -29,6 +29,22 @@ function demo({DOM}) {
       label: `textarea label`,
     })});
 
+  const validationInputRequiredAutoValidate =
+    moleculeInput({DOM, props$: Rx.Observable.just({
+      label: `input validates on blur (required, autoValidate)`,
+      isRequired: true,
+      isAutoValidating: true,
+      errorMessage: `needs some text!`,
+    })});
+
+  const validationInputAutoValidatePattern =
+    moleculeInput({DOM, props$: Rx.Observable.just({
+      label: `only type letters (autoValidate)`,
+      isAutoValidating: true,
+      pattern: `[a-zA-Z]*`,
+      errorMessage: `letters only!`,
+    })});
+
   return {
     DOM: Rx.Observable.combineLatest(
       textInputLabel.DOM,
@@ -36,12 +52,16 @@ function demo({DOM}) {
       textInputNoFloatingLabel.DOM,
       textInputDisabled.DOM,
       textareaLabel.DOM,
+      validationInputRequiredAutoValidate.DOM,
+      validationInputAutoValidatePattern.DOM,
       (
         textInputLabelVTree,
         textInputPasswordVTree,
         textInputNoFloatingLabelVTree,
         textInputDisabledVTree,
-        textareaLabelVTree
+        textareaLabelVTree,
+        validationInputRequiredAutoValidateVTree,
+        validationInputAutoValidatePatternVTree
       ) => ( // eslint-disable-line
         <div className={`template-DemoPages_sectionContainer isVertical`}>
           <h4>Text input</h4>
@@ -55,6 +75,12 @@ function demo({DOM}) {
           <h4>Text area</h4>
           <section className={`template-DemoPages_verticalSection`}>
             {textareaLabelVTree}
+          </section>
+
+          <h4>Validation</h4>
+          <section className={`template-DemoPages_verticalSection`}>
+            {validationInputRequiredAutoValidateVTree}
+            {validationInputAutoValidatePatternVTree}
           </section>
         </div>
       )

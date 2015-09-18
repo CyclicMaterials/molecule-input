@@ -1,0 +1,13 @@
+@import "@cyclic/atom-color/atom-color.css";
+@import "@cyclic/atom-typography/atom-typography.css";
+
+.molecule-InputError {
+  display: inline-block;
+  visibility: hidden;
+  float: left;
+  color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
+}
+
+.molecule-InputError.isInvalid {
+  visibility: visible;
+}
