@@ -1,3 +1,56 @@
+# v4.0.0 (2015-09-18)
+
+
+## Bug Fixes
+
+- **molecule-textarea:** inputs lose `isFloatingLabel`
+  ([6e0a8aea](https://github.com/CyclicMaterials/molecule-input/commits/6e0a8aea05c97d92c816b9e4526b6ce562818038),
+   [#11](https://github.com/CyclicMaterials/molecule-input/issues/11))
+
+
+## Features
+
+- **demo:** add validation example
+  ([07afa42e](https://github.com/CyclicMaterials/molecule-input/commits/07afa42e72904e1b4f0e1ac61fa0a5ba5ce377a4))
+- **validation:** add validation and enable add-ons
+  ([e6d909db](https://github.com/CyclicMaterials/molecule-input/commits/e6d909dbc54f161b381ab59661e19d63bd769cb4),
+   [#10](https://github.com/CyclicMaterials/molecule-input/issues/10))
+
+
+## Breaking Changes
+
+- due to [74514995](https://github.com/CyclicMaterials/molecule-input/commits/745149958fc4941d7593df6e451628b905453154),
+ 
+
+Source files have moved to `src` directory.
+Component main entry files are named `index.js` in the respective
+component directories.
+Component CSS files are named `index.css` in the respective
+component directories.
+
+- **molecule-textarea:** due to [6e0a8aea](https://github.com/CyclicMaterials/molecule-input/commits/6e0a8aea05c97d92c816b9e4526b6ce562818038),
+ 
+
+The resolvement led to a complete refactor of the dialogues.
+Dialogues have been moved to `src` directory. There are no
+orphan source files in the root.
+
+To use a dialogue, import it from `./src/dialogue-name/index`.
+
+Closes #11
+
+- **validation:** due to [e6d909db](https://github.com/CyclicMaterials/molecule-input/commits/e6d909dbc54f161b381ab59661e19d63bd769cb4),
+ 
+
+`shared/renderLabel` has a new signature.
+
+Before: `renderLabel(dialogueName, label)`
+After: `renderLabel({dialogueName, label})`
+
+Closes #10
+
+
+
 # v3.0.1 (2015-09-13)
 
 
