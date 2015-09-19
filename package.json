@@ -50,7 +50,7 @@
     "validate-commit-message": "^3.0.1"
   },
   "scripts": {
-    "lint": "eslint **/*.js",
+    "lint": "eslint ./src/**/*.js ./demo/*.js --ignore-path .gitignore",
     "testJs": "npm run lint && babel-node *.test.js | faucet",
     "testCss": "npm run css",
     "test": "npm run testCss && npm run lint",

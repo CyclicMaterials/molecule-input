@@ -1,11 +1,22 @@
 /** @jsx hJSX */
 
+import cuid from 'cuid';
+import assign from 'fast.js/object/assign';
+import intent from './intent';
+import model from './model';
+import view from './view';
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import moleculeInput from '../src/molecule-input/index';
 import moleculeTextarea from '../src/molecule-textarea/index';
 
+const DIALOGUE_NAME = `page-Demo`;
+
 function demo({DOM}) {
+  const id = cuid();
+  const actions = intent({DOM, id, dialogueName: DIALOGUE_NAME});
+  const state$ = model({actions, dialogueName: DIALOGUE_NAME});
+
   const textInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({
     label: `label`,
   })});
@@ -14,12 +25,12 @@ function demo({DOM}) {
     label: `password`, type: `password`,
   })});
 
-  const textInputNoFloatingLabel =
+  const textInputIsNoFloatingLabel =
     moleculeInput({DOM, props$: Rx.Observable.just({
       label: `label (isNoFloatingLabel)`, isNoFloatingLabel: true,
     })});
 
-  const textInputDisabled =
+  const textInputIsDisabled =
     moleculeInput({DOM, props$: Rx.Observable.just({
       label: `disabled`, isDisabled: true,
     })});
@@ -29,62 +40,47 @@ function demo({DOM}) {
       label: `textarea label`,
     })});
 
-  const validationInputRequiredAutoValidate =
+  const validationInputIsRequiredIsAutoValidating =
     moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `input validates on blur (required, autoValidate)`,
+      label: `input validates on blur (isRequired, isAutoValidating)`,
       isRequired: true,
       isAutoValidating: true,
       errorMessage: `needs some text!`,
     })});
 
-  const validationInputAutoValidatePattern =
+  const validationInputIsAutoValidatingPattern =
     moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `only type letters (autoValidate)`,
+      label: `only type letters (isAutoValidating)`,
       isAutoValidating: true,
       pattern: `[a-zA-Z]*`,
       errorMessage: `letters only!`,
     })});
 
+  const validationInputIsRequiredPattern =
+    moleculeInput({DOM, props$: actions.validate$.map(
+      (validate) => ({
+        label: `only type letters (isRequired, no isAutoValidating)`,
+        isRequired: true,
+        pattern: `[a-zA-Z]*`,
+        errorMessage: `letters only, required input!`,
+        validate,
+      })
+    )});
+
+  const vtree$s = [
+    textInputLabel.DOM,
+    textInputPassword.DOM,
+    textInputIsNoFloatingLabel.DOM,
+    textInputIsDisabled.DOM,
+    textareaLabel.DOM,
+    validationInputIsRequiredIsAutoValidating.DOM,
+    validationInputIsAutoValidatingPattern.DOM,
+    validationInputIsRequiredPattern.DOM];
+
   return {
-    DOM: Rx.Observable.combineLatest(
-      textInputLabel.DOM,
-      textInputPassword.DOM,
-      textInputNoFloatingLabel.DOM,
-      textInputDisabled.DOM,
-      textareaLabel.DOM,
-      validationInputRequiredAutoValidate.DOM,
-      validationInputAutoValidatePattern.DOM,
-      (
-        textInputLabelVTree,
-        textInputPasswordVTree,
-        textInputNoFloatingLabelVTree,
-        textInputDisabledVTree,
-        textareaLabelVTree,
-        validationInputRequiredAutoValidateVTree,
-        validationInputAutoValidatePatternVTree
-      ) => ( // eslint-disable-line
-        <div className={`template-DemoPages_sectionContainer isVertical`}>
-          <h4>Text input</h4>
-          <section className={`template-DemoPages_verticalSection`}>
-            {textInputLabelVTree}
-            {textInputPasswordVTree}
-            {textInputNoFloatingLabelVTree}
-            {textInputDisabledVTree}
-          </section>
-
-          <h4>Text area</h4>
-          <section className={`template-DemoPages_verticalSection`}>
-            {textareaLabelVTree}
-          </section>
-
-          <h4>Validation</h4>
-          <section className={`template-DemoPages_verticalSection`}>
-            {validationInputRequiredAutoValidateVTree}
-            {validationInputAutoValidatePatternVTree}
-          </section>
-        </div>
-      )
-    ),
+    DOM: view({state$, id}, ...vtree$s),
+    id,
+    state$: state$.map((state) => assign({}, state)),
   };
 }
 
