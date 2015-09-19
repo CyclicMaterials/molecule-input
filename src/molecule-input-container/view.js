@@ -17,32 +17,12 @@ function renderInputContent(state) {
   const {
     dialogueName,
     label,
-    input,
-    noFloatingLabel,
-    focused,
-    value} = state;
-
-  const inputHasContent = !!value || value === 0;
-
-  const floatLabel = !noFloatingLabel && inputHasContent;
-
-  const inputContentClassMods = [];
-
-  if (floatLabel) {
-    inputContentClassMods.push(`isFloatingLabel`);
-  }
-  if (floatLabel && focused) {
-    inputContentClassMods.push(`isHighlightedLabel`);
-  }
-  if (noFloatingLabel && inputHasContent) {
-    inputContentClassMods.push(`isHiddenLabel`);
-  }
+    input} = state;
 
   return (// eslint-disable-line
     <div
       className={combineClassNames(
         `${dialogueName}_inputContent`,
-        inputContentClassMods,
         `atom-FlexLayout--horizontal`,
         `atom-FlexLayout--end`)}>
       <div
@@ -59,20 +39,10 @@ function renderInputContent(state) {
 }
 
 function renderUnderline(state) {
-  const {dialogueName, focused, isInvalid} = state;
-
-  let underlineClassMod = ``;
-
-  if (isInvalid) {
-    underlineClassMod = `isInvalid`;
-  } else if (focused) {
-    underlineClassMod = `isHighlighted`;
-  }
+  const {dialogueName} = state;
 
   return (// eslint-disable-line
-    <div className={combineClassNames(
-      `${dialogueName}_underline`,
-      underlineClassMod)}>
+    <div className={`${dialogueName}_underline`}>
       <div className={combineClassNames(
         `${dialogueName}_unfocusedLine`,
         `atom-Layout--fit`)}></div>
@@ -84,20 +54,10 @@ function renderUnderline(state) {
 }
 
 function renderAddOns(state, addOns) {
-  const {dialogueName, focused, isInvalid} = state;
-
-  let addOnContentClassMod = ``;
-
-  if (isInvalid) {
-    addOnContentClassMod = `isInvalid`;
-  } else if (focused) {
-    addOnContentClassMod = `isHighlighted`;
-  }
+  const {dialogueName} = state;
 
   return (// eslint-disable-line
-    <div className={combineClassNames(
-      `${dialogueName}_addOnContent`,
-      addOnContentClassMod)}>
+    <div className={`${dialogueName}_addOnContent`}>
       {addOns}
     </div>
   );
@@ -107,13 +67,39 @@ function view({state$, id, addOns$}) {
   return state$.combineLatest(
     addOns$,
     (state, addOns) => {
-      const {dialogueName, className, isDisabled} = state;
+      const {
+        dialogueName,
+        className,
+        value,
+        noFloatingLabel,
+        focused,
+        isDisabled,
+        isInvalid} = state;
 
-      const containerClassMod = isDisabled ? `isDisabled` : ``;
+      const inputHasContent = !!value || value === 0;
+
+      const floatLabel = !noFloatingLabel && inputHasContent;
+
+      const classNameMods = [];
+
+      if (isDisabled) {
+        classNameMods.push(`is-disabled`);
+      }
+      if (floatLabel) {
+        classNameMods.push(`is-floatedLabel`);
+      }
+      if (noFloatingLabel && inputHasContent) {
+        classNameMods.push(`is-hiddenLabel`);
+      }
+      if (isInvalid) {
+        classNameMods.push(`is-invalid`);
+      } else if (focused) {
+        classNameMods.push(`is-highlighted`);
+      }
 
       return ( // eslint-disable-line
         <div className={combineClassNames(
-          id, dialogueName, className, containerClassMod)}>
+          id, dialogueName, className, classNameMods)}>
           {renderFloatedLabelPlaceholder(state)}
           {renderInputContent(state)}
           {renderUnderline(state)}

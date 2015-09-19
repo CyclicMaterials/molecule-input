@@ -7,7 +7,7 @@ function view({state$, id}) {
   return state$.map((state) => {
     const {dialogueName, className, isInvalid, errorMessage} = state;
 
-    const classNameMod = isInvalid ? `isInvalid` : ``;
+    const classNameMod = isInvalid ? `is-invalid` : ``;
 
     return (// eslint-disable-line
       <div
