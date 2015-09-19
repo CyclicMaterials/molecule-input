@@ -1,3 +1,64 @@
+# v5.0.0 (2015-09-19)
+
+
+## Features
+
+- **validation:** add manual validation
+  ([065c15d6](https://github.com/CyclicMaterials/molecule-input/commits/065c15d66d4414f8e8f7278c11b334d2013fa30b),
+   [#12](https://github.com/CyclicMaterials/molecule-input/issues/12))
+
+
+## Breaking Changes
+
+- due to [f0f67dcb](https://github.com/CyclicMaterials/molecule-input/commits/f0f67dcbe3dd7aec35590227801c50516dd33029),
+ 
+
+Rename property `noFloatingLabel` to `noLabelFloat`.
+
+Closes #16
+
+- due to [ac23ef04](https://github.com/CyclicMaterials/molecule-input/commits/ac23ef04047585f64d02b61eed57bd2d2074068f),
+ 
+
+Before:
+`isNoFloatingLabel`
+`isRequired`
+`isAutoValidating`
+
+After:
+`noFloatingLabel`
+`required`
+`autoValidate`
+
+Closes #13
+
+- **CSS:** due to [c1a069b2](https://github.com/CyclicMaterials/molecule-input/commits/c1a069b2ce5122cf9a1296b9304fe54908695e4c),
+ 
+
+Apply state modifiers directly on components.
+Follow state modifiers naming convention: `is-stateModifierName`.
+Remove `isHighLightedLabel`.
+
+Rename following classes.
+
+Before:
+`.isDisabled`
+`.isHighlighted`
+`.isInvalid`
+`.isFloatingLabel`
+`.isHiddenLabel`
+
+After:
+`.is-disabled`
+`.is-highlighted`
+`.is-invalid`
+`.is-floatedLabel`
+`.is-hiddenLabel`
+
+Closes #14
+
+
+
 # v4.0.0 (2015-09-18)
 
 
