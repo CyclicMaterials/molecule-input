@@ -42,7 +42,7 @@ function demo({DOM}) {
 
   const validationInputIsRequiredIsAutoValidating =
     moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `input validates on blur (isRequired, isAutoValidating)`,
+      label: `input validates on blur (required, autoValidate)`,
       required: true,
       autoValidate: true,
       errorMessage: `needs some text!`,
@@ -50,7 +50,7 @@ function demo({DOM}) {
 
   const validationInputIsAutoValidatingPattern =
     moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `only type letters (isAutoValidating)`,
+      label: `only type letters (autoValidate)`,
       autoValidate: true,
       pattern: `[a-zA-Z]*`,
       errorMessage: `letters only!`,
@@ -59,7 +59,7 @@ function demo({DOM}) {
   const validationInputIsRequiredPattern =
     moleculeInput({DOM, props$: actions.validate$.map(
       (validate) => ({
-        label: `only type letters (isRequired, no isAutoValidating)`,
+        label: `only type letters (required, no autoValidate)`,
         required: true,
         pattern: `[a-zA-Z]*`,
         errorMessage: `letters only, required input!`,
