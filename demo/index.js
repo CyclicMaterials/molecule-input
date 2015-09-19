@@ -27,7 +27,7 @@ function demo({DOM}) {
 
   const textInputIsNoFloatingLabel =
     moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `label (isNoFloatingLabel)`, noFloatingLabel: true,
+      label: `label (noLabelFloat)`, noLabelFloat: true,
     })});
 
   const textInputIsDisabled =
