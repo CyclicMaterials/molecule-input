@@ -27,7 +27,7 @@ function demo({DOM}) {
 
   const textInputIsNoFloatingLabel =
     moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `label (isNoFloatingLabel)`, isNoFloatingLabel: true,
+      label: `label (isNoFloatingLabel)`, noFloatingLabel: true,
     })});
 
   const textInputIsDisabled =
@@ -43,15 +43,15 @@ function demo({DOM}) {
   const validationInputIsRequiredIsAutoValidating =
     moleculeInput({DOM, props$: Rx.Observable.just({
       label: `input validates on blur (isRequired, isAutoValidating)`,
-      isRequired: true,
-      isAutoValidating: true,
+      required: true,
+      autoValidate: true,
       errorMessage: `needs some text!`,
     })});
 
   const validationInputIsAutoValidatingPattern =
     moleculeInput({DOM, props$: Rx.Observable.just({
       label: `only type letters (isAutoValidating)`,
-      isAutoValidating: true,
+      autoValidate: true,
       pattern: `[a-zA-Z]*`,
       errorMessage: `letters only!`,
     })});
@@ -60,7 +60,7 @@ function demo({DOM}) {
     moleculeInput({DOM, props$: actions.validate$.map(
       (validate) => ({
         label: `only type letters (isRequired, no isAutoValidating)`,
-        isRequired: true,
+        required: true,
         pattern: `[a-zA-Z]*`,
         errorMessage: `letters only, required input!`,
         validate,

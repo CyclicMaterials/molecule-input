@@ -6,20 +6,20 @@ function handleValidate(inputElement) {
 
 function model({props$, actions, dialogueName}) {
   return props$.combineLatest(
-    actions.isFocused$,
-    actions.isBlurred$,
+    actions.focused$,
+    actions.blurred$,
     actions.value$,
     actions.inputElement$,
     (...args) => {
-      const [props, isFocused, isBlurred, value, inputElement] = args;
-      const {isAutoValidating, validate} = props;
+      const [props, focused, blurred, value, inputElement] = args;
+      const {autoValidate, validate} = props;
 
       const isInvalid =
-        (value !== `` || isBlurred) && isAutoValidating || validate ?
+        (value !== `` || blurred) && autoValidate || validate ?
           handleValidate(inputElement) :
           false;
 
-      return assign({}, props, {dialogueName, isFocused, value, isInvalid});
+      return assign({}, props, {dialogueName, focused, value, isInvalid});
     }
   );
 }

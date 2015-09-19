@@ -16,15 +16,15 @@ function intent({DOM, id}) {
       .first()
   ).startWith(void 0);
 
-  const isBlurred$ = DOM.select(dialogueSelector).events(`blur`, true);
+  const blurred$ = DOM.select(dialogueSelector).events(`blur`, true);
 
   return {
-    isFocused$: Rx.Observable.merge(
+    focused$: Rx.Observable.merge(
       DOM.select(dialogueSelector).events(`focus`, true).map(() => true),
-      isBlurred$.map(() => false)
+      blurred$.map(() => false)
     ).startWith(false),
 
-    isBlurred$: isBlurred$.map(() => true).startWith(false),
+    blurred$: blurred$.map(() => true).startWith(false),
 
     value$: Rx.Observable.merge(
       inputElement$.filter(element => !!element).map(element => element.value),

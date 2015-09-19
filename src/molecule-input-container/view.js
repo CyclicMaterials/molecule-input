@@ -18,23 +18,23 @@ function renderInputContent(state) {
     dialogueName,
     label,
     input,
-    isNoFloatingLabel,
-    isFocused,
+    noFloatingLabel,
+    focused,
     value} = state;
 
-  const hasInputContent = !!value || value === 0;
+  const inputHasContent = !!value || value === 0;
 
-  const isLabelFloating = !isNoFloatingLabel && hasInputContent;
+  const floatLabel = !noFloatingLabel && inputHasContent;
 
   const inputContentClassMods = [];
 
-  if (isLabelFloating) {
+  if (floatLabel) {
     inputContentClassMods.push(`isFloatingLabel`);
   }
-  if (isLabelFloating && isFocused) {
+  if (floatLabel && focused) {
     inputContentClassMods.push(`isHighlightedLabel`);
   }
-  if (isNoFloatingLabel && hasInputContent) {
+  if (noFloatingLabel && inputHasContent) {
     inputContentClassMods.push(`isHiddenLabel`);
   }
 
@@ -59,13 +59,13 @@ function renderInputContent(state) {
 }
 
 function renderUnderline(state) {
-  const {dialogueName, isFocused, isInvalid} = state;
+  const {dialogueName, focused, isInvalid} = state;
 
   let underlineClassMod = ``;
 
   if (isInvalid) {
     underlineClassMod = `isInvalid`;
-  } else if (isFocused) {
+  } else if (focused) {
     underlineClassMod = `isHighlighted`;
   }
 
@@ -84,13 +84,13 @@ function renderUnderline(state) {
 }
 
 function renderAddOns(state, addOns) {
-  const {dialogueName, isFocused, isInvalid} = state;
+  const {dialogueName, focused, isInvalid} = state;
 
   let addOnContentClassMod = ``;
 
   if (isInvalid) {
     addOnContentClassMod = `isInvalid`;
-  } else if (isFocused) {
+  } else if (focused) {
     addOnContentClassMod = `isHighlighted`;
   }
 
