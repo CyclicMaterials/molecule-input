@@ -8,6 +8,6 @@
   color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
 }
 
-.molecule-InputError.isInvalid {
+.molecule-InputError.is-invalid {
   visibility: visible;
 }

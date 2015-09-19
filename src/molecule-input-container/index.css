@@ -9,7 +9,7 @@
   padding: 8px 0;
 }
 
-.molecule-InputContainer.isDisabled {
+.molecule-InputContainer.is-disabled {
   pointer-events: none;
   opacity: 0.33;
 }
@@ -25,12 +25,12 @@
   background: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
 }
 
-.molecule-InputContainer_underline.isHighlighted .molecule-InputContainer_focusedLine {
+.molecule-InputContainer.is-highlighted .molecule-InputContainer_focusedLine {
   transform: none;
   transition: 0.25s;
 }
 
-.molecule-InputContainer_underline.isInvalid .molecule-InputContainer_focusedLine {
+.molecule-InputContainer.is-invalid .molecule-InputContainer_focusedLine {
   background: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
   transform: none;
   transition: 0.25s;
@@ -41,7 +41,7 @@
   background: var(--molecule-InputContainer-color, var(--secondary-text-color));
 }
 
-.molecule-InputContainer.isDisabled .molecule-InputContainer_unfocusedLine {
+.molecule-InputContainer.is-disabled .molecule-InputContainer_unfocusedLine {
   border-bottom: 1px dashed;
   border-color: var(--molecule-InputContainer-color, var(--secondary-text-color));
   background: transparent;
@@ -61,25 +61,25 @@
   font: inherit;
 }
 
-.molecule-InputContainer_inputContent.isFloatingLabel label,
-.molecule-InputContainer_inputContent.isFloatingLabel .molecule-Input_label {
+.molecule-InputContainer.is-floatedLabel label,
+.molecule-InputContainer.is-floatedLabel .molecule-Input_label {
   transform: translate3d(0, -75%, 0) scale(0.75);
   transform-origin: left top;
   transition: 0.25s;
 }
 
-.molecule-InputContainer_inputContent.isHighlightedLabel label,
-.molecule-InputContainer_inputContent.isHighlightedLabel .molecule-Input_label {
+.molecule-InputContainer.is-highlighted label,
+.molecule-InputContainer.is-highlighted .molecule-Input_label {
   color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
 }
 
-.molecule-InputContainer_inputContent.isInvalid label,
-.molecule-InputContainer_inputContent.isInvalid .molecule-Input_label {
+.molecule-InputContainer.is-invalid label,
+.molecule-InputContainer.is-invalid .molecule-Input_label {
   color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
 }
 
-.molecule-InputContainer_inputContent.isHiddenLabel label,
-.molecule-InputContainer_inputContent.isHiddenLabel .molecule-Input_label {
+.molecule-InputContainer.is-hiddenLabel label,
+.molecule-InputContainer.is-HiddenLabel .molecule-Input_label {
   visibility: hidden;
 }
 
@@ -107,10 +107,10 @@
   resize: none;
 }
 
-.molecule-InputContainer_addOnContent.isInvalid * {
+.molecule-InputContainer.is-invalid .molecule-InputContainer_addOnContent * {
   color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
 }
 
-.molecule-InputContainer_addOnContent.isHighlighted * {
+.molecule-InputContainer.is-highlighted .molecule-InputContainer_addOnContent * {
   color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
 }
