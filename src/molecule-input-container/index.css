@@ -57,7 +57,7 @@
   top: 0;
   right: 0;
   left: 0;
-  color: var(--molecule-InputContainer-label, var(--secondary-text-color));
+  color: var(--molecule-InputContainer-color, var(--secondary-text-color));
   font: inherit;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .molecule-InputContainer.is-hiddenLabel label,
-.molecule-InputContainer.is-HiddenLabel .molecule-Input_label {
+.molecule-InputContainer.is-hiddenLabel .molecule-Input_label {
   visibility: hidden;
 }
 
