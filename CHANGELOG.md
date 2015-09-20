@@ -1,3 +1,13 @@
+# v5.0.3 (2015-09-20)
+
+
+## Bug Fixes
+
+- **CSS:** wrong variable and class name
+  ([e8a232ed](https://github.com/CyclicMaterials/molecule-input/commits/e8a232edc83c22a9dbfe17ec1ee402a4cd683201),
+   [#19](https://github.com/CyclicMaterials/molecule-input/issues/19), [#20](https://github.com/CyclicMaterials/molecule-input/issues/20))
+
+
 # v5.0.2 (2015-09-20)
 
 
