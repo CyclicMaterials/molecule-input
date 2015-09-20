@@ -11,6 +11,33 @@ import {hJSX} from '@cycle/dom'; // eslint-disable-line
 
 const DIALOGUE_NAME = `molecule-Input`;
 
+/**
+ * `moculeInput` is a single-line text field with Material Design styling.
+ *
+ *     moleculeInput({DOM, props$: Rx.Observable.just({label: `Input label`})});
+ *
+ * It may include an optional error message.
+ *
+ *     moleculeInput({DOM, props$: Rx.Observable.just({
+ *       errorMessage: `Invalid input!`, label: `Input label`
+ *     })});
+ *
+ * ### Styling
+ *
+ * See `moleculeInputContainer` for a list of variables and classes used to
+ * style this component.
+ *
+ * @param {Function} DOM the DOM driver function.
+ * @param {Observable} props$ An Observable of object of properties.
+ * @returns {Object} The moleculeInput object. The object has the following
+ * structure:
+ *
+ *     {
+ *       DOM: Observable,
+ *       id: String,
+ *       state$: Observable
+ *     }
+ */
 function moleculeInput({DOM, props$}) {
   const id = cuid();
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
