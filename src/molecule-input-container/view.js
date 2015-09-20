@@ -17,7 +17,9 @@ function renderInputContent(state) {
   const {
     dialogueName,
     label,
-    input} = state;
+    input,
+    prefix,
+    suffix} = state;
 
   return (// eslint-disable-line
     <div
@@ -27,12 +29,24 @@ function renderInputContent(state) {
         `atom-FlexLayout--end`)}>
       <div
         className={combineClassNames(
+          `${dialogueName}_prefix`,
+          `atom-Typography--subhead`)}>
+        {prefix}
+      </div>
+      <div
+        className={combineClassNames(
           `${dialogueName}_labelAndInputContainer`,
           `atom-FlexLayout_flex`,
           `atom-Layout--relative`,
           `atom-Typography--subhead`)}>
         {label}
         {input}
+      </div>
+      <div
+        className={combineClassNames(
+          `${dialogueName}_suffix`,
+          `atom-Typography--subhead`)}>
+        {suffix}
       </div>
     </div>
   );

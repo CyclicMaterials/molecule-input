@@ -9,14 +9,16 @@ function view({state$, id}, ...vtree$s) {
     (state, ...vtrees) => {
       const {dialogueName, className} = state;
       const [
-        textInputLabelVTree,
-        textInputPasswordVTree,
-        textInputIsNoFloatingLabelVTree,
-        textInputIsDisabledVTree,
-        textareaLabelVTree,
-        validationInputIsRequiredIsAutoValidatingVTree,
-        validationInputIsAutoValidatingPatternVTree,
-        validationInputIsRequiredPatternVTree] = vtrees;
+        textInputLabel,
+        textInputPassword,
+        textInputIsNoFloatingLabel,
+        textInputIsDisabled,
+        textareaLabel,
+        validationInputIsRequiredIsAutoValidating,
+        validationInputIsAutoValidatingPattern,
+        validationInputIsRequiredPattern,
+        prefixInputNumber,
+        suffixInput] = vtrees;
 
       return ( // eslint-disable-line
         <div
@@ -24,26 +26,32 @@ function view({state$, id}, ...vtree$s) {
             `template-DemoPages_sectionContainer isVertical`)}>
           <h4>Text input</h4>
           <section className={`template-DemoPages_verticalSection`}>
-            {textInputLabelVTree}
-            {textInputPasswordVTree}
-            {textInputIsNoFloatingLabelVTree}
-            {textInputIsDisabledVTree}
+            {textInputLabel}
+            {textInputPassword}
+            {textInputIsNoFloatingLabel}
+            {textInputIsDisabled}
           </section>
 
           <h4>Text area</h4>
           <section className={`template-DemoPages_verticalSection`}>
-            {textareaLabelVTree}
+            {textareaLabel}
           </section>
 
           <h4>Validation</h4>
           <section className={`template-DemoPages_verticalSection`}>
-            {validationInputIsRequiredIsAutoValidatingVTree}
-            {validationInputIsAutoValidatingPatternVTree}
-            {validationInputIsRequiredPatternVTree}
+            {validationInputIsRequiredIsAutoValidating}
+            {validationInputIsAutoValidatingPattern}
+            {validationInputIsRequiredPattern}
             <br/>
             <button className={`${dialogueName}_validateButton`}>
               Validate!
             </button>
+          </section>
+
+          <h4>Prefixes and suffixes</h4>
+          <section className={`template-DemoPages_verticalSection`}>
+            {prefixInputNumber}
+            {suffixInput}
           </section>
         </div>
       );

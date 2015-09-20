@@ -6,6 +6,6 @@ body {
   padding: 40px;
 }
 
-.molecule-Input.short {
+.molecule-InputContainer.short {
   width: 200px;
 }

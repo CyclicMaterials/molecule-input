@@ -61,7 +61,9 @@ const DIALOGUE_NAME = `molecule-InputContainer`;
  * `.molecule-InputContainer_underline` | Underline descendent |
  * `.molecule-InputContainer_focusedLine` | Focused line descendent |
  * `.molecule-InputContainer_unfocusedLine` | Unfocused line descendent |
- * `.molecule-InputContainer_inputContent` | Input content descendent. Label and input are children. |
+ * `.molecule-InputContainer_inputContent` | Input content descendent. Label, input, prefix and suffix are children. |
+ * `.molecule-InputContainer_prefix` | Prefix descendent. |
+ * `.molecule-InputContainer_prefix` | Label descendent. |
  * `.molecule-InputContainer_addOnContent` | Add-on content descendent |
  *
  * @param {Function} DOM the DOM driver function.
