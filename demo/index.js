@@ -17,6 +17,8 @@ function demo({DOM}) {
   const actions = intent({DOM, id, dialogueName: DIALOGUE_NAME});
   const state$ = model({actions, dialogueName: DIALOGUE_NAME});
 
+  /* TEXT INPUT */
+
   const textInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({
     label: `label`,
   })});
@@ -35,10 +37,14 @@ function demo({DOM}) {
       label: `disabled`, isDisabled: true,
     })});
 
+  /* TEXTAREA */
+
   const textareaLabel =
     moleculeTextarea({DOM, props$: Rx.Observable.just({
       label: `textarea label`,
     })});
+
+  /* VALIDATION */
 
   const validationInputIsRequiredIsAutoValidating =
     moleculeInput({DOM, props$: Rx.Observable.just({
@@ -67,6 +73,16 @@ function demo({DOM}) {
       })
     )});
 
+  /* PREFIXES AND SUFFIXES */
+
+  const prefixInputNumber = moleculeInput({DOM, props$: Rx.Observable.just({
+    label: `total`, type: `number`, prefix: `$`, className: `short`,
+  })});
+
+  const suffixInput = moleculeInput({DOM, props$: Rx.Observable.just({
+    label: `username`, suffix: `@email.com`, className: `short`,
+  })});
+
   const vtree$s = [
     textInputLabel.DOM,
     textInputPassword.DOM,
@@ -75,7 +91,10 @@ function demo({DOM}) {
     textareaLabel.DOM,
     validationInputIsRequiredIsAutoValidating.DOM,
     validationInputIsAutoValidatingPattern.DOM,
-    validationInputIsRequiredPattern.DOM];
+    validationInputIsRequiredPattern.DOM,
+    prefixInputNumber.DOM,
+    suffixInput.DOM,
+  ];
 
   return {
     DOM: view({state$, id}, ...vtree$s),
