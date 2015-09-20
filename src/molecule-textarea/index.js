@@ -17,7 +17,7 @@ const DIALOGUE_NAME = `molecule-Textarea`;
  *
  * ### Validation
  *
- * Currently only `required` and `maxLength` validation is supported.
+ * Currently, only `required` and `maxLength` validation is supported.
  *
  * ### Styling
  *

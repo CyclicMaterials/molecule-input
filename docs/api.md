@@ -18,7 +18,7 @@ For example:
 
 ### Listening for input changes
 
-By default, it listens for changes on the `value` attribute on its Children
+By default, it listens for changes on the `value` attribute on its children
 nodes and perform tasks such as auto-validating and label styling when the
 `value` changes.
 
@@ -94,13 +94,15 @@ Variable/class | Description | Default
       addOns: [moleculeInputError]
     })});
 
+`props$` are applied by the `moleculeInputContainer`.
+
 ### Styling
 
 The following variables and classes are available for styling:
 
 Variable/class | Description | Default
 ---------------|-------------|---------
-`--molecule-InputContainer-invalid-color` | The foreground coloe of the error | `--atom-Color-red-700`
+`--molecule-InputContainer-invalid-color` | The foreground color of the error | `--atom-Color-red-700`
 `.molecule-InputError` | Input error component |
 `.is-invalid` | Invalid state modifier |
 
@@ -174,7 +176,7 @@ style this component.
 
 ### Validation
 
-Currently only `required` and `maxLength` validation is supported.
+Currently, only `required` and `maxLength` validation is supported.
 
 ### Styling
 

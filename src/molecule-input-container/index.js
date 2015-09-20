@@ -21,7 +21,7 @@ const DIALOGUE_NAME = `molecule-InputContainer`;
  *
  * ### Listening for input changes
  *
- * By default, it listens for changes on the `value` attribute on its Children
+ * By default, it listens for changes on the `value` attribute on its children
  * nodes and perform tasks such as auto-validating and label styling when the
  * `value` changes.
  *

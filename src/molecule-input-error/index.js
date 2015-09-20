@@ -16,13 +16,15 @@ const DIALOGUE_NAME = `molecule-InputError`;
  *       addOns: [moleculeInputError]
  *     })});
  *
+ * `props$` are applied by the `moleculeInputContainer`.
+ *
  * ### Styling
  *
  * The following variables and classes are available for styling:
  *
  * Variable/class | Description | Default
  * ---------------|-------------|---------
- * `--molecule-InputContainer-invalid-color` | The foreground coloe of the error | `--atom-Color-red-700`
+ * `--molecule-InputContainer-invalid-color` | The foreground color of the error | `--atom-Color-red-700`
  * `.molecule-InputError` | Input error component |
  * `.is-invalid` | Invalid state modifier |
  *
