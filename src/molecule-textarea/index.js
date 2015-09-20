@@ -11,9 +11,9 @@ const DIALOGUE_NAME = `molecule-Textarea`;
 /**
  * `moleculeTextarea` is a multi-line text field with Material Design styling.
  *
- *    moleculeTextarea({DOM, props$: Rx.Observable.just({
- *      label: `Textarea label`
- *    })});
+ *     moleculeTextarea({DOM, props$: Rx.Observable.just({
+ *       label: `Textarea label`
+ *     })});
  *
  * ### Validation
  *
@@ -26,7 +26,7 @@ const DIALOGUE_NAME = `molecule-Textarea`;
  *
  * @param {Function} DOM the DOM driver function.
  * @param {Observable} props$ An Observable of object of properties.
- * @returns {Object} The moleculeInputContainer object. The object has the
+ * @returns {Object} The moleculeTextarea object. The object has the
  * following structure:
  *
  *     {

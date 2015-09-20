@@ -21,7 +21,7 @@ const DIALOGUE_NAME = `molecule-InputContainer`;
  *
  * ### Listening for input changes
  *
- * By default, it listens for changes on the `value` attribute on its isChildren
+ * By default, it listens for changes on the `value` attribute on its Children
  * nodes and perform tasks such as auto-validating and label styling when the
  * `value` changes.
  *
@@ -36,6 +36,13 @@ const DIALOGUE_NAME = `molecule-InputContainer`;
  * `addOns` property as an array of functions. They are modified when the input
  * value or validity changes, and may implement functionality such as error
  * messages. They appear at the bottom of the input.
+ *
+ *     moleculeInputContainer({DOM, props$: Rx.Observable.just({
+ *       label: <label>Feed me digits</label>,
+ *       input: <input pattern="[0-9]*"/>,
+ *       errorMessage: `Only numbers are allowed!`,
+ *       addOns: [moleculeInputError]
+ *     })});
  *
  * ### Styling
  *

@@ -27,7 +27,7 @@ const DIALOGUE_NAME = `molecule-InputError`;
  * `.is-invalid` | Invalid state modifier |
  *
  * @param {Observable} props$ An Observable of object of properties.
- * @returns {Object} The moleculeInputContainer object. The object has the
+ * @returns {Object} The moleculeInputError object. The object has the
  * following structure:
  *
  *     {
