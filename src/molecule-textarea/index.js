@@ -8,6 +8,33 @@ import renderLabel from './../shared/renderLabel.js';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
 
+/**
+ * `moleculeTextarea` is a multi-line text field with Material Design styling.
+ *
+ *    moleculeTextarea({DOM, props$: Rx.Observable.just({
+ *      label: `Textarea label`
+ *    })});
+ *
+ * ### Validation
+ *
+ * Currently only `required` and `maxLength` validation is supported.
+ *
+ * ### Styling
+ *
+ * See `moleculeInputContainer` for a list of variables and classes used to
+ * style this component.
+ *
+ * @param {Function} DOM the DOM driver function.
+ * @param {Observable} props$ An Observable of object of properties.
+ * @returns {Object} The moleculeInputContainer object. The object has the
+ * following structure:
+ *
+ *     {
+ *       DOM: Observable,
+ *       id: String,
+ *       state$: Observable
+ *     }
+ */
 function moleculeTextarea({DOM, props$}) {
   const id = cuid();
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
