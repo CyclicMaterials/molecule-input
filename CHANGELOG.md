@@ -1,3 +1,12 @@
+# v5.1.0 (2015-09-20)
+
+
+## Features
+
+- **molecule-input-container:** add prefix and suffix options
+  ([11762f09](https://github.com/CyclicMaterials/molecule-input/commits/11762f09ea6bbfc401bae107c8872a556f6dec76))
+
+
 # v5.0.3 (2015-09-20)
 
 
