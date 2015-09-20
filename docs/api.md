@@ -18,7 +18,7 @@ For example:
 
 ### Listening for input changes
 
-By default, it listens for changes on the `value` attribute on its isChildren
+By default, it listens for changes on the `value` attribute on its Children
 nodes and perform tasks such as auto-validating and label styling when the
 `value` changes.
 
@@ -33,6 +33,13 @@ Add-ons are child components of a `moleculeInputContainer` set on the
 `addOns` property as an array of functions. They are modified when the input
 value or validity changes, and may implement functionality such as error
 messages. They appear at the bottom of the input.
+
+    moleculeInputContainer({DOM, props$: Rx.Observable.just({
+      label: <label>Feed me digits</label>,
+      input: <input pattern="[0-9]*"/>,
+      errorMessage: `Only numbers are allowed!`,
+      addOns: [moleculeInputError]
+    })});
 
 ### Styling
 
@@ -103,7 +110,7 @@ Variable/class | Description | Default
 
 #### Return:
 
-*(Object)* The moleculeInputContainer object. The object has the following structure:
+*(Object)* The moleculeInputError object. The object has the following structure:
 
     {
       DOM: Observable,
@@ -161,9 +168,9 @@ style this component.
 
 `moleculeTextarea` is a multi-line text field with Material Design styling.
 
-   moleculeTextarea({DOM, props$: Rx.Observable.just({
-     label: `Textarea label`
-   })});
+    moleculeTextarea({DOM, props$: Rx.Observable.just({
+      label: `Textarea label`
+    })});
 
 ### Validation
 
@@ -181,7 +188,7 @@ style this component.
 
 #### Return:
 
-*(Object)* The moleculeInputContainer object. The object has the following structure:
+*(Object)* The moleculeTextarea object. The object has the following structure:
 
     {
       DOM: Observable,
