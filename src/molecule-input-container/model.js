@@ -12,14 +12,32 @@ function model({props$, actions, dialogueName}) {
     actions.inputElement$,
     (...args) => {
       const [props, focused, blurred, value, inputElement] = args;
-      const {autoValidate, validate} = props;
+      const {autoValidate, validate, type, noLabelFloat} = props;
 
-      const isInvalid =
-        (value !== `` || blurred) && autoValidate || validate ?
-          handleValidate(inputElement) :
-          false;
+      const isInvalid = (value !== `` || blurred) &&
+      autoValidate || validate && inputElement ?
+        handleValidate(inputElement) :
+        false;
 
-      return assign({}, props, {dialogueName, focused, value, isInvalid});
+      // type="number" hack needed because value is empty until it’s valid.
+      // See issue #25.
+      const inputHasContent = value || value === 0 ||
+        inputElement && type === `number` && handleValidate(inputElement);
+
+      const floatLabel = !noLabelFloat && inputHasContent;
+
+      const hideLabel = noLabelFloat && inputHasContent;
+
+      return assign({},
+        props,
+        {
+          dialogueName,
+          focused,
+          value,
+          isInvalid,
+          floatLabel,
+          hideLabel,
+        });
     }
   );
 }

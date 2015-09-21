@@ -84,15 +84,11 @@ function view({state$, id, addOns$}) {
       const {
         dialogueName,
         className,
-        value,
-        noLabelFloat,
+        floatLabel,
+        hideLabel,
         focused,
         isDisabled,
         isInvalid} = state;
-
-      const inputHasContent = !!value || value === 0;
-
-      const floatLabel = !noLabelFloat && inputHasContent;
 
       const classNameMods = [];
 
@@ -102,7 +98,7 @@ function view({state$, id, addOns$}) {
       if (floatLabel) {
         classNameMods.push(`is-floatedLabel`);
       }
-      if (noLabelFloat && inputHasContent) {
+      if (hideLabel) {
         classNameMods.push(`is-hiddenLabel`);
       }
       if (isInvalid) {
