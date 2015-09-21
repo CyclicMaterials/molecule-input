@@ -6,8 +6,14 @@ import combineClassNames from '@cyclic/util-combine-class-names';
 function view({state$, id}) {
   return state$.map(
     (state) => {
-      const {dialogueName, className, isDisabled, pattern, required, type} =
-        state;
+      const {
+        dialogueName,
+        className,
+        isDisabled,
+        maxLength,
+        pattern,
+        required,
+        type} = state;
 
       return (// eslint-disable-line
         <div className={combineClassNames(id, dialogueName, className)}>
@@ -16,7 +22,8 @@ function view({state$, id}) {
             disabled={isDisabled}
             pattern={pattern}
             required={required}
-            type={type}/>
+            type={type}
+            attributes={{maxlength: maxLength}}/>
         </div>
       );
     }

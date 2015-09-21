@@ -16,84 +16,111 @@ function demo({DOM}) {
   const id = cuid();
   const actions = intent({DOM, id, dialogueName: DIALOGUE_NAME});
   const state$ = model({actions, dialogueName: DIALOGUE_NAME});
-
-  /* TEXT INPUT */
-
-  const textInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({
-    label: `label`,
-  })});
-
-  const textInputPassword = moleculeInput({DOM, props$: Rx.Observable.just({
-    label: `password`, type: `password`,
-  })});
-
-  const textInputIsNoFloatingLabel =
-    moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `label (noLabelFloat)`, noLabelFloat: true,
-    })});
-
-  const textInputIsDisabled =
-    moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `disabled`, isDisabled: true,
-    })});
-
-  /* TEXTAREA */
-
-  const textareaLabel =
-    moleculeTextarea({DOM, props$: Rx.Observable.just({
-      label: `textarea label`,
-    })});
-
-  /* VALIDATION */
-
-  const validationInputIsRequiredIsAutoValidating =
-    moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `input validates on blur (required, autoValidate)`,
-      required: true,
-      autoValidate: true,
-      errorMessage: `needs some text!`,
-    })});
-
-  const validationInputIsAutoValidatingPattern =
-    moleculeInput({DOM, props$: Rx.Observable.just({
-      label: `only type letters (autoValidate)`,
-      autoValidate: true,
-      pattern: `[a-zA-Z]*`,
-      errorMessage: `letters only!`,
-    })});
-
-  const validationInputIsRequiredPattern =
-    moleculeInput({DOM, props$: actions.validate$.map(
-      (validate) => ({
-        label: `only type letters (required, no autoValidate)`,
-        required: true,
-        pattern: `[a-zA-Z]*`,
-        errorMessage: `letters only, required input!`,
-        validate,
-      })
-    )});
-
-  /* PREFIXES AND SUFFIXES */
-
-  const prefixInputNumber = moleculeInput({DOM, props$: Rx.Observable.just({
-    label: `total`, type: `number`, prefix: `$`, className: `short`,
-  })});
-
-  const suffixInput = moleculeInput({DOM, props$: Rx.Observable.just({
-    label: `username`, suffix: `@email.com`, className: `short`,
-  })});
-
   const vtree$s = [
-    textInputLabel.DOM,
-    textInputPassword.DOM,
-    textInputIsNoFloatingLabel.DOM,
-    textInputIsDisabled.DOM,
-    textareaLabel.DOM,
-    validationInputIsRequiredIsAutoValidating.DOM,
-    validationInputIsAutoValidatingPattern.DOM,
-    validationInputIsRequiredPattern.DOM,
-    prefixInputNumber.DOM,
-    suffixInput.DOM,
+
+    /* TEXT INPUT */
+
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `label`,
+      }),
+    }).DOM,
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `password`, type: `password`,
+      }),
+    }).DOM,
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `label (noLabelFloat)`, noLabelFloat: true,
+      }),
+    }).DOM,
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `disabled`, isDisabled: true,
+      }),
+    }).DOM,
+
+    /* TEXTAREA */
+
+    moleculeTextarea({
+      DOM, props$: Rx.Observable.just({
+        label: `textarea label`,
+      }),
+    }).DOM,
+    moleculeTextarea({
+      DOM, props$: Rx.Observable.just({
+        label: `textarea with rows and maxRows`,
+        rows: 3,
+        maxRows: 4,
+      }),
+    }).DOM,
+
+    /* VALIDATION */
+
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `input validates on blur (required, autoValidate)`,
+        required: true,
+        autoValidate: true,
+        errorMessage: `needs some text!`,
+      }),
+    }).DOM,
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `only type letters (autoValidate)`,
+        autoValidate: true,
+        pattern: `[a-zA-Z]*`,
+        errorMessage: `letters only!`,
+      }),
+    }).DOM,
+    moleculeInput({
+      DOM, props$: actions.validate$.map(
+        (validate) => ({
+          label: `only type letters (required, no autoValidate)`,
+          required: true,
+          pattern: `[a-zA-Z]*`,
+          errorMessage: `letters only, required input!`,
+          validate,
+        })
+      ),
+    }).DOM,
+
+    /* CHARACTER COUNTER */
+
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `label`, charCounter: true,
+      }),
+    }).DOM,
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `at most 10 letters`,
+        charCounter: true,
+        autoValidate: true,
+        pattern: `[a-zA-Z]*`,
+        maxLength: 10,
+        errorMessage: `letters only!`,
+      }),
+    }).DOM,
+    moleculeTextarea({
+      DOM, props$: Rx.Observable.just({
+        label: `textarea`, charCounter: true,
+      }),
+    }).DOM,
+
+    /* PREFIXES AND SUFFIXES */
+
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `total`, type: `number`, prefix: `$`, className: `short`,
+      }),
+    }).DOM,
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `username`, suffix: `@email.com`, className: `short`,
+      }),
+    }).DOM,
   ];
 
   return {
