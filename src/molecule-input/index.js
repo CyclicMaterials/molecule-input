@@ -1,14 +1,8 @@
-/** @jsx hJSX */
-
 import cuid from 'cuid';
 import assign from 'fast.js/object/assign';
 import model from './../shared/model';
 import view from './view';
-import moleculeInputContainer from './../molecule-input-container/index';
-import moleculeInputError from './../molecule-input-error/index';
-import moleculeInputCharCounter from './../molecule-input-char-counter/index';
-import renderLabel from './../shared/renderLabel.js';
-import {hJSX} from '@cycle/dom'; // eslint-disable-line
+import makeMoleculeInputContainer from './../shared/makeMoleculeInputContainer';
 
 const DIALOGUE_NAME = `molecule-Input`;
 
@@ -43,25 +37,10 @@ function moleculeInput({DOM, props$}) {
   const id = cuid();
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
   const input$ = view({state$, id});
-
-  const inputContainer = moleculeInputContainer({
-    DOM, props$: state$.combineLatest(
-      input$,
-      (state, inputVTree) => {
-        const {errorMessage, charCounter} = state;
-
-        return assign(
-          {}, state, {
-            label: renderLabel(state),
-            input: inputVTree,
-            addOns: [
-              errorMessage ? moleculeInputError : void 0,
-              charCounter ? moleculeInputCharCounter : void 0,
-            ],
-          }
-        );
-      }
-    ),
+  const inputContainer = makeMoleculeInputContainer({
+    DOM,
+    props$: state$.map((state) => assign({}, state)),
+    input$,
   });
 
   return {

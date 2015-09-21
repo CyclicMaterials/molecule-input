@@ -3,10 +3,7 @@ import assign from 'fast.js/object/assign';
 import model from './../shared/model';
 import view from './../shared/view';
 import atomAutogrowTextarea from '@cyclic/atom-autogrow-textarea';
-import moleculeInputContainer from './../molecule-input-container/index';
-import moleculeInputError from './../molecule-input-error/index';
-import moleculeInputCharCounter from './../molecule-input-char-counter/index';
-import renderLabel from './../shared/renderLabel.js';
+import makeMoleculeInputContainer from './../shared/makeMoleculeInputContainer';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
 
@@ -41,26 +38,14 @@ function moleculeTextarea({DOM, props$}) {
   const id = cuid();
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
 
-  const inputContainerDOM = moleculeInputContainer({
-    DOM, props$: state$.combineLatest(
-      atomAutogrowTextarea({
-        DOM, props$: state$.map(
-          (state) => assign({}, state)
-        ),
-      }).DOM,
-      (state, autogrowTextareaVTree) => {
-        const {errorMessage, charCounter} = state;
+  const input$ = atomAutogrowTextarea({
+    DOM, props$: state$.map((state) => assign({}, state)),
+  }).DOM;
 
-        return assign({}, state, {
-          label: renderLabel(state),
-          input: autogrowTextareaVTree,
-          addOns: [
-            errorMessage ? moleculeInputError : void 0,
-            charCounter ? moleculeInputCharCounter : void 0,
-          ],
-        });
-      }
-    ),
+  const inputContainerDOM = makeMoleculeInputContainer({
+    DOM,
+    props$: state$.map((state) => assign({}, state)),
+    input$,
   }).DOM;
 
   return {
