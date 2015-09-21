@@ -1,3 +1,13 @@
+# v5.2.1 (2015-09-21)
+
+
+## Bug Fixes
+
+- **molecule-input-container:** float label on invalid numeric fields
+  ([36865ba6](https://github.com/CyclicMaterials/molecule-input/commits/36865ba6c3fafb664682889479f7ec663bfda72b),
+   [#25](https://github.com/CyclicMaterials/molecule-input/issues/25))
+
+
 # v5.2.0 (2015-09-21)
 
 
