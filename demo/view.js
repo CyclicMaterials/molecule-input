@@ -14,9 +14,13 @@ function view({state$, id}, ...vtree$s) {
         textInputIsNoFloatingLabel,
         textInputIsDisabled,
         textareaLabel,
+        textareaRowsMaxRows,
         validationInputIsRequiredIsAutoValidating,
         validationInputIsAutoValidatingPattern,
         validationInputIsRequiredPattern,
+        charCounterInputLabel,
+        charCounterInputMaxLength,
+        charCounterTextarea,
         prefixInputNumber,
         suffixInput] = vtrees;
 
@@ -35,6 +39,7 @@ function view({state$, id}, ...vtree$s) {
           <h4>Text area</h4>
           <section className={`template-DemoPages_verticalSection`}>
             {textareaLabel}
+            {textareaRowsMaxRows}
           </section>
 
           <h4>Validation</h4>
@@ -46,6 +51,13 @@ function view({state$, id}, ...vtree$s) {
             <button className={`${dialogueName}_validateButton`}>
               Validate!
             </button>
+          </section>
+
+          <h4>Character counter</h4>
+          <section className={`template-DemoPages_verticalSection`}>
+            {charCounterInputLabel}
+            {charCounterInputMaxLength}
+            {charCounterTextarea}
           </section>
 
           <h4>Prefixes and suffixes</h4>

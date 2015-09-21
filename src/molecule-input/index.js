@@ -4,8 +4,9 @@ import cuid from 'cuid';
 import assign from 'fast.js/object/assign';
 import model from './../shared/model';
 import view from './view';
-import moleculeInputError from './../molecule-input-error/index';
 import moleculeInputContainer from './../molecule-input-container/index';
+import moleculeInputError from './../molecule-input-error/index';
+import moleculeInputCharCounter from './../molecule-input-char-counter/index';
 import renderLabel from './../shared/renderLabel.js';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 
@@ -46,13 +47,20 @@ function moleculeInput({DOM, props$}) {
   const inputContainer = moleculeInputContainer({
     DOM, props$: state$.combineLatest(
       input$,
-      (state, inputVTree) => assign(
-        {}, state, {
-          label: renderLabel(state),
-          input: inputVTree,
-          addOns: [moleculeInputError],
-        }
-      )
+      (state, inputVTree) => {
+        const {errorMessage, charCounter} = state;
+
+        return assign(
+          {}, state, {
+            label: renderLabel(state),
+            input: inputVTree,
+            addOns: [
+              errorMessage ? moleculeInputError : void 0,
+              charCounter ? moleculeInputCharCounter : void 0,
+            ],
+          }
+        );
+      }
     ),
   });
 

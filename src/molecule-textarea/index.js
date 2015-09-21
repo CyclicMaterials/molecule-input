@@ -4,6 +4,8 @@ import model from './../shared/model';
 import view from './../shared/view';
 import atomAutogrowTextarea from '@cyclic/atom-autogrow-textarea';
 import moleculeInputContainer from './../molecule-input-container/index';
+import moleculeInputError from './../molecule-input-error/index';
+import moleculeInputCharCounter from './../molecule-input-char-counter/index';
 import renderLabel from './../shared/renderLabel.js';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
@@ -46,10 +48,18 @@ function moleculeTextarea({DOM, props$}) {
           (state) => assign({}, state)
         ),
       }).DOM,
-      (state, autogrowTextareaVTree) => assign({}, state, {
-        label: renderLabel(state),
-        input: autogrowTextareaVTree,
-      })
+      (state, autogrowTextareaVTree) => {
+        const {errorMessage, charCounter} = state;
+
+        return assign({}, state, {
+          label: renderLabel(state),
+          input: autogrowTextareaVTree,
+          addOns: [
+            errorMessage ? moleculeInputError : void 0,
+            charCounter ? moleculeInputCharCounter : void 0,
+          ],
+        });
+      }
     ),
   }).DOM;
 

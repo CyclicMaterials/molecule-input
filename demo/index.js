@@ -44,6 +44,13 @@ function demo({DOM}) {
       label: `textarea label`,
     })});
 
+  const textareaRowsMaxRows =
+    moleculeTextarea({DOM, props$: Rx.Observable.just({
+      label: `textarea with rows and maxRows`,
+      rows: 3,
+      maxRows: 4,
+    })});
+
   /* VALIDATION */
 
   const validationInputIsRequiredIsAutoValidating =
@@ -73,6 +80,28 @@ function demo({DOM}) {
       })
     )});
 
+  /* CHARACTER COUNTER */
+
+  const charCounterInputLabel = moleculeInput({DOM, props$: Rx.Observable.just({
+    label: `label`, charCounter: true,
+  })});
+
+  const charCounterInputMaxLength = moleculeInput({
+    DOM, props$: Rx.Observable.just({
+      label: `at most 10 letters`,
+      charCounter: true,
+      autoValidate: true,
+      pattern: `[a-zA-Z]*`,
+      maxLength: 10,
+      errorMessage: `letters only!`,
+    }),
+  });
+
+  const charCounterTextarea =
+    moleculeTextarea({DOM, props$: Rx.Observable.just({
+      label: `textarea`, charCounter: true,
+    })});
+
   /* PREFIXES AND SUFFIXES */
 
   const prefixInputNumber = moleculeInput({DOM, props$: Rx.Observable.just({
@@ -89,9 +118,13 @@ function demo({DOM}) {
     textInputIsNoFloatingLabel.DOM,
     textInputIsDisabled.DOM,
     textareaLabel.DOM,
+    textareaRowsMaxRows.DOM,
     validationInputIsRequiredIsAutoValidating.DOM,
     validationInputIsAutoValidatingPattern.DOM,
     validationInputIsRequiredPattern.DOM,
+    charCounterInputLabel.DOM,
+    charCounterInputMaxLength.DOM,
+    charCounterTextarea.DOM,
     prefixInputNumber.DOM,
     suffixInput.DOM,
   ];

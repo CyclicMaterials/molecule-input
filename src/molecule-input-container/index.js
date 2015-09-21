@@ -83,12 +83,20 @@ function moleculeInputContainer({DOM, props$}) {
   const state$ = model({props$, actions, dialogueName: DIALOGUE_NAME});
 
   const addOns$ = state$.map(
-    (state) => state.addOns ?
-      state.addOns.map((addOn) => addOn({
-        DOM, props$: Rx.Observable.just(assign({}, state)),
-      }).DOM) :
-      Rx.Observable.just()
-  ).flatMap((addOnDOMs) => addOnDOMs);
+    (state) => {
+      const {addOns} = state;
+
+      return addOns ?
+        addOns.map(
+          (addOn) => addOn ?
+            addOn({
+              DOM, props$: Rx.Observable.just(assign({}, state)),
+            }).DOM :
+            addOn
+        ) :
+        [];
+    }
+  );
 
   return {
     DOM: view({state$, id, addOns$}),

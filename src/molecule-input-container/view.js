@@ -67,7 +67,7 @@ function renderUnderline(state) {
   );
 }
 
-function renderAddOns(state, addOns) {
+function renderAddOns(state, ...addOns) {
   const {dialogueName} = state;
 
   return (// eslint-disable-line
@@ -80,7 +80,7 @@ function renderAddOns(state, addOns) {
 function view({state$, id, addOns$}) {
   return state$.combineLatest(
     addOns$,
-    (state, addOns) => {
+    (state, ...addOns) => {
       const {
         dialogueName,
         className,
