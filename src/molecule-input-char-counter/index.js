@@ -16,7 +16,7 @@ const DIALOGUE_NAME = `molecule-InputCharCounter`;
  *       state$: Observable
  *     }
  */
-function moleculeInputError({props$}) {
+function moleculeInputCharCounter({props$}) {
   const id = cuid();
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
 
@@ -29,4 +29,4 @@ function moleculeInputError({props$}) {
 
 export {DIALOGUE_NAME};
 
-export default moleculeInputError;
+export default moleculeInputCharCounter;
