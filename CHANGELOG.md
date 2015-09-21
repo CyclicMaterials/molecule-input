@@ -1,3 +1,13 @@
+# v5.2.0 (2015-09-21)
+
+
+## Features
+
+- add character counter
+  ([de144d60](https://github.com/CyclicMaterials/molecule-input/commits/de144d6068059dba247ed0a8f34a56e231e17271),
+   [#23](https://github.com/CyclicMaterials/molecule-input/issues/23))
+
+
 # v5.1.1 (2015-09-20)
 
 
