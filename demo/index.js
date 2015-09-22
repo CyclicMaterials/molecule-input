@@ -85,6 +85,17 @@ function demo({DOM}) {
         })
       ),
     }).DOM,
+    moleculeInput({
+      DOM, props$: Rx.Observable.just({
+        label: `password only letters, numbers and underscore`,
+        type: `password`,
+        required: true,
+        pattern: `^[a-zA-Z][a-zA-Z0-9_]{3,14}$`,
+        autoValidate: true,
+        maxLength: 15,
+        errorMessage: `Must start with a letter. Min. 4 chars. Max. 15 chars.`,
+      }),
+    }).DOM,
 
     /* CHARACTER COUNTER */
 

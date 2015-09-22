@@ -32,9 +32,9 @@ function view({state$, id}, ...vtree$s) {
                 Validate!
               </button>
             </div>
-          ))}
-          {renderSection(`Character counter`, vtrees.slice(9, 12))}
-          {renderSection(`Prefixes and suffixes`, vtrees.slice(12, 14))}
+          ).concat(vtrees.slice(9, 10)))}
+          {renderSection(`Character counter`, vtrees.slice(10, 13))}
+          {renderSection(`Prefixes and suffixes`, vtrees.slice(13, 15))}
         </div>
       );
     }
