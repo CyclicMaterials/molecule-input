@@ -12,7 +12,8 @@ function model({props$, actions, dialogueName}) {
     actions.inputElement$,
     (...args) => {
       const [props, focused, blurred, value, inputElement] = args;
-      const {autoValidate, validate, type, noLabelFloat} = props;
+      const {autoValidate, validate, type, noLabelFloat, persistLabelFloat} =
+        props;
 
       const isInvalid = (value !== `` || blurred) &&
       autoValidate || validate && inputElement ?
@@ -24,7 +25,7 @@ function model({props$, actions, dialogueName}) {
       const inputHasContent = value || value === 0 ||
         inputElement && type === `number` && handleValidate(inputElement);
 
-      const floatLabel = !noLabelFloat && inputHasContent;
+      const floatLabel = !noLabelFloat && inputHasContent || persistLabelFloat;
 
       const hideLabel = noLabelFloat && inputHasContent;
 
