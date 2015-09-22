@@ -35,6 +35,7 @@ function view({state$, id}, ...vtree$s) {
           ).concat(vtrees.slice(9, 10)))}
           {renderSection(`Character counter`, vtrees.slice(10, 13))}
           {renderSection(`Prefixes and suffixes`, vtrees.slice(13, 15))}
+          {renderSection(`Complex inputs`, vtrees.slice(15, 16))}
         </div>
       );
     }

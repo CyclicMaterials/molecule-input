@@ -1,5 +1,6 @@
 @import "../src/molecule-input";
 @import "../src/molecule-textarea";
+@import "./ssn-input";
 @import "@cyclic/template-demo-pages/template-demo-pages.css";
 
 body {

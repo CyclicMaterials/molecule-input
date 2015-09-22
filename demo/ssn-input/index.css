@@ -1,0 +1,12 @@
+.ssn-Input {
+  display: inline-block;
+}
+
+.ssn-Input INPUT {
+  font: inherit;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  width: auto;
+  text-align: center;
+}

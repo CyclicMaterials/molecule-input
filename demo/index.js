@@ -7,8 +7,9 @@ import model from './model';
 import view from './view';
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import moleculeInput from '../src/molecule-input/index';
-import moleculeTextarea from '../src/molecule-textarea/index';
+import moleculeInput from './../src/molecule-input/index';
+import moleculeTextarea from './../src/molecule-textarea/index';
+import ssnInput from './ssn-input/index';
 
 const DIALOGUE_NAME = `page-Demo`;
 
@@ -132,6 +133,17 @@ function demo({DOM}) {
         label: `username`, suffix: `@email.com`, className: `short`,
       }),
     }).DOM,
+
+    /* COMPLEX INPUTS */
+
+    ssnInput({
+      DOM, props$: Rx.Observable.just({
+        label: `Social Security Number`,
+        errorMessage: `Invalid SSN!`,
+        autoValidate: true,
+      }),
+    }).DOM,
+
   ];
 
   return {
