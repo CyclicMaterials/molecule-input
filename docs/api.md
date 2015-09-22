@@ -1,4 +1,43 @@
 
+# Cyclic Materials molecule-input-char-counter API
+
+- [`moleculeInputCharCounter`](#moleculeInputCharCounter)
+
+### <a id="moleculeInputCharCounter"></a> `moleculeInputCharCounter(props$)`
+
+`moleculeInputCharCounter` is a character counter for use with
+`moleculeInputContainer`. It shows the number of characters entered
+in the input and the maximum length if specified.
+
+    moleculeInputContainer({DOM, props$: Rx.Observable.just({
+      input: <input attributes={{maxlength: 20}}>,
+      addOns: [moleculeInputCharCounter]
+    })});
+
+### Styling
+
+The following class is available for styling:
+
+Class | Description | Default
+---------------|-------------|---------
+`.molecule-InputCharCounter` | Input character counter component |
+
+#### Arguments:
+
+- `props$ :: Observable` An Observable of object of properties.
+
+#### Return:
+
+*(Object)* The moleculeInputCharCounter object. The object has the following structure:
+
+    {
+      DOM: Observable,
+      id: String,
+      state$: Observable
+    }
+
+- - -
+
 # Cyclic Materials molecule-input-container API
 
 - [`moleculeInputContainer`](#moleculeInputContainer)
@@ -58,7 +97,9 @@ Variable/class | Description | Default
 `.molecule-InputContainer_underline` | Underline descendent |
 `.molecule-InputContainer_focusedLine` | Focused line descendent |
 `.molecule-InputContainer_unfocusedLine` | Unfocused line descendent |
-`.molecule-InputContainer_inputContent` | Input content descendent. Label and input are children. |
+`.molecule-InputContainer_inputContent` | Input content descendent. Label, input, prefix and suffix are children. |
+`.molecule-InputContainer_prefix` | Prefix descendent. |
+`.molecule-InputContainer_prefix` | Label descendent. |
 `.molecule-InputContainer_addOnContent` | Add-on content descendent |
 
 #### Arguments:
@@ -125,8 +166,6 @@ Variable/class | Description | Default
 # Cyclic Materials molecule-input API
 
 - [`moleculeInput`](#moleculeInput)
-
-- - -
 
 ### <a id="moleculeInput"></a> `moleculeInput(DOM, props$)`
 
