@@ -1,5 +1,24 @@
 import assign from 'fast.js/object/assign';
 
+function handleValueAndValidation(...args) {
+  const [
+    workingValue, blurred, autoValidate, validate, inputElement, validator,
+    ] = args;
+
+  let isInvalid = false;
+
+  const handleValidation = (workingValue !== `` || blurred) &&
+    autoValidate || validate && inputElement;
+
+  if (handleValidation && validator) {
+    isInvalid = !validator(workingValue);
+  } else if (handleValidation) {
+    isInvalid = !inputElement.checkValidity();
+  }
+
+  return isInvalid;
+}
+
 function model({props$, actions, dialogueName}) {
   return props$.combineLatest(
     actions.focused$,
@@ -19,16 +38,9 @@ function model({props$, actions, dialogueName}) {
 
       let workingValue = bindValue || value;
 
-      let isInvalid = false;
-
-      const handleValidation = (workingValue !== `` || blurred) &&
-        autoValidate || validate && inputElement;
-
-      if (handleValidation && validator) {
-        isInvalid = !validator(workingValue);
-      } else if (handleValidation) {
-        isInvalid = !inputElement.checkValidity();
-      }
+      const isInvalid = handleValueAndValidation(
+        workingValue, blurred, autoValidate, validate, inputElement, validator
+      );
 
       // type="number" hack needed because value is empty until it’s valid.
       // See issue #25.
