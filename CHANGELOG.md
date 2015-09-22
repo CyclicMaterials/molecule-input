@@ -1,3 +1,16 @@
+# v5.3.0 (2015-09-23)
+
+
+## Features
+
+- **molecule-input-container:**
+    - add `bindValue` and `validator` properties
+    ([399447e9](https://github.com/CyclicMaterials/molecule-input/commits/399447e9cfabe8cc3f6b80bbcb0d8024077b60cc))
+    - add property to always float label
+    ([40223c42](https://github.com/CyclicMaterials/molecule-input/commits/40223c429e4cfb8753ec0569e04642df68c84305),
+     [#31](https://github.com/CyclicMaterials/molecule-input/issues/31))
+
+
 # v5.2.2 (2015-09-22)
 
 
