@@ -1,6 +1,6 @@
 import assign from 'fast.js/object/assign';
 
-function handleValueAndValidation(...args) {
+function validateValue(...args) {
   const [
     workingValue, blurred, autoValidate, validate, inputElement, validator,
     ] = args;
@@ -38,7 +38,7 @@ function model({props$, actions, dialogueName}) {
 
       let workingValue = bindValue || value;
 
-      const isInvalid = handleValueAndValidation(
+      const isInvalid = validateValue(
         workingValue, blurred, autoValidate, validate, inputElement, validator
       );
 
