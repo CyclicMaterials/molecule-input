@@ -1,3 +1,20 @@
+# v5.4.0 (2015-09-23)
+
+
+## Bug Fixes
+
+- **molecule-input-container:** `maxLength` is `undefined`
+  ([2adf75ae](https://github.com/CyclicMaterials/molecule-input/commits/2adf75ae644141bd88ec8ea10cc79c621fa5d9dd),
+   [#30](https://github.com/CyclicMaterials/molecule-input/issues/30))
+
+
+## Features
+
+- **molecule-input-container:** reset horizontal offset label for prefixed input
+  ([38b1ed26](https://github.com/CyclicMaterials/molecule-input/commits/38b1ed26da5ecafb9304670690913342b4647f51),
+   [#32](https://github.com/CyclicMaterials/molecule-input/issues/32))
+
+
 # v5.3.0 (2015-09-23)
 
 
