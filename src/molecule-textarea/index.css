@@ -1,4 +1,4 @@
-@import "@cyclic/atom-autogrow-textarea/atom-autogrow-textarea.css";
+@import "@cyclic/atom-autogrow-textarea/src/atom-autogrow-textarea";
 
 .molecule-Textarea {
   display: block;

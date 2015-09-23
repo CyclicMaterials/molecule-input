@@ -2,7 +2,8 @@ import cuid from 'cuid';
 import assign from 'fast.js/object/assign';
 import model from './../shared/model';
 import view from './../shared/view';
-import atomAutogrowTextarea from '@cyclic/atom-autogrow-textarea';
+import atomAutogrowTextarea
+  from '@cyclic/atom-autogrow-textarea/src/atom-autogrow-textarea';
 import makeMoleculeInputContainer from './../shared/makeMoleculeInputContainer';
 
 const DIALOGUE_NAME = `molecule-Textarea`;
