@@ -1,4 +1,5 @@
 import assign from 'fast.js/object/assign';
+import udc from 'udc';
 
 function validateValue(...args) {
   const [
@@ -19,14 +20,33 @@ function validateValue(...args) {
   return isInvalid;
 }
 
+function styleLabel(props, labelLeft) {
+  let {label} = props;
+
+  if (props.prefix) {
+    label = udc(props.label);
+
+    const labelAttributes = label.properties.attributes =
+      label.properties.attributes || {};
+
+    labelAttributes.style =
+      `${labelAttributes.style || ``};${labelLeft}`.replace(/^;/, ``);
+  }
+
+  return label;
+}
+
 function model({props$, actions, dialogueName}) {
   return props$.combineLatest(
     actions.focused$,
     actions.blurred$,
     actions.value$,
     actions.inputElement$,
+    actions.floatLabelOffsetLeft$,
     (props, ...actionItems) => {
-      const [focused, blurred, value, inputElement] = actionItems;
+      const [focused, blurred, value, inputElement, floatLabelOffsetLeft] =
+        actionItems;
+
       const {
         autoValidate,
         validate,
@@ -49,16 +69,22 @@ function model({props$, actions, dialogueName}) {
 
       const floatLabel = !noLabelFloat && inputHasContent || persistLabelFloat;
 
+      const labelLeft = floatLabel ? floatLabelOffsetLeft : `left: 0;`;
+
       const hideLabel = noLabelFloat && inputHasContent;
+
+      const label = styleLabel(props, labelLeft);
 
       return assign({},
         props,
         {
           dialogueName,
+          label,
           focused,
           value,
           isInvalid,
           floatLabel,
+          labelLeft,
           hideLabel,
         });
     }

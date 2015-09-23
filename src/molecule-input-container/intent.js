@@ -1,6 +1,6 @@
 import {Rx} from '@cycle/core';
 
-function intent({DOM, id}) {
+function intent({DOM, id, dialogueName}) {
   const dialogueSelector = `.${id}`;
   const inputSelector = `.${id} INPUT`;
   const textareaSelector = `.${id} TEXTAREA`;
@@ -33,6 +33,13 @@ function intent({DOM, id}) {
     ).startWith(``),
 
     inputElement$,
+
+    floatLabelOffsetLeft$: DOM
+      .select(`.${id} .${dialogueName}_labelAndInputContainer`).observable
+      .filter(elements => elements.length > 0)
+      .map(elements => `left: -${elements[0].offsetLeft}px;`)
+      .first()
+      .startWith(`left: 0;`),
   };
 }
 
