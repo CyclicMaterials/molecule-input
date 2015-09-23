@@ -75,11 +75,15 @@ function model({props$, actions, dialogueName}) {
 
       const label = styleLabel(props, labelLeft);
 
+      const maxLength = props.maxLength ||
+        inputElement && inputElement.maxlength;
+
       return assign({},
         props,
         {
           dialogueName,
           label,
+          maxLength,
           focused,
           value,
           isInvalid,
