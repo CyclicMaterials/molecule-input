@@ -79,9 +79,8 @@ const DIALOGUE_NAME = `molecule-InputContainer`;
  */
 function moleculeInputContainer({DOM, props$}) {
   const id = cuid();
-  const actions = intent({DOM, id});
+  const actions = intent({DOM, id, dialogueName: DIALOGUE_NAME});
   const state$ = model({props$, actions, dialogueName: DIALOGUE_NAME});
-
   const addOns$ = state$.map(
     (state) => {
       const {addOns} = state;
