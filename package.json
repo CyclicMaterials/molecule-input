@@ -18,10 +18,6 @@
     "doc": "./doc",
     "lib": "./lib"
   },
-  "files": [
-    "./lib",
-    "./src"
-  ],
   "main": "./lib/index.js",
   "browserify": {
     "transform": [
