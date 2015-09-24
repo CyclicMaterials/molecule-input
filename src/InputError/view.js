@@ -5,14 +5,14 @@ import combineClassNames from '@cyclic/util-combine-class-names';
 
 function view({state$, id}) {
   return state$.map((state) => {
-    const {dialogueName, className, isInvalid, errorMessage} = state;
+    const {dialogueName, isInvalid, errorMessage} = state;
 
     const classNameMod = isInvalid ? `is-invalid` : ``;
 
     return (// eslint-disable-line
       <div
         className={combineClassNames(
-          id, dialogueName, className,
+          id, dialogueName,
           `atom-Typography--caption`,
           classNameMod)}>
         {errorMessage}

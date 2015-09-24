@@ -7,7 +7,22 @@
 ```shell
 $ npm install @cyclic/molecule-input
 ```
-## Demo
+
+## Examples
+
+The examples assume basic knowledge of CycleJS.
+
+```js
+var input = Input({DOM, props$: Rx.Observable.just({
+  label: `Input label`,
+)});
+```
+
+This will render an input with the label "Input label".
+
+For more examples, see the demo source code.
+
+### Demo
 
 Clone the repository and run from the command line:
 

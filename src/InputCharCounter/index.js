@@ -5,7 +5,7 @@ import view from './view';
 
 const DIALOGUE_NAME = `molecule-InputCharCounter`;
 
-function moleculeInputCharCounter({props$}) {
+function InputCharCounter({props$}) {
   const id = cuid();
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
 
@@ -18,4 +18,4 @@ function moleculeInputCharCounter({props$}) {
 
 export {DIALOGUE_NAME};
 
-export default moleculeInputCharCounter;
+export default InputCharCounter;

@@ -1,4 +1,4 @@
-@import "../molecule-input-container/index.css";
+@import "../InputContainer/index.css";
 @import "@cyclic/atom-styles/atom-default-theme.css";
 
 .molecule-input {

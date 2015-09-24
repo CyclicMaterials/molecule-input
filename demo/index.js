@@ -7,9 +7,9 @@ import model from './model';
 import view from './view';
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import {moleculeInput} from './../src';
-import {moleculeTextarea} from './../src';
-import ssnInput from './ssn-input/index';
+import {Input} from './../src';
+import {Textarea} from './../src';
+import SSNInput from './SSNInput/index';
 
 const DIALOGUE_NAME = `page-Demo`;
 
@@ -21,22 +21,22 @@ function demo({DOM}) {
 
     /* TEXT INPUT */
 
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `label`,
       }),
     }).DOM,
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `password`, type: `password`,
       }),
     }).DOM,
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
-        label: `label (noLabelFloat)`, noLabelFloat: true,
+        label: `label (disableLabelFloat)`, disableLabelFloat: true,
       }),
     }).DOM,
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `disabled`, isDisabled: true,
       }),
@@ -44,12 +44,12 @@ function demo({DOM}) {
 
     /* TEXTAREA */
 
-    moleculeTextarea({
+    Textarea({
       DOM, props$: Rx.Observable.just({
         label: `textarea label`,
       }),
     }).DOM,
-    moleculeTextarea({
+    Textarea({
       DOM, props$: Rx.Observable.just({
         label: `textarea with rows and maxRows`,
         rows: 3,
@@ -59,7 +59,7 @@ function demo({DOM}) {
 
     /* VALIDATION */
 
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `input validates on blur (required, autoValidate)`,
         required: true,
@@ -67,7 +67,7 @@ function demo({DOM}) {
         errorMessage: `needs some text!`,
       }),
     }).DOM,
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `only type letters (autoValidate)`,
         autoValidate: true,
@@ -75,7 +75,7 @@ function demo({DOM}) {
         errorMessage: `letters only!`,
       }),
     }).DOM,
-    moleculeInput({
+    Input({
       DOM, props$: actions.validate$.map(
         (validate) => ({
           label: `only type letters (required, no autoValidate)`,
@@ -86,7 +86,7 @@ function demo({DOM}) {
         })
       ),
     }).DOM,
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `password only letters, numbers and underscore`,
         type: `password`,
@@ -100,12 +100,12 @@ function demo({DOM}) {
 
     /* CHARACTER COUNTER */
 
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `label`, charCounter: true,
       }),
     }).DOM,
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `at most 10 letters`,
         charCounter: true,
@@ -115,7 +115,7 @@ function demo({DOM}) {
         errorMessage: `letters only!`,
       }),
     }).DOM,
-    moleculeTextarea({
+    Textarea({
       DOM, props$: Rx.Observable.just({
         label: `textarea`, charCounter: true,
       }),
@@ -123,12 +123,12 @@ function demo({DOM}) {
 
     /* PREFIXES AND SUFFIXES */
 
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `total`, type: `number`, prefix: `$`, className: `short`,
       }),
     }).DOM,
-    moleculeInput({
+    Input({
       DOM, props$: Rx.Observable.just({
         label: `username`, suffix: `@email.com`, className: `short`,
       }),
@@ -136,11 +136,12 @@ function demo({DOM}) {
 
     /* COMPLEX INPUTS */
 
-    ssnInput({
+    SSNInput({
       DOM, props$: Rx.Observable.just({
         label: `Social Security Number`,
         errorMessage: `Invalid SSN!`,
         autoValidate: true,
+        className: `short`,
       }),
     }).DOM,
 

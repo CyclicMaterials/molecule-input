@@ -7,7 +7,7 @@ import {Rx} from '@cycle/core';
 
 const DIALOGUE_NAME = `molecule-InputContainer`;
 
-function moleculeInputContainer({DOM, props$}) {
+function InputContainer({DOM, props$}) {
   const id = cuid();
   const actions = intent({DOM, id, dialogueName: DIALOGUE_NAME});
   const state$ = model({props$, actions, dialogueName: DIALOGUE_NAME});
@@ -17,11 +17,11 @@ function moleculeInputContainer({DOM, props$}) {
 
       return addOns ?
         addOns.map(
-          (addOn) => addOn ?
-            addOn({
+          (addOnFunc) => addOnFunc ?
+            addOnFunc({
               DOM, props$: Rx.Observable.just(assign({}, state)),
             }).DOM :
-            addOn
+            addOnFunc
         ) :
         [];
     }
@@ -36,4 +36,4 @@ function moleculeInputContainer({DOM, props$}) {
 
 export {DIALOGUE_NAME};
 
-export default moleculeInputContainer;
+export default InputContainer;
