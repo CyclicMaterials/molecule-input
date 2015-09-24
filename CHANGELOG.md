@@ -1,3 +1,38 @@
+# v6.0.1 (2015-09-25)
+
+
+## Breaking Changes
+
+- due to [3a7b7a26](https://github.com/CyclicMaterials/molecule-input/commits/3a7b7a26101c0898025b97afc4db84658742b10c),
+ 
+
+Rename components.
+Component functions and directories are capitalized.
+
+Before:
+
+- `moleculeInput`
+- `moleculeInputCharCounter`
+- `moleculeInputContainer`
+- `moleculeInputError`
+- `moleculeInputTextarea`
+
+After:
+
+- `Input`
+- `InputCharCounter`
+- `InputContainer`
+- `InputError`
+- `InputTextarea`
+
+Rename `noLabelFloat` property to `disableLabelFloat`.
+
+`InputCharCounter` and `InputError` no longer accepts `className` property.
+
+References #26
+
+
+
 # v6.0.0 (2015-09-25)
 
 
