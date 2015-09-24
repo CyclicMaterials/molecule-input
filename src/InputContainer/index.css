@@ -3,8 +3,8 @@
 @import "@cyclic/atom-color/atom-color.css";
 @import "@cyclic/atom-flex-layout/atom-flex-layout.css";
 @import "@cyclic/atom-layout/atom-layout.css";
-@import "../molecule-input-error/index.css";
-@import "../molecule-input-char-counter/index.css";
+@import "../InputError/index.css";
+@import "../InputCharCounter/index.css";
 
 .molecule-InputContainer {
   display: block;

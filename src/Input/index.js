@@ -2,15 +2,15 @@ import cuid from 'cuid';
 import assign from 'fast.js/object/assign';
 import model from './../shared/model';
 import view from './view';
-import makeMoleculeInputContainer from './../shared/makeMoleculeInputContainer';
+import makeInputContainer from './../shared/makeInputContainer';
 
 const DIALOGUE_NAME = `molecule-Input`;
 
-function moleculeInput({DOM, props$}) {
+function Input({DOM, props$}) {
   const id = cuid();
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
   const input$ = view({state$, id});
-  const inputContainer = makeMoleculeInputContainer({
+  const inputContainer = makeInputContainer({
     DOM,
     props$: state$.map((state) => assign({}, state)),
     input$,
@@ -25,4 +25,4 @@ function moleculeInput({DOM, props$}) {
 
 export {DIALOGUE_NAME};
 
-export default moleculeInput;
+export default Input;

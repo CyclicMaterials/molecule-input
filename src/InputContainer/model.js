@@ -50,8 +50,7 @@ function model({props$, actions, dialogueName}) {
       const {
         autoValidate,
         validate,
-        type,
-        noLabelFloat,
+        disableLabelFloat,
         persistLabelFloat,
         bindValue,
         validator} = props;
@@ -65,13 +64,15 @@ function model({props$, actions, dialogueName}) {
       // type="number" hack needed because value is empty until it’s valid.
       // See issue #25.
       const inputHasContent = workingValue || workingValue === 0 ||
-        inputElement && type === `number` && !inputElement.checkValidity();
+        inputElement && inputElement.type === `number` &&
+        !inputElement.checkValidity();
 
-      const floatLabel = !noLabelFloat && inputHasContent || persistLabelFloat;
+      const floatLabel =
+        !disableLabelFloat && inputHasContent || persistLabelFloat;
 
       const labelLeft = floatLabel ? floatLabelOffsetLeft : `left: 0;`;
 
-      const hideLabel = noLabelFloat && inputHasContent;
+      const hideLabel = disableLabelFloat && inputHasContent;
 
       const label = styleLabel(props, labelLeft);
 

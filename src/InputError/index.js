@@ -5,7 +5,7 @@ import view from './view';
 
 const DIALOGUE_NAME = `molecule-InputError`;
 
-function moleculeInputError({props$}) {
+function InputError({props$}) {
   const id = cuid();
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
 
@@ -18,4 +18,4 @@ function moleculeInputError({props$}) {
 
 export {DIALOGUE_NAME};
 
-export default moleculeInputError;
+export default InputError;
