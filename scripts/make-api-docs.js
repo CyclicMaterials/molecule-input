@@ -17,11 +17,7 @@ function generateDocs(options) {
 
 generateDocs({
   src: [
-    './src/molecule-input/index.js',
-    './src/molecule-input-char-counter/index.js',
-    './src/molecule-input-container/index.js',
-    './src/molecule-input-error/index.js',
-    './src/molecule-textarea/index.js'
+    './index.js',
   ],
   output: './docs/api.md',
   template: './scripts/cyclic-docs-template.md.ejs'
