@@ -1,7 +1,9 @@
+/* eslint-disable */
+
 'use strict';
 var markdox = require('markdox');
 
-function generateDocs(options) {
+function generateDoc(options) {
   markdox.process(
     options.src,
     {output: options.output, template: options.template},
@@ -15,14 +17,10 @@ function generateDocs(options) {
   );
 }
 
-generateDocs({
+generateDoc({
   src: [
-    './src/molecule-input/index.js',
-    './src/molecule-input-char-counter/index.js',
-    './src/molecule-input-container/index.js',
-    './src/molecule-input-error/index.js',
-    './src/molecule-textarea/index.js'
+    './src/index.js',
   ],
-  output: './docs/api.md',
+  output: './doc/api.md',
   template: './scripts/cyclic-docs-template.md.ejs'
 });

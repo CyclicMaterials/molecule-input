@@ -1,5 +1,9 @@
 {
   "extends": "eslint-config-cycle",
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "ecmaFeatures": {
     "jsx": true
   },
