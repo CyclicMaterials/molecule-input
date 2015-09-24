@@ -1,10 +1,10 @@
-import moleculeInput from './src/molecule-input';
-import moleculeInputCharCounter from './src/molecule-input-char-counter';
-import moleculeInputContainer from './src/molecule-input-container';
-import moleculeInputError from './src/molecule-input-error';
-import moleculeTextarea from './src/molecule-textarea';
+import moleculeInput from './molecule-input';
+import moleculeInputCharCounter from './molecule-input-char-counter';
+import moleculeInputContainer from './molecule-input-container';
+import moleculeInputError from './molecule-input-error';
+import moleculeTextarea from './molecule-textarea';
 
-export {
+module.exports = {
   /**
    * `moculeInput` is a single-line text field with Material Design styling.
    *
@@ -264,5 +264,5 @@ export {
    *
    * @function moleculeTextarea
    */
-  moleculeTextarea
+  moleculeTextarea,
 };

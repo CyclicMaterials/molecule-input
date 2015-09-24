@@ -1,7 +1,9 @@
+/* eslint-disable */
+
 'use strict';
 var markdox = require('markdox');
 
-function generateDocs(options) {
+function generateDoc(options) {
   markdox.process(
     options.src,
     {output: options.output, template: options.template},
@@ -15,10 +17,10 @@ function generateDocs(options) {
   );
 }
 
-generateDocs({
+generateDoc({
   src: [
-    './index.js',
+    './src/index.js',
   ],
-  output: './docs/api.md',
+  output: './doc/api.md',
   template: './scripts/cyclic-docs-template.md.ejs'
 });

@@ -7,8 +7,8 @@ import model from './model';
 import view from './view';
 import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import {moleculeInput} from './..';
-import {moleculeTextarea} from './..';
+import {moleculeInput} from './../src';
+import {moleculeTextarea} from './../src';
 import ssnInput from './ssn-input/index';
 
 const DIALOGUE_NAME = `page-Demo`;

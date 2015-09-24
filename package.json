@@ -14,7 +14,11 @@
     "input",
     "Material Design"
   ],
-  "main": "index.js",
+  "directories": {
+    "doc": "./doc",
+    "lib": "./lib"
+  },
+  "main": "./lib/index.js",
   "browserify": {
     "transform": [
       "babelify"
@@ -54,7 +58,7 @@
     "validate-commit-message": "^3.0.1"
   },
   "scripts": {
-    "lint": "eslint ./src/**/*.js ./demo/*.js --ignore-path .gitignore",
+    "lint": "eslint ./src/**/. ./demo/. --ignore-path .gitignore",
     "test-js": "npm run lint && babel-node *.test.js | faucet",
     "test-css": "npm run css",
     "test": "npm run test-css && npm run lint",
@@ -64,8 +68,8 @@
     "build": "npm run lint && npm run css && npm run browserify",
     "deps": "npm install && validate-commit-msg",
     "start": "npm run deps && npm run build && echo 'Open demo/index.html in your browser'",
-    "predocs": "rm -rf docs/ && mkdir -p docs",
-    "docs": "node ./scripts/make-api-docs.js",
+    "predoc": "rm -rf doc/ && mkdir -p doc",
+    "doc": "node ./scripts/make-api-doc.js",
     "compile-css": "for filename in src/**/*.css; do postcss -c postcss.config.json ${filename} -o lib/${filename#src/}; done",
     "compile-lib": "babel -d lib/ src/",
     "precompile": "rm -rf lib/ && mkdir -p lib",
