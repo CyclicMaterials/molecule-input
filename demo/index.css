@@ -1,6 +1,6 @@
 @import "../src/Input";
 @import "../src/Textarea";
-@import "./SSNInput";
+@import "./SsnInput";
 @import "@cyclic/template-demo-pages/template-demo-pages.css";
 
 body {

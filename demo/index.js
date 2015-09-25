@@ -9,7 +9,7 @@ import {Rx} from '@cycle/core';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import {Input} from './../src';
 import {Textarea} from './../src';
-import SSNInput from './SSNInput/index';
+import SsnInput from './SsnInput/index';
 
 const DIALOGUE_NAME = `page-Demo`;
 
@@ -136,7 +136,7 @@ function demo({DOM}) {
 
     /* COMPLEX INPUTS */
 
-    SSNInput({
+    SsnInput({
       DOM, props$: Rx.Observable.just({
         label: `Social Security Number`,
         errorMessage: `Invalid SSN!`,

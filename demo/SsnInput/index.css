@@ -1,8 +1,8 @@
-.ssn-Input {
+.demo-SsnInput {
   display: inline-block;
 }
 
-.ssn-Input INPUT {
+.demo-SsnInput INPUT {
   font: inherit;
   outline: none;
   box-shadow: none;

@@ -5,9 +5,9 @@ import model from './model';
 import view from './view';
 import makeInputContainer from './../../src/shared/makeInputContainer';
 
-const DIALOGUE_NAME = `ssn-Input`;
+const DIALOGUE_NAME = `demo-SsnInput`;
 
-function SSNInput({DOM, props$}) {
+function SsnInput({DOM, props$}) {
   const id = cuid();
   const actions = intent({DOM, id, dialogueName: DIALOGUE_NAME});
   const state$ = model({props$, actions, dialogueName: DIALOGUE_NAME});
@@ -35,4 +35,4 @@ function SSNInput({DOM, props$}) {
 
 export {DIALOGUE_NAME};
 
-export default SSNInput;
+export default SsnInput;
