@@ -1,19 +1,19 @@
 @import "../InputContainer/index.css";
 @import "@cyclic/atom-styles/atom-default-theme.css";
 
-.molecule-input {
+.molecule-Input {
   display: block;
 }
 
-.molecule-input_input::-webkit-input-placeholder {
+.molecule-Input_input::-webkit-input-placeholder {
   color: var(--molecule-input-color, var(--secondary-text-color));
 }
-.molecule-input_input:-moz-placeholder {
+.molecule-Input_input:-moz-placeholder {
   color: var(--molecule-input-color, var(--secondary-text-color));
 }
-.molecule-input_input::-moz-placeholder {
+.molecule-Input_input::-moz-placeholder {
   color: var(--molecule-input-color, var(--secondary-text-color));
 }
-.molecule-input_input:-ms-input-placeholder {
+.molecule-Input_input:-ms-input-placeholder {
   color: var(--molecule-input-color, var(--secondary-text-color));
 }
