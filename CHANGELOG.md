@@ -1,3 +1,25 @@
+# v6.1.0 (2015-09-26)
+
+
+## Bug Fixes
+
+- **Input:** wrong component CSS class name
+  ([f3bd75b5](https://github.com/CyclicMaterials/molecule-input/commits/f3bd75b58082ca8123a5a5396facb93483340dad),
+   [#35](https://github.com/CyclicMaterials/molecule-input/issues/35))
+- **InputContainer:** supply correct argument to `getInputElement()`
+  ([5b8dd1bc](https://github.com/CyclicMaterials/molecule-input/commits/5b8dd1bca0efcbcce589541ba5648221f48ea55b))
+- **inputContainer:** remove get `maxLength` if unspecified
+  ([c930aa6e](https://github.com/CyclicMaterials/molecule-input/commits/c930aa6e91a46255b98efb6d7c75d8468ea7bd62))
+- **makeInputContainer:** prevent injected component class names leak
+  ([fdab4336](https://github.com/CyclicMaterials/molecule-input/commits/fdab4336e8e163d01d6c58c1d7eb37cd5c0bd65a))
+
+
+## Features
+
+- **CSS:** add CSS all entry file
+  ([65ddcdd2](https://github.com/CyclicMaterials/molecule-input/commits/65ddcdd2d4a0da7a1f7fda873c50f3a39f6b03d4))
+
+
 # v6.0.2 (2015-09-25)
 
 
