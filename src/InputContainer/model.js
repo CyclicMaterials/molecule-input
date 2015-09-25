@@ -36,16 +36,16 @@ function styleLabel(props, labelLeft) {
   return label;
 }
 
-function model({props$, actions, dialogueName}) {
+function model({props$, actions, layout, dialogueName}) {
   return props$.combineLatest(
     actions.focused$,
     actions.blurred$,
     actions.value$,
-    actions.inputElement$,
-    actions.floatLabelOffsetLeft$,
-    (props, ...actionItems) => {
+    layout.inputElement$,
+    layout.floatLabelOffsetLeft$,
+    (props, ...items) => {
       const [focused, blurred, value, inputElement, floatLabelOffsetLeft] =
-        actionItems;
+        items;
 
       const {
         autoValidate,

@@ -53,7 +53,7 @@
   position: relative;
 }
 
-.molecule-InputContainer_inputContent label,
+.molecule-InputContainer_inputContent LABEL,
 .molecule-InputContainer_inputContent .molecule-Input_label {
   position: absolute;
   top: 0;
@@ -63,30 +63,30 @@
   font: inherit;
 }
 
-.molecule-InputContainer.is-floatedLabel label,
+.molecule-InputContainer.is-floatedLabel LABEL,
 .molecule-InputContainer.is-floatedLabel .molecule-Input_label {
   transform: translate3d(0, -75%, 0) scale(0.75);
   transform-origin: left top;
   transition: 0.25s;
 }
 
-.molecule-InputContainer.is-highlighted label,
+.molecule-InputContainer.is-highlighted LABEL,
 .molecule-InputContainer.is-highlighted .molecule-Input_label {
   color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
 }
 
-.molecule-InputContainer.is-invalid label,
+.molecule-InputContainer.is-invalid LABEL,
 .molecule-InputContainer.is-invalid .molecule-Input_label {
   color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
 }
 
-.molecule-InputContainer.is-hiddenLabel label,
+.molecule-InputContainer.is-hiddenLabel LABEL,
 .molecule-InputContainer.is-hiddenLabel .molecule-Input_label {
   visibility: hidden;
 }
 
-.molecule-InputContainer_inputContent input,
-.molecule-InputContainer_inputContent textarea,
+.molecule-InputContainer_inputContent INPUT,
+.molecule-InputContainer_inputContent TEXTAREA,
 .molecule-InputContainer_inputContent .atom-AutogrowTextarea,
 .molecule-InputContainer_inputContent .molecule-Input_input {
   position: relative;
@@ -101,11 +101,11 @@
 }
 
 /* Firefox sets min-width on the input, which can cause layout issues. */
-.molecule-InputContainer_inputContent input {
+.molecule-InputContainer_inputContent INPUT {
   min-width: 0;
 }
 
-.molecule-InputContainer_inputContent textarea {
+.molecule-InputContainer_inputContent TEXTAREA {
   resize: none;
 }
 

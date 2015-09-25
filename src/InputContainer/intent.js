@@ -1,21 +1,9 @@
 import {Rx} from '@cycle/core';
+import getInputElement from './getInputElement';
 
-function intent({DOM, id, dialogueName}) {
+function intent({DOM, id}) {
   const dialogueSelector = `.${id}`;
-  const inputSelector = `.${id} INPUT`;
-  const textareaSelector = `.${id} TEXTAREA`;
-
-  const inputElement$ = Rx.Observable.merge(
-    DOM.select(inputSelector).observable
-      .filter(elements => elements.length > 0)
-      .map(elements => elements[0])
-      .first(),
-    DOM.select(textareaSelector).observable
-      .filter(elements => elements.length > 0)
-      .map(elements => elements[0])
-      .first()
-  ).startWith(void 0);
-
+  const inputElement$ = getInputElement(DOM, id);
   const blurred$ = DOM.select(dialogueSelector).events(`blur`, true);
 
   return {
@@ -31,15 +19,6 @@ function intent({DOM, id, dialogueName}) {
       DOM.select(dialogueSelector).events(`input`)
         .map(e => e.target.value)
     ).startWith(``),
-
-    inputElement$,
-
-    floatLabelOffsetLeft$: DOM
-      .select(`.${id} .${dialogueName}_labelAndInputContainer`).observable
-      .filter(elements => elements.length > 0)
-      .map(elements => `left: -${elements[0].offsetLeft}px;`)
-      .first()
-      .startWith(`left: 0;`),
   };
 }
 
