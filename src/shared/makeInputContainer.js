@@ -1,5 +1,5 @@
 import assign from 'fast.js/object/assign';
-import InputContainer from './../InputContainer/index';
+import InputContainer, {DIALOGUE_NAME} from './../InputContainer/index';
 import InputError from './../InputError/index';
 import InputCharCounter from './../InputCharCounter/index';
 import renderLabel from './renderLabel.js';
@@ -13,7 +13,9 @@ function makeInputContainer({DOM, props$, input$}) {
 
         return assign(
           {}, props, {
-            label: renderLabel(props),
+            label: renderLabel({
+              dialogueName: DIALOGUE_NAME, label: props.label,
+            }),
             input: inputVTree,
             addOns: [
               errorMessage ? InputError : void 0,
