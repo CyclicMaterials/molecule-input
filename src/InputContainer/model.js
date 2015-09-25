@@ -1,23 +1,21 @@
 import assign from 'fast.js/object/assign';
 import udc from 'udc';
 
-function validateValue(...args) {
-  const [
-    workingValue, blurred, autoValidate, validate, inputElement, validator,
-    ] = args;
+function validateValue(value, inputElement, validator) {
+  return validator ?
+    !validator(value) :
+    inputElement && !inputElement.checkValidity();
+}
 
-  let isInvalid = false;
+function handleValidation(
+  {value, lostFocus, autoValidate, validate, inputElement, validator}
+) {
+  const shouldValidate = (value !== `` || lostFocus) &&
+    autoValidate || validate;
 
-  const handleValidation = (workingValue !== `` || blurred) &&
-    autoValidate || validate && inputElement;
-
-  if (handleValidation && validator) {
-    isInvalid = !validator(workingValue);
-  } else if (handleValidation) {
-    isInvalid = !inputElement.checkValidity();
-  }
-
-  return isInvalid;
+  return shouldValidate ?
+    validateValue(value, inputElement, validator) :
+    false;
 }
 
 function styleLabel(props, labelLeft) {
@@ -44,7 +42,7 @@ function model({props$, actions, layout, dialogueName}) {
     layout.inputElement$,
     layout.floatLabelOffsetLeft$,
     (props, ...items) => {
-      const [focused, blurred, value, inputElement, floatLabelOffsetLeft] =
+      const [focused, lostFocus, value, inputElement, floatLabelOffsetLeft] =
         items;
 
       const {
@@ -55,11 +53,16 @@ function model({props$, actions, layout, dialogueName}) {
         validate,
         validator} = props;
 
-      let workingValue = bindValue || value;
+      const workingValue = bindValue || value;
 
-      const isInvalid = validateValue(
-        workingValue, blurred, autoValidate, validate, inputElement, validator
-      );
+      const isInvalid = handleValidation({
+        value: workingValue,
+        lostFocus,
+        autoValidate,
+        validate,
+        inputElement,
+        validator,
+      });
 
       // type="number" hack needed because value is empty until it’s valid.
       // See issue #25.
@@ -82,7 +85,7 @@ function model({props$, actions, layout, dialogueName}) {
           dialogueName,
           label,
           focused,
-          value,
+          value: workingValue,
           isInvalid,
           floatLabel,
           labelLeft,
