@@ -1,5 +1,6 @@
 import cuid from 'cuid';
 import assign from 'fast.js/object/assign';
+import queryDom from './queryDom';
 import intent from './intent';
 import model from './model';
 import view from './view';
@@ -9,8 +10,9 @@ const DIALOGUE_NAME = `molecule-InputContainer`;
 
 function InputContainer({DOM, props$}) {
   const id = cuid();
-  const actions = intent({DOM, id, dialogueName: DIALOGUE_NAME});
-  const state$ = model({props$, actions, dialogueName: DIALOGUE_NAME});
+  const actions = intent({DOM, id});
+  const layout = queryDom({DOM, id, dialogueName: DIALOGUE_NAME});
+  const state$ = model({props$, actions, layout, dialogueName: DIALOGUE_NAME});
   const addOns$ = state$.map(
     (state) => {
       const {addOns} = state;
