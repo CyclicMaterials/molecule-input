@@ -49,10 +49,10 @@ function model({props$, actions, layout, dialogueName}) {
 
       const {
         autoValidate,
-        validate,
+        bindValue,
         disableLabelFloat,
         persistLabelFloat,
-        bindValue,
+        validate,
         validator} = props;
 
       let workingValue = bindValue || value;
@@ -76,15 +76,11 @@ function model({props$, actions, layout, dialogueName}) {
 
       const label = styleLabel(props, labelLeft);
 
-      const maxLength = props.maxLength ||
-        inputElement && inputElement.maxlength;
-
       return assign({},
         props,
         {
           dialogueName,
           label,
-          maxLength,
           focused,
           value,
           isInvalid,
