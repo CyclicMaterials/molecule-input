@@ -1,6 +1,6 @@
-demo/bundle.js
-demo/styles.css
-lib
+/demo/bundle.js
+/demo/styles.css
+/lib
 
 # Logs
 logs
