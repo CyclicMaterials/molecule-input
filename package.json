@@ -19,7 +19,8 @@
     "lib": "./lib"
   },
   "files": [
-    "lib/"
+    "lib/",
+    "src/"
   ],
   "main": "./lib/index.js",
   "browserify": {
