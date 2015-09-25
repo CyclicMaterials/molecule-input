@@ -3,7 +3,7 @@ import getInputElement from './getInputElement';
 
 function intent({DOM, id}) {
   const dialogueSelector = `.${id}`;
-  const inputElement$ = getInputElement(DOM, id);
+  const inputElement$ = getInputElement({DOM, id});
   const blurred$ = DOM.select(dialogueSelector).events(`blur`, true);
 
   return {
