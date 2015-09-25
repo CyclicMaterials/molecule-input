@@ -39,4 +39,8 @@ as the repository.
 
 MIT © [Cyclic Materials](http://github.com/CyclicMaterials)
 
+- - -
+
+[![Code Climate](https://codeclimate.com/github/CyclicMaterials/molecule-input/badges/gpa.svg)](https://codeclimate.com/github/CyclicMaterials/molecule-input)
+
 [live demo here]: http://dev.glaciersoft.com/cyclic/molecule-input/
