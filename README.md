@@ -4,6 +4,8 @@
 
 ## Installation
 
+[![npm version](https://badge.fury.io/js/%40cyclic%2Fmolecule-input.svg)](http://badge.fury.io/js/%40cyclic%2Fmolecule-input)
+
 ```shell
 $ npm install @cyclic/molecule-input
 ```
@@ -42,5 +44,7 @@ MIT © [Cyclic Materials](http://github.com/CyclicMaterials)
 - - -
 
 [![Code Climate](https://codeclimate.com/github/CyclicMaterials/molecule-input/badges/gpa.svg)](https://codeclimate.com/github/CyclicMaterials/molecule-input)
+[![Dependency Status](https://david-dm.org/CyclicMaterials/molecule-input.svg)](https://david-dm.org/CyclicMaterials/molecule-input)
+[![devDependency Status](https://david-dm.org/CyclicMaterials/molecule-input/dev-status.svg)](https://david-dm.org/CyclicMaterials/molecule-input#info=devDependencies)
 
 [live demo here]: http://dev.glaciersoft.com/cyclic/molecule-input/
