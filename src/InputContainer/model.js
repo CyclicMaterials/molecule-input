@@ -1,5 +1,4 @@
 import assign from 'fast.js/object/assign';
-import udc from 'udc';
 
 function validateValue(value, inputElement, validator) {
   return validator ?
@@ -16,22 +15,6 @@ function handleValidation(
   return shouldValidate ?
     validateValue(value, inputElement, validator) :
     false;
-}
-
-function styleLabel(props, labelLeft) {
-  let {label} = props;
-
-  if (props.prefix) {
-    label = udc(props.label);
-
-    const labelAttributes = label.properties.attributes =
-      label.properties.attributes || {};
-
-    labelAttributes.style =
-      `${labelAttributes.style || ``};${labelLeft}`.replace(/^;/, ``);
-  }
-
-  return label;
 }
 
 function model({props$, actions, layout, dialogueName}) {
@@ -77,13 +60,10 @@ function model({props$, actions, layout, dialogueName}) {
 
       const hideLabel = disableLabelFloat && inputHasContent;
 
-      const label = styleLabel(props, labelLeft);
-
       return assign({},
         props,
         {
           dialogueName,
-          label,
           focused,
           value: workingValue,
           isInvalid,

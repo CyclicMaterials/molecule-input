@@ -12,14 +12,33 @@ function renderFloatedLabelPlaceholder(state) {
       `atom-Typography--caption`)}>&nbsp;</div>
   );
 }
+import udc from 'udc';
+
+function styleLabel(state) {
+  let {label} = state;
+  const {prefix, labelLeft} = state;
+
+  if (prefix) {
+    label = udc(state.label);
+
+    const labelAttributes = label.properties.attributes =
+      label.properties.attributes || {};
+
+    labelAttributes.style =
+      `${labelAttributes.style || ``};${labelLeft}`.replace(/^;/, ``);
+  }
+
+  return label;
+}
 
 function renderInputContent(state) {
   const {
     dialogueName,
-    label,
     input,
     prefix,
     suffix} = state;
+
+  const label = styleLabel(state);
 
   return (// eslint-disable-line
     <div
