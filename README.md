@@ -137,6 +137,6 @@ MIT © [Cyclic Materials](http://github.com/CyclicMaterials)
 
 [CycleJS]: http://cycle.js.org/
 [live demo here]: http://dev.glaciersoft.com/cyclic/molecule-input/
-[API documentation]: ../doc/api.md
+[API documentation]: ./doc/api.md
 [cssnext]: http://cssnext.io/
 [use cssnext]: http://cssnext.io/setup/#usage
