@@ -1,5 +1,5 @@
 import {Rx} from '@cycle/core';
-import getInputElement from './getInputElement';
+import {getInputElement} from './dom-query';
 
 function intent({DOM, id}) {
   const dialogueSelector = `.${id}`;
@@ -7,14 +7,14 @@ function intent({DOM, id}) {
   const blurred$ = DOM.select(dialogueSelector).events(`blur`, true);
 
   return {
-    focused$: Rx.Observable.merge(
+    highlight$: Rx.Observable.merge(
       DOM.select(dialogueSelector).events(`focus`, true).map(() => true),
       blurred$.map(() => false)
     ).startWith(false),
 
-    blurred$: blurred$.map(() => true).startWith(false),
+    lostHighlight: blurred$.map(() => true).startWith(false),
 
-    value$: Rx.Observable.merge(
+    inputValue$: Rx.Observable.merge(
       inputElement$.filter(element => !!element).map(element => element.value),
       DOM.select(dialogueSelector).events(`input`)
         .map(e => e.target.value)
