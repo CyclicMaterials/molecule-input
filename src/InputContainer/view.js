@@ -12,33 +12,13 @@ function renderFloatedLabelPlaceholder(state) {
       `atom-Typography--caption`)}>&nbsp;</div>
   );
 }
-import udc from 'udc';
 
-function styleLabel(state) {
-  let {label} = state;
-  const {prefix, labelLeft} = state;
-
-  if (prefix) {
-    label = udc(state.label);
-
-    const labelAttributes = label.properties.attributes =
-      label.properties.attributes || {};
-
-    labelAttributes.style =
-      `${labelAttributes.style || ``};${labelLeft}`.replace(/^;/, ``);
-  }
-
-  return label;
-}
-
-function renderInputContent(state) {
+function renderInputContent(state, decoration) {
   const {
     dialogueName,
     input,
     prefix,
     suffix} = state;
-
-  const label = styleLabel(state);
 
   return (// eslint-disable-line
     <div
@@ -58,7 +38,7 @@ function renderInputContent(state) {
           `atom-FlexLayout_flex`,
           `atom-Layout--relative`,
           `atom-Typography--subhead`)}>
-        {label}
+        {decoration.label}
         {input}
       </div>
       <div
@@ -96,41 +76,20 @@ function renderAddOns(state, ...addOns) {
   );
 }
 
-function view({state$, id, addOns$}) {
+function view({state$, id, decoration$, addOns$}) {
   return state$.combineLatest(
+    decoration$,
     addOns$,
-    (state, ...addOns) => {
-      const {
-        dialogueName,
-        className,
-        floatLabel,
-        hideLabel,
-        focused,
-        isDisabled,
-        isInvalid} = state;
+    (state, decoration, ...addOns) => {
+      const {dialogueName, className} = state;
 
-      const classNameMods = [];
-
-      if (isDisabled) {
-        classNameMods.push(`is-disabled`);
-      }
-      if (floatLabel) {
-        classNameMods.push(`is-floatedLabel`);
-      }
-      if (hideLabel) {
-        classNameMods.push(`is-hiddenLabel`);
-      }
-      if (isInvalid) {
-        classNameMods.push(`is-invalid`);
-      } else if (focused) {
-        classNameMods.push(`is-highlighted`);
-      }
+      const {classNameMods} = decoration;
 
       return ( // eslint-disable-line
         <div className={combineClassNames(
           id, dialogueName, className, classNameMods)}>
           {renderFloatedLabelPlaceholder(state)}
-          {renderInputContent(state)}
+          {renderInputContent(state, decoration)}
           {renderUnderline(state)}
           {renderAddOns(state, addOns)}
         </div>
