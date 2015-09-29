@@ -58,7 +58,8 @@ function decorator({state$, layout, actions}) {
       }
       if (isInvalid) {
         classNameMods.push(`is-invalid`);
-      } else if (highlight) {
+      }
+      if (highlight) {
         classNameMods.push(`is-highlighted`);
       }
 

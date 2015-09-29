@@ -109,10 +109,10 @@
   resize: none;
 }
 
-.molecule-InputContainer.is-invalid .molecule-InputContainer_addOnContent * {
-  color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
-}
-
 .molecule-InputContainer.is-highlighted .molecule-InputContainer_addOnContent * {
   color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
+}
+
+.molecule-InputContainer.is-invalid .molecule-InputContainer_addOnContent * {
+  color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
 }
