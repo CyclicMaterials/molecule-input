@@ -1,3 +1,20 @@
+# v6.2.0 (2015-09-30)
+
+
+## Bug Fixes
+
+- **InputContainer:** keep `is-highlighted` CSS class when invalid and still focused
+  ([b65a4dd4](https://github.com/CyclicMaterials/molecule-input/commits/b65a4dd415e0971590deef14630b5174cf3b3b96),
+   [#39](https://github.com/CyclicMaterials/molecule-input/issues/39))
+
+
+## Features
+
+- add support for initial value
+  ([89823d88](https://github.com/CyclicMaterials/molecule-input/commits/89823d8893b95529e0212ccea612d4c8816a1468),
+   [#38](https://github.com/CyclicMaterials/molecule-input/issues/38))
+
+
 # v6.1.1 (2015-09-28)
 
 
