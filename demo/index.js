@@ -41,12 +41,28 @@ function demo({DOM}) {
         label: `disabled`, isDisabled: true,
       }),
     }).DOM,
+    Input({
+      DOM, props$: Rx.Observable.just({
+        label: `initial value`, value: `some text...`,
+      }),
+    }).DOM,
 
     /* TEXTAREA */
 
     Textarea({
       DOM, props$: Rx.Observable.just({
         label: `textarea label`,
+      }),
+    }).DOM,
+    Textarea({
+      DOM, props$: Rx.Observable.just({
+        label: `textarea with initial value`,
+        value: `Hi,\r\n
+        \r\n
+        I am filled with some random text.\r\n
+        \r\n
+        Regards,\r\n
+        The author`,
       }),
     }).DOM,
     Textarea({

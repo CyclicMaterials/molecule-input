@@ -14,10 +14,12 @@ function intent({DOM, id}) {
 
     lostHighlight: blurred$.map(() => true).startWith(false),
 
-    inputValue$: Rx.Observable.merge(
-      inputElement$.filter(element => !!element).map(element => element.value),
-      DOM.select(dialogueSelector).events(`input`)
-        .map(e => e.target.value)
+    inputValue$: inputElement$
+      .filter(element => !!element)
+      .map(element => element.value)
+      .merge(
+        DOM.select(dialogueSelector).events(`input`)
+          .map(e => e.target.value)
     ).startWith(``),
   };
 }
