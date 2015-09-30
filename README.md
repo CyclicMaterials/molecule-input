@@ -1,5 +1,7 @@
 # molecule-input
 
+[![Join the chat at https://gitter.im/CyclicMaterials/molecule-input](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CyclicMaterials/molecule-input?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > A Material Design text field.
 
 ## Installation
