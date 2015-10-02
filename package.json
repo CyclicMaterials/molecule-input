@@ -60,7 +60,7 @@
     "minifyify": "7.1.0",
     "postcss": "4.1.16",
     "postcss-cli": "1.5.0",
-    "tape": "4.2.0",
+    "tape": "4.2.1",
     "validate-commit-message": "3.0.1"
   },
   "scripts": {
