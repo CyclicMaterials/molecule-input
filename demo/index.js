@@ -21,6 +21,7 @@ function demo({DOM}) {
 
     /* TEXT INPUT */
 
+    Input({DOM}).DOM,
     Input({
       DOM, props$: Rx.Observable.just({
         label: `label`,

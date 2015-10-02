@@ -1,9 +1,12 @@
 /** @jsx hJSX */
 
+import {string, object} from 'categories-js';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import ControlledInputHook from './../hooks/ControlledInputHook';
 
-function view({state$, id}) {
+function view(sources) {
+  const state$ = object(sources.state$);
+  const id = string(sources.id);
   return state$.map(
     (state) => {
       const {
