@@ -1,6 +1,11 @@
+import {string, instanceOf} from 'categories-js';
+import {Rx} from '@cycle/core';
 import assign from 'fast.js/object/assign';
 
-function model({props$, dialogueName}) {
+function model(sources) {
+  const props$ = instanceOf(Rx.Observable)(sources.props$);
+  const dialogueName = string(sources.dialogueName);
+
   return props$.map((props) => {
     const {value, maxLength} = props;
 
