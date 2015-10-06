@@ -1,4 +1,4 @@
-import udc from 'udc';
+import {clone} from 'ramda';
 
 function hasInputContent(inputElement, value) {
   // type="number" hack needed because value is empty until it’s valid.
@@ -12,7 +12,7 @@ function styledLabel(state, labelLeft) {
   let label;
 
   if (state.prefix) {
-    label = udc(state.label);
+    label = clone(state.label);
 
     const labelAttributes = label.properties.attributes =
       label.properties.attributes || {};

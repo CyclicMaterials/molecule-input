@@ -1,9 +1,9 @@
 import cuid from 'cuid';
-import assign from 'fast.js/object/assign';
 import intent from './intent';
 import model from './model';
 import view from './view';
 import makeInputContainer from './../../src/shared/makeInputContainer';
+import {clone, merge} from 'ramda';
 
 const DIALOGUE_NAME = `demo-SsnInput`;
 
@@ -15,7 +15,7 @@ function SsnInput({DOM, props$}) {
   const inputContainer = makeInputContainer({
     DOM,
     props$: state$.map(
-      (state) => assign({}, state, {
+      (state) => merge(clone(state), {
         persistLabelFloat: true,
         validator: (value) => {
           // Regex validates incomplete SSNs (by design)

@@ -14,28 +14,33 @@ function renderSection(headline, ...vtrees) {
   );
 }
 
+function slice(vtrees, counter, length) {
+  return vtrees.slice(counter.count, counter.count += length);
+}
+
 function view({state$, id}, ...vtree$s) {
   return state$.combineLatest(
     vtree$s,
     (state, ...vtrees) => {
       const {dialogueName, className} = state;
+      const counter = {count: 0};
       return ( // eslint-disable-line
         <div
           className={combineClassNames(id, dialogueName, className,
             `template-DemoPages_sectionContainer isVertical`)}>
-          {renderSection(`Text input`, vtrees.slice(0, 5))}
-          {renderSection(`Text area`, vtrees.slice(5, 8))}
-          {renderSection(`Validation`, vtrees.slice(9, 11).concat(
+          {renderSection(`Text input`, slice(vtrees, counter, 5))}
+          {renderSection(`Text area`, slice(vtrees, counter, 3))}
+          {renderSection(`Validation`, slice(vtrees, counter, 3).concat(
             <div>
               <br/>
               <button className={`${dialogueName}_validateButton`}>
                 Validate!
               </button>
             </div>
-          ).concat(vtrees.slice(11, 12)))}
-          {renderSection(`Character counter`, vtrees.slice(12, 15))}
-          {renderSection(`Prefixes and suffixes`, vtrees.slice(15, 17))}
-          {renderSection(`Complex inputs`, vtrees.slice(17, 18))}
+          ).concat(slice(vtrees, counter, 1)))}
+          {renderSection(`Character counter`, slice(vtrees, counter, 3))}
+          {renderSection(`Prefixes and suffixes`, slice(vtrees, counter, 2))}
+          {renderSection(`Complex inputs`, slice(vtrees, counter, 1))}
         </div>
       );
     }

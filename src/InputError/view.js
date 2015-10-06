@@ -4,9 +4,7 @@ import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import combineClassNames from '@cyclic/util-combine-class-names';
 
 function view({state$, id}) {
-  return state$.map((state) => {
-    const {dialogueName, isInvalid, errorMessage} = state;
-
+  return state$.map(({dialogueName, isInvalid, errorMessage}) => {
     const classNameMod = isInvalid ? `is-invalid` : ``;
 
     return (// eslint-disable-line
