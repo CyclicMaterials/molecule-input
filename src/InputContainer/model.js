@@ -6,7 +6,7 @@ function isValueInvalid(value, inputElement, validator) {
     inputElement && !inputElement.checkValidity();
 }
 
-function model({props$, actions, layout, dialogueName}) {
+function model({props$, actions, layout, componentName}) {
   return props$.combineLatest(
     actions.lostHighlight,
     actions.inputValue$,
@@ -23,7 +23,7 @@ function model({props$, actions, layout, dialogueName}) {
         isValueInvalid(value, inputElement, validator) :
         false;
 
-      return merge(props, {dialogueName, value, isInvalid});
+      return merge(props, {componentName, value, isInvalid});
     }
   );
 }

@@ -9,15 +9,17 @@ import {clone} from 'ramda';
 import {predicateObjectOfObservable} from './../shared/predicate';
 import {Rx} from '@cycle/core';
 
-const DIALOGUE_NAME = `molecule-InputContainer`;
+const COMPONENT_NAME = `molecule-InputContainer`;
 
 function InputContainer(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
   const actions = intent({DOM, id});
-  const layout = domQuery({DOM, id, dialogueName: DIALOGUE_NAME});
-  const state$ = model({props$, actions, layout, dialogueName: DIALOGUE_NAME});
+  const layout = domQuery({DOM, id, componentName: COMPONENT_NAME});
+  const state$ = model(
+    {props$, actions, layout, componentName: COMPONENT_NAME}
+  );
   const decoration$ = decorator({state$, layout, actions});
   const addOns$ = state$.map(
     (state) => {
@@ -40,6 +42,6 @@ function InputContainer(sources) {
   };
 }
 
-export {DIALOGUE_NAME};
+export {COMPONENT_NAME};
 
 export default InputContainer;

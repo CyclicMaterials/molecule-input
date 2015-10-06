@@ -1,7 +1,7 @@
 import {Rx} from '@cycle/core';
 
-function model({dialogueName}) {
-  return Rx.Observable.just({dialogueName});
+function model({componentName}) {
+  return Rx.Observable.just({componentName});
 }
 
 export default model;

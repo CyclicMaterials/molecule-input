@@ -6,12 +6,12 @@ import combineClassNames from '@cyclic/util-combine-class-names';
 function view({state$, id}) {
   return state$.map(
     (state) => {
-      const {dialogueName, className} = state;
+      const {componentName, className} = state;
 
       return (// eslint-disable-line
-        <div className={combineClassNames(id, dialogueName, className)}>
+        <div className={combineClassNames(id, componentName, className)}>
           <input
-            className={`${dialogueName}_input ${dialogueName}_areaNumber`}
+            className={`${componentName}_input ${componentName}_areaNumber`}
             size="3"
             attributes={{
               maxlength: 3,
@@ -19,7 +19,7 @@ function view({state$, id}) {
             }}/>
           -
           <input
-            className={`${dialogueName}_input ${dialogueName}_groupNumber`}
+            className={`${componentName}_input ${componentName}_groupNumber`}
             size="2"
             attributes={{
               maxlength: 2,
@@ -27,7 +27,7 @@ function view({state$, id}) {
             }}/>
           -
           <input
-            className={`${dialogueName}_input ${dialogueName}_serialNumber`}
+            className={`${componentName}_input ${componentName}_serialNumber`}
             size="4"
             attributes={{
               maxlength: 4,

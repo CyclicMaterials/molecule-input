@@ -6,13 +6,13 @@ import view from './view';
 import {clone} from 'ramda';
 import {predicateObjectOfObservable} from './../shared/predicate';
 
-const DIALOGUE_NAME = `molecule-Input`;
+const COMPONENT_NAME = `molecule-Input`;
 
 function Input(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const state$ = model({props$, dialogueName: DIALOGUE_NAME});
+  const state$ = model({props$, componentName: COMPONENT_NAME});
   const input$ = view({state$, id});
   const inputContainer = makeInputContainer({
     DOM,
@@ -27,6 +27,6 @@ function Input(sources) {
   };
 }
 
-export {DIALOGUE_NAME};
+export {COMPONENT_NAME};
 
 export default Input;
