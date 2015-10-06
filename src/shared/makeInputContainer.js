@@ -1,4 +1,4 @@
-import InputContainer, {DIALOGUE_NAME} from './../InputContainer/index';
+import InputContainer, {COMPONENT_NAME} from './../InputContainer/index';
 import InputError from './../InputError/index';
 import InputCharCounter from './../InputCharCounter/index';
 import renderLabel from './renderLabel.js';
@@ -12,7 +12,7 @@ function makeInputContainer({DOM, input$, props$}) {
         const {charCounter, errorMessage, label} = props;
 
         return merge(props, {
-            label: renderLabel({dialogueName: DIALOGUE_NAME, label}),
+            label: renderLabel({componentName: COMPONENT_NAME, label}),
             input: inputVTree,
             addOns: [
               isNil(errorMessage) ? errorMessage : InputError,

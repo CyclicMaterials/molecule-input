@@ -22,18 +22,18 @@ function view({state$, id}, ...vtree$s) {
   return state$.combineLatest(
     vtree$s,
     (state, ...vtrees) => {
-      const {dialogueName, className} = state;
+      const {componentName, className} = state;
       const counter = {count: 0};
       return ( // eslint-disable-line
         <div
-          className={combineClassNames(id, dialogueName, className,
+          className={combineClassNames(id, componentName, className,
             `template-DemoPages_sectionContainer isVertical`)}>
           {renderSection(`Text input`, slice(vtrees, counter, 5))}
           {renderSection(`Text area`, slice(vtrees, counter, 3))}
           {renderSection(`Validation`, slice(vtrees, counter, 3).concat(
             <div>
               <br/>
-              <button className={`${dialogueName}_validateButton`}>
+              <button className={`${componentName}_validateButton`}>
                 Validate!
               </button>
             </div>

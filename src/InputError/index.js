@@ -5,12 +5,12 @@ import view from './view';
 import {clone} from 'ramda';
 import {predicateObjectOfObservable} from './../shared/predicate';
 
-const DIALOGUE_NAME = `molecule-InputError`;
+const COMPONENT_NAME = `molecule-InputError`;
 
 function InputError(sources) {
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const state$ = model({props$, dialogueName: DIALOGUE_NAME});
+  const state$ = model({props$, componentName: COMPONENT_NAME});
 
   return {
     DOM: view({state$, id}),
@@ -19,6 +19,6 @@ function InputError(sources) {
   };
 }
 
-export {DIALOGUE_NAME};
+export {COMPONENT_NAME};
 
 export default InputError;

@@ -2,9 +2,9 @@
 
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 
-function renderLabel({dialogueName, label}) {
+function renderLabel({componentName, label}) {
   return (// eslint-disable-line
-    <label className={`${dialogueName}_label`} hidden={!label}>{label}</label>
+    <label className={`${componentName}_label`} hidden={!label}>{label}</label>
   );
 }
 

@@ -8,13 +8,13 @@ import view from './view';
 import {clone} from 'ramda';
 import {predicateObjectOfObservable} from './../shared/predicate';
 
-const DIALOGUE_NAME = `molecule-Textarea`;
+const COMPONENT_NAME = `molecule-Textarea`;
 
 function Textarea(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const state$ = model({props$, dialogueName: DIALOGUE_NAME});
+  const state$ = model({props$, componentName: COMPONENT_NAME});
 
   const input$ = atomAutogrowTextarea({
     DOM, props$: state$.map((state) => clone(state)),
@@ -33,6 +33,6 @@ function Textarea(sources) {
   };
 }
 
-export {DIALOGUE_NAME};
+export {COMPONENT_NAME};
 
 export default Textarea;

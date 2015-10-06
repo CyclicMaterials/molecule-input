@@ -11,12 +11,12 @@ import {Input} from './../src';
 import {Rx} from '@cycle/core';
 import {Textarea} from './../src';
 
-const DIALOGUE_NAME = `page-Demo`;
+const COMPONENT_NAME = `page-Demo`;
 
 function demo({DOM}) {
   const id = cuid();
-  const actions = intent({DOM, id, dialogueName: DIALOGUE_NAME});
-  const state$ = model({actions, dialogueName: DIALOGUE_NAME});
+  const actions = intent({DOM, id, componentName: COMPONENT_NAME});
+  const state$ = model({actions, componentName: COMPONENT_NAME});
   const vtree$s = [
 
     /* TEXT INPUT */

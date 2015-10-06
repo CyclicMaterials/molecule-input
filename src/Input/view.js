@@ -9,7 +9,7 @@ function view({state$, id}) {
       autocapitalize,
       autocomplete,
       autofocus,
-      dialogueName,
+      componentName,
       isDisabled,
       isInvalid,
       list,
@@ -27,7 +27,7 @@ function view({state$, id}) {
       value,
     }) => {
       return (// eslint-disable-line
-        <div className={`${id} ${dialogueName}`}>
+        <div className={`${id} ${componentName}`}>
           <input
             attributes={{
               maxlength: maxLength,
@@ -36,7 +36,7 @@ function view({state$, id}) {
             autocapitalize={autocapitalize}
             autocomplete={autocomplete}
             autofocus={autofocus}
-            className={`${dialogueName}_input`}
+            className={`${componentName}_input`}
             data-hook={new ControlledInputHook(value)}
             disabled={isDisabled}
             invalid={isInvalid}
