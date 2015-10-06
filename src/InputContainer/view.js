@@ -95,7 +95,7 @@ function view({state$, id, decoration$, addOns$}) {
         </div>
       );
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default view;

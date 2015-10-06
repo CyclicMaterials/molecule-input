@@ -74,7 +74,7 @@ function decorator({state$, layout, actions}) {
         label,
       };
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default decorator;

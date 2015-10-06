@@ -13,7 +13,7 @@ function model({props$, actions, componentName}) {
 
       return merge(props, {componentName, bindValue});
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default model;

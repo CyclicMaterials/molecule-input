@@ -44,7 +44,7 @@ function view({state$, id}, ...vtree$s) {
         </div>
       );
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default view;
