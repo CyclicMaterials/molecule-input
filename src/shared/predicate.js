@@ -53,7 +53,7 @@ function predicateObservable(predicateFunc) {
  * @returns {Function} Takes the Observable as argument whose objects
  * to predicate.
  */
-function predicateObjectOfObservable(definitions, predicateKey) {
+function predicateObjectOfObservable(definitions, predicateKey = void 0) {
   return (observable$ = Rx.Observable.just({})) => {
     return predicateObservable(
       predicateObject(definitions, predicateKey)
