@@ -1,10 +1,7 @@
-import {string, object} from 'categories-js';
-import assign from 'fast.js/object/assign';
+import {merge} from 'ramda';
 
-function model(sources) {
-  const props$ = object(sources.props$);
-  const dialogueName = string(sources.dialogueName);
-  return props$.map((props) => assign({}, props, {dialogueName}));
+function model({props$, dialogueName}) {
+  return props$.map((props) => merge(props, {dialogueName}));
 }
 
 export default model;

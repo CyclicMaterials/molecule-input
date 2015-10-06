@@ -1,26 +1,21 @@
 import cuid from 'cuid';
-import predicateObjectOfObservable
-  from './../shared/predicateObjectOfObservable';
-import {Rx} from '@cycle/core';
-import propsDef from './props';
 import model from './model';
+import props from './props';
 import view from './view';
-import assign from 'fast.js/object/assign';
+import {clone} from 'ramda';
+import {predicateObjectOfObservable} from './../shared/predicate';
 
 const DIALOGUE_NAME = `molecule-InputCharCounter`;
 
 function InputCharCounter(sources) {
+  const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const props$ = predicateObjectOfObservable({
-    observable$: sources.props$ || Rx.Observable.just({}),
-    defs: propsDef,
-  });
   const state$ = model({props$, dialogueName: DIALOGUE_NAME});
 
   return {
     DOM: view({state$, id}),
     id,
-    state$: state$.map((state) => assign({}, state)),
+    state$: state$.map((state) => clone(state)),
   };
 }
 

@@ -1,4 +1,4 @@
-import assign from 'fast.js/object/assign';
+import {clone, merge} from 'ramda';
 
 function model({props$, actions, dialogueName}) {
   return props$.combineLatest(
@@ -11,7 +11,7 @@ function model({props$, actions, dialogueName}) {
       const bindValue =
         `${areaNumber.trim()}-${groupNumber.trim()}-${serialNumber.trim()}`;
 
-      return assign({}, props, {dialogueName, bindValue});
+      return merge(clone(props), {dialogueName, bindValue});
     }
   );
 }

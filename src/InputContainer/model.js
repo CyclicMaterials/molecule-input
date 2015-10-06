@@ -1,4 +1,4 @@
-import assign from 'fast.js/object/assign';
+import {merge} from 'ramda';
 
 function isValueInvalid(value, inputElement, validator) {
   return validator ?
@@ -23,13 +23,7 @@ function model({props$, actions, layout, dialogueName}) {
         isValueInvalid(value, inputElement, validator) :
         false;
 
-      return assign({},
-        props,
-        {
-          dialogueName,
-          value,
-          isInvalid,
-        });
+      return merge(props, {dialogueName, value, isInvalid});
     }
   );
 }

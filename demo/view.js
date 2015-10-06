@@ -28,7 +28,7 @@ function view({state$, id}, ...vtree$s) {
         <div
           className={combineClassNames(id, dialogueName, className,
             `template-DemoPages_sectionContainer isVertical`)}>
-          {renderSection(`Text input`, slice(vtrees, counter, 6))}
+          {renderSection(`Text input`, slice(vtrees, counter, 5))}
           {renderSection(`Text area`, slice(vtrees, counter, 3))}
           {renderSection(`Validation`, slice(vtrees, counter, 3).concat(
             <div>

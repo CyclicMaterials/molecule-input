@@ -5,10 +5,10 @@ import {hJSX} from '@cycle/dom'; // eslint-disable-line
 function view({id, state$, inputContainerDOM}) {
   return state$.combineLatest(
     inputContainerDOM,
-    (state, inputContainerVTree) => {
+    ({dialogueName}, inputContainerVTree) => {
       return (// eslint-disable-line
         <div
-          className={`${id} ${state.dialogueName}`}>
+          className={`${id} ${dialogueName}`}>
           {inputContainerVTree}
         </div>
       );

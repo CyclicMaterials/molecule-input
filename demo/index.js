@@ -1,15 +1,15 @@
 /** @jsx hJSX */
 
 import cuid from 'cuid';
-import assign from 'fast.js/object/assign';
 import intent from './intent';
 import model from './model';
+import SsnInput from './SsnInput/index';
 import view from './view';
-import {Rx} from '@cycle/core';
+import {clone} from 'ramda';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import {Input} from './../src';
+import {Rx} from '@cycle/core';
 import {Textarea} from './../src';
-import SsnInput from './SsnInput/index';
 
 const DIALOGUE_NAME = `page-Demo`;
 
@@ -20,8 +20,6 @@ function demo({DOM}) {
   const vtree$s = [
 
     /* TEXT INPUT */
-
-    Input({DOM}).DOM,
     Input({
       DOM, props$: Rx.Observable.just({
         label: `label`,
@@ -167,7 +165,7 @@ function demo({DOM}) {
   return {
     DOM: view({state$, id}, ...vtree$s),
     id,
-    state$: state$.map((state) => assign({}, state)),
+    state$: state$.map((state) => clone(state)),
   };
 }
 
