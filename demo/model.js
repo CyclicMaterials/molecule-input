@@ -1,8 +1,7 @@
 import {Rx} from '@cycle/core';
-import assign from 'fast.js/object/assign';
 
-function model({dialogueName}) {
-  return Rx.Observable.just(assign({}, {dialogueName}));
+function model({componentName}) {
+  return Rx.Observable.just({componentName});
 }
 
 export default model;

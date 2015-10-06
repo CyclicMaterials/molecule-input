@@ -5,15 +5,15 @@ import {hJSX} from '@cycle/dom'; // eslint-disable-line
 function view({id, state$, inputContainerDOM}) {
   return state$.combineLatest(
     inputContainerDOM,
-    (state, inputContainerVTree) => {
+    ({componentName}, inputContainerVTree) => {
       return (// eslint-disable-line
         <div
-          className={`${id} ${state.dialogueName}`}>
+          className={`${id} ${componentName}`}>
           {inputContainerVTree}
         </div>
       );
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default view;

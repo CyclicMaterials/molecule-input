@@ -1,7 +1,7 @@
-import assign from 'fast.js/object/assign';
+import {merge} from 'ramda';
 
-function model({props$, dialogueName}) {
-  return props$.map((props) => assign({}, props, {dialogueName}));
+function model({props$, componentName}) {
+  return props$.map((props) => merge(props, {componentName}));
 }
 
 export default model;

@@ -1,18 +1,22 @@
 import cuid from 'cuid';
-import assign from 'fast.js/object/assign';
-import model from './../shared/model';
-import view from './view';
 import makeInputContainer from './../shared/makeInputContainer';
+import model from './../shared/model';
+import props from './props';
+import view from './view';
+import {clone} from 'ramda';
+import {predicateObjectOfObservable} from './../shared/predicate';
 
-const DIALOGUE_NAME = `molecule-Input`;
+const COMPONENT_NAME = `molecule-Input`;
 
-function Input({DOM, props$}) {
+function Input(sources) {
+  const {DOM} = sources;
+  const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const state$ = model({props$, dialogueName: DIALOGUE_NAME});
+  const state$ = model({props$, componentName: COMPONENT_NAME});
   const input$ = view({state$, id});
   const inputContainer = makeInputContainer({
     DOM,
-    props$: state$.map((state) => assign({}, state)),
+    props$: state$.map((state) => clone(state)),
     input$,
   });
 
@@ -23,6 +27,6 @@ function Input({DOM, props$}) {
   };
 }
 
-export {DIALOGUE_NAME};
+export {COMPONENT_NAME};
 
 export default Input;

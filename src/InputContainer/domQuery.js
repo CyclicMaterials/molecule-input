@@ -16,12 +16,12 @@ function getInputElement({DOM, id}) {
   ).startWith(void 0);
 }
 
-function domQuery({DOM, id, dialogueName}) {
+function domQuery({DOM, id, componentName}) {
   return {
     inputElement$: getInputElement({DOM, id}),
 
     floatLabelOffsetLeft$: DOM
-      .select(`.${id} .${dialogueName}_labelAndInputContainer`).observable
+      .select(`.${id} .${componentName}_labelAndInputContainer`).observable
       .filter(elements => elements.length > 0)
       .map(elements => `left: -${elements[0].offsetLeft}px;`)
       .first()

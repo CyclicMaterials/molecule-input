@@ -1,4 +1,4 @@
-import assign from 'fast.js/object/assign';
+import {merge} from 'ramda';
 
 function isValueInvalid(value, inputElement, validator) {
   return validator ?
@@ -6,7 +6,7 @@ function isValueInvalid(value, inputElement, validator) {
     inputElement && !inputElement.checkValidity();
 }
 
-function model({props$, actions, layout, dialogueName}) {
+function model({props$, actions, layout, componentName}) {
   return props$.combineLatest(
     actions.lostHighlight,
     actions.inputValue$,
@@ -23,15 +23,9 @@ function model({props$, actions, layout, dialogueName}) {
         isValueInvalid(value, inputElement, validator) :
         false;
 
-      return assign({},
-        props,
-        {
-          dialogueName,
-          value,
-          isInvalid,
-        });
+      return merge(props, {componentName, value, isInvalid});
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default model;

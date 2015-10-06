@@ -1,5 +1,5 @@
 import {Rx} from '@cycle/core';
-import {getInputElement} from './dom-query';
+import {getInputElement} from './domQuery';
 
 function intent({DOM, id}) {
   const dialogueSelector = `.${id}`;
