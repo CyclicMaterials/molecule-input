@@ -1,3 +1,26 @@
+# v6.3.0 (2015-10-06)
+
+
+## Features
+
+- add contracts for props
+  ([f66127f1](https://github.com/CyclicMaterials/molecule-input/commits/f66127f1ccf276519121916605c746970b03dc74),
+   [#40](https://github.com/CyclicMaterials/molecule-input/issues/40))
+- **Input:** add contracts for props
+  ([3aaea5a7](https://github.com/CyclicMaterials/molecule-input/commits/3aaea5a7ad1a4f3bf4f538d5a19063db39f03aea))
+- **InputCharCounter:** add contracts for props
+  ([3e239683](https://github.com/CyclicMaterials/molecule-input/commits/3e2396832c13186f0b5d1266683bdf99c710714e))
+- **InputError:** add contracts for props
+  ([067421c7](https://github.com/CyclicMaterials/molecule-input/commits/067421c72ebe3ceefe58fe461156eff874d6ddf8))
+
+
+## Performance Improvements
+
+- add `distinctUntilChanged()` to `combineLatest()`
+  ([6152946c](https://github.com/CyclicMaterials/molecule-input/commits/6152946ca28a8b986f989ca57bf2b71405c8cca8),
+   [#45](https://github.com/CyclicMaterials/molecule-input/issues/45))
+
+
 # v6.2.1 (2015-09-30)
 
 
