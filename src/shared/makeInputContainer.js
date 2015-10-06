@@ -23,7 +23,7 @@ function makeInputContainer({DOM, input$, props$}) {
           }
         );
       }
-    ),
+    ).distinctUntilChanged(),
   });
 }
 

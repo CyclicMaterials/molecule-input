@@ -25,7 +25,7 @@ function model({props$, actions, layout, componentName}) {
 
       return merge(props, {componentName, value, isInvalid});
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default model;

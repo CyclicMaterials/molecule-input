@@ -13,7 +13,7 @@ function view({id, state$, inputContainerDOM}) {
         </div>
       );
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default view;
