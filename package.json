@@ -71,7 +71,7 @@
     "test-css": "npm run demo-css",
     "test": "npm run test-css && npm run lint",
     "demo-css": "postcss -c postcss.config.json demo/index.css -o demo/styles.css",
-    "demo-browserify": "browserify demo/main.js -d -o demo/bundle.js",
+    "demo-browserify": "browserify demo/main.js -d -p [ minifyify --no-map ] -o demo/bundle.js",
     "predemo": "rm -f demo/bundle.js demo/styles.css",
     "demo": "npm run lint && npm run demo-css && npm run demo-browserify",
     "deps": "npm install && validate-commit-msg",
