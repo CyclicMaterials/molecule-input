@@ -4,13 +4,15 @@ import combineClassNames from '@cyclic/util-combine-class-names';
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 
 function renderFloatedLabelPlaceholder(state) {
-  const {componentName} = state;
+  const {componentName, disableLabelFloat} = state;
 
-  return (// eslint-disable-line
-    <div className={combineClassNames(
-      `${componentName}_floatedLabelPlaceholder`,
-      `atom-Typography--caption`)}>&nbsp;</div>
-  );
+  if (!disableLabelFloat) {
+    return (// eslint-disable-line
+      <div className={combineClassNames(
+        `${componentName}_floatedLabelPlaceholder`,
+        `atom-Typography--caption`)}>&nbsp;</div>
+    );
+  }
 }
 
 function renderPrefix(state) {
