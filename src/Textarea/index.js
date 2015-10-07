@@ -1,10 +1,8 @@
 import atomAutogrowTextarea
   from '@cyclic/atom-autogrow-textarea/src/atom-autogrow-textarea';
-import cuid from 'cuid';
 import makeInputContainer from './../shared/makeInputContainer';
 import model from './../shared/model';
 import props from './props';
-import view from './view';
 import {clone} from 'ramda';
 import {predicateObjectOfObservable} from './../shared/predicate';
 
@@ -13,23 +11,22 @@ const COMPONENT_NAME = `molecule-Textarea`;
 function Textarea(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
-  const id = cuid();
   const state$ = model({props$, componentName: COMPONENT_NAME});
 
   const input$ = atomAutogrowTextarea({
     DOM, props$: state$.map((state) => clone(state)),
   }).DOM;
 
-  const inputContainerDOM = makeInputContainer({
+  const inputContainer = makeInputContainer({
     DOM,
     props$: state$.map((state) => clone(state)),
     input$,
-  }).DOM;
+  });
 
   return {
-    DOM: view({id, state$, inputContainerDOM}),
-    id,
-    state$: state$.map((state) => clone(state)),
+    DOM: inputContainer.DOM,
+    id: inputContainer.id,
+    state$: inputContainer.state$,
   };
 }
 
