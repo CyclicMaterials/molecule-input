@@ -94,11 +94,11 @@ function renderAddOns(state, ...addOns) {
   }
 }
 
-function view({addOns$$, decoration$, id, state$}) {
-  return addOns$$.map((addOns$) => state$.combineLatest(
+function view({addOns$, decoration$, id, state$}) {
+  return state$.combineLatest(
     decoration$,
-    ...addOns$,
-    (state, decoration, ...addOns) => {
+    addOns$,
+    (state, decoration, addOns) => {
       const {componentName, className} = state;
       const {classNameMods} = decoration;
 
@@ -112,7 +112,7 @@ function view({addOns$$, decoration$, id, state$}) {
         </div>
       );
     }
-  ).distinctUntilChanged());
+  ).distinctUntilChanged();
 }
 
 export default view;
