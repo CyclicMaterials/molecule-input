@@ -12,7 +12,7 @@ function view({id, state$, textareaDOM}) {
         </div>
       );
     }
-  );
+  ).distinctUntilChanged();
 }
 
 export default view;
