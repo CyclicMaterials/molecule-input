@@ -11,15 +11,18 @@ function makeInputContainer({DOM, input$, props$}) {
       (props, inputVTree) => {
         const {charCounter, errorMessage, label} = props;
 
+        const addOns = [];
+        if (not(isNil(errorMessage))) {
+          addOns.push(InputError);
+        }
+        if (not(or(isNil(charCounter), not(charCounter)))) {
+          addOns.push(InputCharCounter);
+        }
+
         return merge(props, {
             label: renderLabel({componentName: COMPONENT_NAME, label}),
             input: inputVTree,
-            addOns: [
-              isNil(errorMessage) ? errorMessage : InputError,
-              or(isNil(charCounter), not(charCounter)) ?
-                void 0 :
-                InputCharCounter,
-            ],
+            addOns,
           }
         );
       }
