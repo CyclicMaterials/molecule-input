@@ -68,6 +68,7 @@ Property | Description | Default
 `required` | `{Boolean}` Set to true to mark the input as required. | `false`
 `type` | `{String}` The type of the input. The supported types are `text`, `number` and `password`. |
 `validator` | {Function} Provide a function to custom validate the input. |
+`value` | {String} The value of the input. | ``
 
 #### Arguments:
 
@@ -328,14 +329,15 @@ Property | Description | Default
 `isDisabled` | `{Boolean}` Set to true to disable this input. | `false`
 `label` | `{String}` The label for this input. |
 `maxLength` | `{Number}` The maximum length of the input value. |
-`maxRows` | `{Number}` The maximum number of rows this element can grow to until it scrolls. 0 means no maximum. | 0
+`maxRows` | `{Number}` The maximum number of rows this element can grow to until it scrolls. 0 means no maximum. | `0`
 `disableLabelFloat` | `{Boolean}` Set to true to disable the floating label. | `false`
 `pattern` | `{String}` A pattern to validate the input with. | `false`
 `persistLabelFloat` | `{Boolean}` Set to true to persist the label floating. | `false`
 `required` | `{Boolean}` Set to true to mark the input as required. | `false`
-`rows` | `{Number}` The initial number of rows. | 1
+`rows` | `{Number}` The initial number of rows. | `1`
 `type` | `{String}` The type of the input. The supported types are `text`, `number` and `password`. |
 `validator` | {Function} Provide a function to custom validate the input. |
+`value` | {String} The value of the input. | ``
 
 #### Arguments:
 
