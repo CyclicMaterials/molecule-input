@@ -1,6 +1,10 @@
 {
-  "use": ["cssnext"],
-  "cssnext": {
+  "use": [
+    "postcss-cssnext",
+    "postcss-import",
+    "postcss-custom-properties"
+  ],
+  "postcss-cssnext": {
     "browsers": [
       "ie >= 10",
       "ie_mob >= 10",
