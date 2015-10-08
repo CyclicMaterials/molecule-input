@@ -14,22 +14,24 @@ function Textarea(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const state$ = model({props$, componentName: COMPONENT_NAME});
+  const state$ = model({componentName: COMPONENT_NAME, props$});
 
-  const input$ = atomAutogrowTextarea({
+  const textareaDOM = atomAutogrowTextarea({
     DOM, props$: state$.map((state) => clone(state)),
   }).DOM;
 
-  const inputContainerDOM = makeInputContainer({
+  const input$ = view({id, state$, textareaDOM});
+
+  const inputContainer = makeInputContainer({
     DOM,
     props$: state$.map((state) => clone(state)),
     input$,
-  }).DOM;
+  });
 
   return {
-    DOM: view({id, state$, inputContainerDOM}),
-    id,
-    state$: state$.map((state) => clone(state)),
+    DOM: inputContainer.DOM,
+    id: inputContainer.id,
+    state$: inputContainer.state$,
   };
 }
 

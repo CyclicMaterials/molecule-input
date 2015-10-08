@@ -2,14 +2,13 @@
 
 import {hJSX} from '@cycle/dom'; // eslint-disable-line
 
-function view({id, state$, inputContainerDOM}) {
+function view({id, state$, textareaDOM}) {
   return state$.combineLatest(
-    inputContainerDOM,
-    ({componentName}, inputContainerVTree) => {
+    textareaDOM,
+    ({componentName}, textarea) => {
       return (// eslint-disable-line
-        <div
-          className={`${id} ${componentName}`}>
-          {inputContainerVTree}
+        <div className={`${id} ${componentName}`}>
+          {textarea}
         </div>
       );
     }

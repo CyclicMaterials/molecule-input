@@ -1,6 +1,6 @@
 import cuid from 'cuid';
 import makeInputContainer from './../shared/makeInputContainer';
-import model from './../shared/model';
+import model from './model';
 import props from './props';
 import view from './view';
 import {clone} from 'ramda';

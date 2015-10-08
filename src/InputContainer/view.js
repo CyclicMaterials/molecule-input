@@ -1,24 +1,50 @@
 /** @jsx hJSX */
 
-import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import combineClassNames from '@cyclic/util-combine-class-names';
+import {hJSX} from '@cycle/dom'; // eslint-disable-line
 
 function renderFloatedLabelPlaceholder(state) {
-  const {componentName} = state;
+  const {componentName, disableLabelFloat} = state;
 
-  return (// eslint-disable-line
-    <div className={combineClassNames(
-      `${componentName}_floatedLabelPlaceholder`,
-      `atom-Typography--caption`)}>&nbsp;</div>
-  );
+  if (!disableLabelFloat) {
+    return (// eslint-disable-line
+      <div className={combineClassNames(
+        `${componentName}_floatedLabelPlaceholder`,
+        `atom-Typography--caption`)}>&nbsp;</div>
+    );
+  }
+}
+
+function renderPrefix(state) {
+  const {componentName, prefix} = state;
+
+  if (prefix) {
+    return (// eslint-disable-line
+      <div className={combineClassNames(
+        `${componentName}_prefix`,
+        `atom-Typography--subhead`)}>
+        {prefix}
+      </div>
+    );
+  }
+}
+
+function renderSuffix(state) {
+  const {componentName, suffix} = state;
+
+  if (suffix) {
+    return (// eslint-disable-line
+      <div className={combineClassNames(
+        `${componentName}_suffix`,
+        `atom-Typography--subhead`)}>
+        {suffix}
+      </div>
+    );
+  }
 }
 
 function renderInputContent(state, decoration) {
-  const {
-    componentName,
-    input,
-    prefix,
-    suffix} = state;
+  const {componentName, input} = state;
 
   return (// eslint-disable-line
     <div
@@ -26,12 +52,7 @@ function renderInputContent(state, decoration) {
         `${componentName}_inputContent`,
         `atom-FlexLayout--horizontal`,
         `atom-FlexLayout--end`)}>
-      <div
-        className={combineClassNames(
-          `${componentName}_prefix`,
-          `atom-Typography--subhead`)}>
-        {prefix}
-      </div>
+      {renderPrefix(state)}
       <div
         className={combineClassNames(
           `${componentName}_labelAndInputContainer`,
@@ -41,12 +62,7 @@ function renderInputContent(state, decoration) {
         {decoration.label}
         {input}
       </div>
-      <div
-        className={combineClassNames(
-          `${componentName}_suffix`,
-          `atom-Typography--subhead`)}>
-        {suffix}
-      </div>
+      {renderSuffix(state)}
     </div>
   );
 }
@@ -69,20 +85,21 @@ function renderUnderline(state) {
 function renderAddOns(state, ...addOns) {
   const {componentName} = state;
 
-  return (// eslint-disable-line
-    <div className={`${componentName}_addOnContent`}>
-      {addOns}
-    </div>
-  );
+  if (addOns.length > 0) {
+    return (// eslint-disable-line
+      <div className={`${componentName}_addOnContent`}>
+        {addOns}
+      </div>
+    );
+  }
 }
 
-function view({state$, id, decoration$, addOns$}) {
+function view({addOns$, decoration$, id, state$}) {
   return state$.combineLatest(
     decoration$,
     addOns$,
-    (state, decoration, ...addOns) => {
+    (state, decoration, addOns) => {
       const {componentName, className} = state;
-
       const {classNameMods} = decoration;
 
       return ( // eslint-disable-line
@@ -91,7 +108,7 @@ function view({state$, id, decoration$, addOns$}) {
           {renderFloatedLabelPlaceholder(state)}
           {renderInputContent(state, decoration)}
           {renderUnderline(state)}
-          {renderAddOns(state, addOns)}
+          {renderAddOns(state, ...addOns)}
         </div>
       );
     }
