@@ -11,17 +11,8 @@ import {Rx} from '@cycle/core';
 
 const COMPONENT_NAME = `molecule-InputContainer`;
 
-function InputContainer(sources) {
-  const {DOM} = sources;
-  const props$ = predicateObjectOfObservable(props)(sources.props$);
-  const id = cuid();
-  const actions = intent({DOM, id});
-  const layout = domQuery({componentName: COMPONENT_NAME, DOM, id});
-  const state$ = model(
-    {actions, componentName: COMPONENT_NAME, layout, props$}
-  );
-  const decoration$ = decorator({actions, layout, state$});
-  const addOns$ = state$.map(
+function initAddOns({DOM, state$}) {
+  return state$.map(
     (state) => {
       const {addOns} = state;
 
@@ -37,6 +28,19 @@ function InputContainer(sources) {
         [];
     }
   );
+}
+
+function InputContainer(sources) {
+  const {DOM} = sources;
+  const props$ = predicateObjectOfObservable(props)(sources.props$);
+  const id = cuid();
+  const actions = intent({DOM, id});
+  const layout = domQuery({componentName: COMPONENT_NAME, DOM, id});
+  const state$ = model(
+    {actions, componentName: COMPONENT_NAME, layout, props$}
+  );
+  const decoration$ = decorator({actions, layout, state$});
+  const addOns$ = initAddOns({DOM, state$});
 
   return {
     DOM: view({addOns$, decoration$, id, state$}),
