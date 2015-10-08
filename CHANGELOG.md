@@ -1,3 +1,29 @@
+# v6.3.1 (2015-10-09)
+
+
+## Bug Fixes
+
+- prevent `Textarea` label float synchronization
+  ([51b1415a](https://github.com/CyclicMaterials/molecule-input/commits/51b1415a99f5b6ecc70798b7e27e11617ee1b308),
+   [#59](https://github.com/CyclicMaterials/molecule-input/issues/59))
+- **Input:** prevent label and placeholder overlap
+  ([61020bfd](https://github.com/CyclicMaterials/molecule-input/commits/61020bfd714e4d5890c02f63d10de0761fcb4ad2),
+   [#53](https://github.com/CyclicMaterials/molecule-input/issues/53))
+
+
+## Performance Improvements
+
+- **InputContainer:**
+    - prevent render of empty DIVs
+    ([f9238c73](https://github.com/CyclicMaterials/molecule-input/commits/f9238c7377719fd3c856bbeed425e8e0f5533112),
+     [#54](https://github.com/CyclicMaterials/molecule-input/issues/54))
+    - exclude `floatLabelPlaceholder` rendering
+    ([65f86837](https://github.com/CyclicMaterials/molecule-input/commits/65f86837a8fb5ad833b1c4eb7232361277081fd0),
+     [#56](https://github.com/CyclicMaterials/molecule-input/issues/56))
+- **Textarea:** add `distinctUntilChanged()`
+  ([75b7577b](https://github.com/CyclicMaterials/molecule-input/commits/75b7577bfb060274e7652bda7bba4cda83ac0c15))
+
+
 # v6.3.0 (2015-10-06)
 
 
