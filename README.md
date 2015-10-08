@@ -121,16 +121,13 @@ using CLI, as a JavaScript library, as a PostCSS plugin, or through other tools.
 Take a look at this package’s *package.json* file scripts to see how 
 Cyclic Materials use cssnext as a PostCSS plugin.
 
-**IMPORTANT!**
-As of this writing, if you opt for PostCSS plugin, the versions must be 
-postcss 4.x.x and postcss-cli 1.x.x.
-
 ## License
 
 MIT © [Cyclic Materials](http://github.com/CyclicMaterials)
 
 - - -
 
+[![Build Status](https://travis-ci.org/CyclicMaterials/molecule-input.svg)](https://travis-ci.org/CyclicMaterials/molecule-input)
 [![Code Climate](https://codeclimate.com/github/CyclicMaterials/molecule-input/badges/gpa.svg)](https://codeclimate.com/github/CyclicMaterials/molecule-input)
 [![Dependency Status](https://david-dm.org/CyclicMaterials/molecule-input.svg)](https://david-dm.org/CyclicMaterials/molecule-input)
 [![devDependency Status](https://david-dm.org/CyclicMaterials/molecule-input/dev-status.svg)](https://david-dm.org/CyclicMaterials/molecule-input#info=devDependencies)
