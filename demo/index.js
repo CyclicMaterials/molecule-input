@@ -56,12 +56,12 @@ function demo({DOM}) {
     Textarea({
       DOM, props$: Rx.Observable.just({
         label: `textarea with initial value`,
-        value: `Hi,\r\n
-        \r\n
-        I am filled with some random text.\r\n
-        \r\n
-        Regards,\r\n
-        The author`,
+        value: `Hi,
+
+I am filled with some forgettable text.
+
+Regards,
+The Author`,
       }),
     }).DOM,
     Textarea({

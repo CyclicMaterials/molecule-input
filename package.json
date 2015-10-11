@@ -29,14 +29,14 @@
     ]
   },
   "dependencies": {
-    "@cyclic/atom-autogrow-textarea": "5.0.0",
+    "@cyclic/atom-autogrow-textarea": "6.0.1",
     "@cyclic/atom-color": "1.0.0",
     "@cyclic/atom-flex-layout": "1.0.0",
     "@cyclic/atom-layout": "1.0.2",
     "@cyclic/atom-styles": "1.0.0",
     "@cyclic/atom-typography": "1.0.0",
-    "@cyclic/util-combine-class-names": "2.0.0",
-    "categories-js": "^0.3.0",
+    "@cyclic/util-combine-class-names": "3.0.0",
+    "categories-js": "0.3.0",
     "cuid": "1.3.8",
     "ramda": "^0.17.1"
   },
