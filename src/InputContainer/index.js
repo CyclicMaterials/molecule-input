@@ -6,7 +6,7 @@ import model from './model';
 import props from './props';
 import view from './view';
 import {clone} from 'ramda';
-import {predicateObjectOfObservable} from './../shared/predicate';
+import {predicateObjectOfObservable} from '@cyclic/util-predicate';
 import {Rx} from '@cycle/core';
 
 const COMPONENT_NAME = `molecule-InputContainer`;
