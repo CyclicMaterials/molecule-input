@@ -1,5 +1,5 @@
-import atomAutogrowTextarea
-  from '@cyclic/atom-autogrow-textarea/src/atom-autogrow-textarea';
+import AutogrowTextarea
+  from '@cyclic/atom-autogrow-textarea/src/AutogrowTextarea';
 import cuid from 'cuid';
 import makeInputContainer from './../shared/makeInputContainer';
 import model from './../shared/model';
@@ -16,7 +16,7 @@ function Textarea(sources) {
   const id = cuid();
   const state$ = model({componentName: COMPONENT_NAME, props$});
 
-  const textareaDOM = atomAutogrowTextarea({
+  const textareaDOM = AutogrowTextarea({
     DOM, props$: state$.map((state) => clone(state)),
   }).DOM;
 

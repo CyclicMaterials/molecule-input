@@ -1,0 +1,14 @@
+---
+engines:
+  eslint:
+    enabled: true
+  csslint:
+    enabled: false
+ratings:
+  paths:
+  - "**.js"
+  - "**.jsx"
+exclude_paths:
+- demo/**/*
+- doc/*
+- scripts/*
