@@ -3,7 +3,7 @@ import intent from './intent';
 import model from './model';
 import view from './view';
 import makeInputContainer from './../../src/shared/makeInputContainer';
-import {clone, merge} from 'ramda';
+import {merge} from 'ramda';
 
 const COMPONENT_NAME = `demo-SsnInput`;
 
@@ -15,7 +15,7 @@ function SsnInput({DOM, props$}) {
   const inputContainer = makeInputContainer({
     DOM,
     props$: state$.map(
-      (state) => merge(clone(state), {
+      (state) => merge(state, {
         persistLabelFloat: true,
         validator: (value) => {
           // Regex validates incomplete SSNs (by design)
