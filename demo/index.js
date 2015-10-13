@@ -6,10 +6,9 @@ import model from './model';
 import SsnInput from './SsnInput/index';
 import view from './view';
 import {clone} from 'ramda';
-import {hJSX} from '@cycle/dom'; // eslint-disable-line
-import {Input} from './../src';
+import Input from './../src/Input/index';
 import {Rx} from '@cycle/core';
-import {Textarea} from './../src';
+import Textarea from './../src/Textarea/index';
 
 const COMPONENT_NAME = `page-Demo`;
 
