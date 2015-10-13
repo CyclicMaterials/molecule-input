@@ -82,23 +82,23 @@ function renderUnderline(state) {
   );
 }
 
-function renderAddOns(state, ...addOns) {
+function renderAddOns(state, ...addOn$s) {
   const {componentName} = state;
 
-  if (addOns.length > 0) {
+  if (addOn$s.length > 0) {
     return (// eslint-disable-line
       <div className={`${componentName}_addOnContent`}>
-        {addOns}
+        {addOn$s}
       </div>
     );
   }
 }
 
-function view({addOns$, decoration$, id, state$}) {
+function view({addOn$s$, decoration$, id, state$}) {
   return state$.combineLatest(
     decoration$,
-    addOns$,
-    (state, decoration, addOns) => {
+    addOn$s$,
+    (state, decoration, addOn$s) => {
       const {componentName, className} = state;
       const {classNameMods} = decoration;
 
@@ -108,7 +108,7 @@ function view({addOns$, decoration$, id, state$}) {
           {renderFloatedLabelPlaceholder(state)}
           {renderInputContent(state, decoration)}
           {renderUnderline(state)}
-          {renderAddOns(state, ...addOns)}
+          {renderAddOns(state, ...addOn$s)}
         </div>
       );
     }

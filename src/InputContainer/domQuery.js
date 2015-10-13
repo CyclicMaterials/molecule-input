@@ -8,12 +8,12 @@ function getInputElement({DOM, id}) {
     DOM.select(inputSelector).observable
       .filter(elements => elements.length > 0)
       .map(elements => elements[0])
-      .first(),
+      .startWith(void 0),
     DOM.select(textareaSelector).observable
       .filter(elements => elements.length > 0)
       .map(elements => elements[0])
-      .first()
-  ).startWith(void 0);
+      .startWith(void 0)
+  );
 }
 
 function domQuery({DOM, id, componentName}) {
@@ -24,7 +24,6 @@ function domQuery({DOM, id, componentName}) {
       .select(`.${id} .${componentName}_labelAndInputContainer`).observable
       .filter(elements => elements.length > 0)
       .map(elements => `left: -${elements[0].offsetLeft}px;`)
-      .first()
       .startWith(`left: 0;`),
   };
 }

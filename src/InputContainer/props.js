@@ -1,34 +1,36 @@
-import {array, boolean, func, nonnegativeInteger, object, string}
-  from 'categories-js';
+import {array, boolean, func, object, string} from 'categories-js';
 
 const props = {
-  addOns: array,
-
-  allowedPattern: string,
-
-  autoCorrect: {
-    type: string,
-    default: `off`,
+  addOns: {
+    type: array,
+    default: [],
   },
 
-  autoSave: string,
+  //allowedPattern: string,
+
+  //autoCorrect: {
+  //  type: string,
+  //  default: `off`,
+  //},
+  //
+  //autoSave: string,
 
   autoValidate: {
     type: boolean,
     default: false,
   },
 
-  charCounter: {
-    type: boolean,
-    default: false,
-  },
+  //charCounter: {
+  //  type: boolean,
+  //  default: false,
+  //},
 
   disableLabelFloat: {
     type: boolean,
     default: false,
   },
 
-  errorMessage: string,
+  //errorMessage: string,
 
   bindValue: string,
 
@@ -36,9 +38,9 @@ const props = {
 
   input: object,
 
-  inputMode: string,
-
-  minLength: nonnegativeInteger,
+  //inputMode: string,
+  //
+  //minLength: nonnegativeInteger,
 
   persistLabelFloat: {
     type: boolean,
@@ -47,9 +49,9 @@ const props = {
 
   prefix: string,
 
-  preventInvalidInput: boolean,
-
-  resultsCount: nonnegativeInteger,
+  //preventInvalidInput: boolean,
+  //
+  //resultsCount: nonnegativeInteger,
 
   suffix: string,
 

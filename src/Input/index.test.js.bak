@@ -1,0 +1,19 @@
+/** @jsx hJSX */
+
+//import Input from './index';
+//import test from 'tape';
+//import {hJSX, mockDOMResponse} from '@cycle/dom'; // eslint-disable-line
+//import {Rx} from '@cycle/core';
+//
+//test(`Input`, (assert) => {
+//  const props = {
+//    label: `sentences`,
+//  };
+//  const props$ = Rx.Observable.just(props);
+//  const DOMSource = mockDOMResponse();
+//  const input = Input({DOM: DOMSource, props$});
+//  input.DOM.elementAt(0).subscribe((vtree) => {
+//    assert.looseEqual(vtree, <div></div>);
+//  });
+//  assert.end();
+//});

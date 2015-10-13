@@ -1,7 +1,7 @@
 /** @jsx hJSX */
 
-import {hJSX} from '@cycle/dom'; // eslint-disable-line
 import combineClassNames from '@cyclic/util-combine-class-names';
+import {hJSX} from '@cycle/dom'; // eslint-disable-line
 
 function renderSection(headline, ...vtrees) {
   return ( // eslint-disable-line
