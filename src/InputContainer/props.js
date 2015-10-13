@@ -32,14 +32,14 @@ const props = {
 
   //errorMessage: string,
 
-  bindValue: string,
+  //bindValue: string,
 
   label: object,
 
   input: object,
 
   //inputMode: string,
-  //
+
   //minLength: nonnegativeInteger,
 
   persistLabelFloat: {

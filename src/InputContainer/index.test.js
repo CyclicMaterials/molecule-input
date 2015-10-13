@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import InputCharCounter from './../InputCharCounter/index';
-import InputContainer from './index';
+import InputContainer, {COMPONENT_NAME} from './index';
 import test from 'tape';
 import toHTML from 'vdom-to-html';
 import {decode} from 'ent';
@@ -26,14 +26,14 @@ test(testDescription, (assert) => {
   const input = InputContainer({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
     assert.looseEqual(toHTML(vtree), toHTML(
-      h(`div.molecule-InputContainer`, [
-        h(`div.molecule-InputContainer_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-        h(`div.molecule-InputContainer_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-          h(`div.molecule-InputContainer_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+      h(`div.${COMPONENT_NAME}`, [
+        h(`div.${COMPONENT_NAME}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+        h(`div.${COMPONENT_NAME}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+          h(`div.${COMPONENT_NAME}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
         ),
-        h(`div.molecule-InputContainer_underline`, [
-          h(`div.molecule-InputContainer_unfocusedLine.atom-Layout--fit`),
-          h(`div.molecule-InputContainer_focusedLine.atom-Layout--fit`)
+        h(`div.${COMPONENT_NAME}_underline`, [
+          h(`div.${COMPONENT_NAME}_unfocusedLine.atom-Layout--fit`),
+          h(`div.${COMPONENT_NAME}_focusedLine.atom-Layout--fit`)
         ])
       ])),
       `Failed: ${testDescription}`
@@ -58,16 +58,16 @@ test(testDescription, (assert) => {
   const input = InputContainer({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
     assert.looseEqual(toHTML(vtree), toHTML(
-      h(`div.molecule-InputContainer`, [
-        h(`div.molecule-InputContainer_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-        h(`div.molecule-InputContainer_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-          h(`div.molecule-InputContainer_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+      h(`div.${COMPONENT_NAME}`, [
+        h(`div.${COMPONENT_NAME}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+        h(`div.${COMPONENT_NAME}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+          h(`div.${COMPONENT_NAME}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
         ),
-        h(`div.molecule-InputContainer_underline`, [
-          h(`div.molecule-InputContainer_unfocusedLine.atom-Layout--fit`),
-          h(`div.molecule-InputContainer_focusedLine.atom-Layout--fit`)
+        h(`div.${COMPONENT_NAME}_underline`, [
+          h(`div.${COMPONENT_NAME}_unfocusedLine.atom-Layout--fit`),
+          h(`div.${COMPONENT_NAME}_focusedLine.atom-Layout--fit`)
         ]),
-        h(`div.molecule-InputContainer_addOnContent`)
+        h(`div.${COMPONENT_NAME}_addOnContent`)
       ])),
       `Failed: ${testDescription}`
     );
@@ -85,13 +85,13 @@ test(testDescription, (assert) => {
   const input = InputContainer({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
     assert.equal(toHTML(vtree), toHTML(
-        h(`div.molecule-InputContainer`, [
-          h(`div.molecule-InputContainer_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.molecule-InputContainer_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+        h(`div.${COMPONENT_NAME}`, [
+          h(`div.${COMPONENT_NAME}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${COMPONENT_NAME}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
           ),
-          h(`div.molecule-InputContainer_underline`, [
-            h(`div.molecule-InputContainer_unfocusedLine.atom-Layout--fit`),
-            h(`div.molecule-InputContainer_focusedLine.atom-Layout--fit`)
+          h(`div.${COMPONENT_NAME}_underline`, [
+            h(`div.${COMPONENT_NAME}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${COMPONENT_NAME}_focusedLine.atom-Layout--fit`)
           ])
         ])),
       `Failed: ${testDescription}`
@@ -111,17 +111,17 @@ test(testDescription, (assert) => {
   const input = InputContainer({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
     assert.equal(toHTML(vtree), toHTML(
-        h(`div.molecule-InputContainer`, [
-          h(`div.molecule-InputContainer_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.molecule-InputContainer_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.molecule-InputContainer_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+        h(`div.${COMPONENT_NAME}`, [
+          h(`div.${COMPONENT_NAME}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${COMPONENT_NAME}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${COMPONENT_NAME}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
               h(`label`, `label`),
               h(`input`)
             ])
           ),
-          h(`div.molecule-InputContainer_underline`, [
-            h(`div.molecule-InputContainer_unfocusedLine.atom-Layout--fit`),
-            h(`div.molecule-InputContainer_focusedLine.atom-Layout--fit`)
+          h(`div.${COMPONENT_NAME}_underline`, [
+            h(`div.${COMPONENT_NAME}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${COMPONENT_NAME}_focusedLine.atom-Layout--fit`)
           ])
         ])),
       `Failed: ${testDescription}`
@@ -140,14 +140,70 @@ test(testDescription, (assert) => {
   const input = InputContainer({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
     assert.equal(toHTML(vtree), toHTML(
-        h(`div.molecule-InputContainer.is-floatedLabel`, [
-          h(`div.molecule-InputContainer_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.molecule-InputContainer_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.molecule-InputContainer_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+        h(`div.${COMPONENT_NAME}.is-floatedLabel`, [
+          h(`div.${COMPONENT_NAME}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${COMPONENT_NAME}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${COMPONENT_NAME}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
           ),
-          h(`div.molecule-InputContainer_underline`, [
-            h(`div.molecule-InputContainer_unfocusedLine.atom-Layout--fit`),
-            h(`div.molecule-InputContainer_focusedLine.atom-Layout--fit`)
+          h(`div.${COMPONENT_NAME}_underline`, [
+            h(`div.${COMPONENT_NAME}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${COMPONENT_NAME}_focusedLine.atom-Layout--fit`)
+          ])
+        ])),
+      `Failed: ${testDescription}`
+    );
+  });
+  assert.end();
+});
+
+testDescription = `${COMPONENT} should output DOM with prefix when set`;
+test(testDescription, (assert) => {
+  const props = {
+    prefix: `$`
+  };
+  const props$ = Rx.Observable.just(props);
+  const DOMSource = mockDOMResponse();
+  const input = InputContainer({DOM: DOMSource, id: ``, props$});
+  input.DOM.elementAt(0).subscribe((vtree) => {
+    assert.looseEqual(toHTML(vtree), toHTML(
+        h(`div.${COMPONENT_NAME}`, [
+          h(`div.${COMPONENT_NAME}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${COMPONENT_NAME}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
+              h(`div.${COMPONENT_NAME}_prefix.atom-Typography--subhead`, `$`),
+              h(`div.${COMPONENT_NAME}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+            ]
+          ),
+          h(`div.${COMPONENT_NAME}_underline`, [
+            h(`div.${COMPONENT_NAME}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${COMPONENT_NAME}_focusedLine.atom-Layout--fit`)
+          ])
+        ])),
+      `Failed: ${testDescription}`
+    );
+  });
+  assert.end();
+});
+
+testDescription = `${COMPONENT} should output DOM with suffix when set`;
+test(testDescription, (assert) => {
+  const props = {
+    suffix: `@email.com`
+  };
+  const props$ = Rx.Observable.just(props);
+  const DOMSource = mockDOMResponse();
+  const input = InputContainer({DOM: DOMSource, id: ``, props$});
+  input.DOM.elementAt(0).subscribe((vtree) => {
+    assert.looseEqual(toHTML(vtree), toHTML(
+        h(`div.${COMPONENT_NAME}`, [
+          h(`div.${COMPONENT_NAME}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${COMPONENT_NAME}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
+              h(`div.${COMPONENT_NAME}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`),
+              h(`div.${COMPONENT_NAME}_suffix.atom-Typography--subhead`, `@email.com`)
+            ]
+          ),
+          h(`div.${COMPONENT_NAME}_underline`, [
+            h(`div.${COMPONENT_NAME}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${COMPONENT_NAME}_focusedLine.atom-Layout--fit`)
           ])
         ])),
       `Failed: ${testDescription}`
