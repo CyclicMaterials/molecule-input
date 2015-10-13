@@ -1,15 +1,12 @@
-/** @jsx hJSX */
-
-import {hJSX} from '@cycle/dom'; // eslint-disable-line
+import combineClassNames from '@cyclic/util-combine-class-names';
+import {h} from '@cycle/dom';
 
 function view({state$, id}) {
-  return state$.map(({componentName, charCounterStr}) => ( // eslint-disable-line
-    <div
-      className={`${id} ${componentName} atom-Typography--caption`}>
-      <span>
-        {charCounterStr}
-      </span>
-    </div>
+  return state$.map(({componentName, charCounterStr}) => h(`div`,
+    {className: combineClassNames(
+      id, componentName, `atom-Typography--caption`
+    )},
+    h(`span`, charCounterStr)
   ));
 }
 

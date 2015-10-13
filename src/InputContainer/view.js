@@ -1,16 +1,14 @@
-/** @jsx hJSX */
-
 import combineClassNames from '@cyclic/util-combine-class-names';
-import {hJSX} from '@cycle/dom'; // eslint-disable-line
+import {decode} from 'ent';
+import {h} from '@cycle/dom';
 
 function renderFloatedLabelPlaceholder(state) {
   const {componentName, disableLabelFloat} = state;
 
   if (!disableLabelFloat) {
-    return (// eslint-disable-line
-      <div className={combineClassNames(
-        `${componentName}_floatedLabelPlaceholder`,
-        `atom-Typography--caption`)}>&nbsp;</div>
+    return h(
+      `div.${componentName}_floatedLabelPlaceholder.atom-Typography--caption`,
+      decode(`&nbsp;`)
     );
   }
 }
@@ -19,13 +17,7 @@ function renderPrefix(state) {
   const {componentName, prefix} = state;
 
   if (prefix) {
-    return (// eslint-disable-line
-      <div className={combineClassNames(
-        `${componentName}_prefix`,
-        `atom-Typography--subhead`)}>
-        {prefix}
-      </div>
-    );
+    return h(`div.${componentName}_prefix.atom-Typography--subhead`, prefix);
   }
 }
 
@@ -33,64 +25,41 @@ function renderSuffix(state) {
   const {componentName, suffix} = state;
 
   if (suffix) {
-    return (// eslint-disable-line
-      <div className={combineClassNames(
-        `${componentName}_suffix`,
-        `atom-Typography--subhead`)}>
-        {suffix}
-      </div>
-    );
+    return h(`div.${componentName}_suffix.atom-Typography--subhead`, suffix);
   }
 }
 
 function renderInputContent(state, decoration) {
   const {componentName, input} = state;
 
-  return (// eslint-disable-line
-    <div
-      className={combineClassNames(
-        `${componentName}_inputContent`,
-        `atom-FlexLayout--horizontal`,
-        `atom-FlexLayout--end`)}>
-      {renderPrefix(state)}
-      <div
-        className={combineClassNames(
-          `${componentName}_labelAndInputContainer`,
-          `atom-FlexLayout_flex`,
-          `atom-Layout--relative`,
-          `atom-Typography--subhead`)}>
-        {decoration.label}
-        {input}
-      </div>
-      {renderSuffix(state)}
-    </div>
+  return h(`div.${componentName}_inputContent` +
+    `.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
+      renderPrefix(state),
+      h(`div.${componentName}_labelAndInputContainer.atom-FlexLayout_flex` +
+        `.atom-Layout--relative.atom-Typography--subhead`, [
+          decoration.label,
+          input,
+        ]
+      ),
+      renderSuffix(state),
+    ]
   );
 }
 
 function renderUnderline(state) {
   const {componentName} = state;
 
-  return (// eslint-disable-line
-    <div className={`${componentName}_underline`}>
-      <div className={combineClassNames(
-        `${componentName}_unfocusedLine`,
-        `atom-Layout--fit`)}></div>
-      <div className={combineClassNames(
-        `${componentName}_focusedLine`,
-        `atom-Layout--fit`)}></div>
-    </div>
-  );
+  return h(`div.${componentName}_underline`, [
+    h(`div.${componentName}_unfocusedLine.atom-Layout--fit`),
+    h(`div.${componentName}_focusedLine.atom-Layout--fit`),
+  ]);
 }
 
 function renderAddOns(state, ...addOn$s) {
   const {componentName} = state;
 
   if (addOn$s.length > 0) {
-    return (// eslint-disable-line
-      <div className={`${componentName}_addOnContent`}>
-        {addOn$s}
-      </div>
-    );
+    return h(`div.${componentName}_addOnContent`, addOn$s);
   }
 }
 
@@ -102,14 +71,17 @@ function view({addOn$s$, decoration$, id, state$}) {
       const {componentName, className} = state;
       const {classNameMods} = decoration;
 
-      return ( // eslint-disable-line
-        <div className={combineClassNames(
-          id, componentName, className, classNameMods)}>
-          {renderFloatedLabelPlaceholder(state)}
-          {renderInputContent(state, decoration)}
-          {renderUnderline(state)}
-          {renderAddOns(state, ...addOn$s)}
-        </div>
+      return h(`div`,
+        {
+          className: combineClassNames(
+            id, componentName, className, classNameMods
+          ),
+        }, [
+          renderFloatedLabelPlaceholder(state),
+          renderInputContent(state, decoration),
+          renderUnderline(state),
+          renderAddOns(state, ...addOn$s),
+        ]
       );
     }
   ).distinctUntilChanged();
