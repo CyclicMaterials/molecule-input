@@ -199,7 +199,9 @@ module.exports = {
    * `.molecule-InputContainer_unfocusedLine` | Unfocused line descendent. |
    * `.molecule-InputContainer_inputContent` | Input content descendent. Label, input, prefix and suffix are children. |
    * `.molecule-InputContainer_prefix` | Prefix descendent. |
-   * `.molecule-InputContainer_prefix` | Label descendent. |
+   * `.molecule-InputContainer_label` | Label descendent. |
+   * `.molecule-InputContainer_input` | Input descendent. |
+   * `.molecule-InputContainer_suffix` | Suffix descendent. |
    * `.molecule-InputContainer_addOnContent` | Add-on content descendent. |
    *
    * ### Properties
