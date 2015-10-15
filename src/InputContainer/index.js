@@ -19,13 +19,9 @@ function initAddOns({DOM, state$}) {
 
       return addOns.length > 0 ?
         addOns.map(
-          (addOnFunc) => {
-            if (typeof addOnFunc === `function`) {
-              return addOnFunc(
-                {DOM, props$: Rx.Observable.just(clone(state))}
-              ).DOM;
-            }
-          }
+          (addOnFunc) => addOnFunc(
+            {DOM, props$: Rx.Observable.just(clone(state))}
+          ).DOM
         ) :
         [];
     }
