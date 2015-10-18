@@ -1,21 +1,20 @@
 import combineClassNames from '@cyclic/util-combine-class-names';
 import {h} from '@cycle/dom'; // eslint-disable-line
 
-function renderSection(headline, ...vtrees) {
+function renderSection(headline, ...vtree$s) {
   return h(`div`, [
     h(`h4`, headline),
-    h(`section.template-DemoPages_verticalSection`, vtrees),
+    h(`section.template-DemoPages_verticalSection`, vtree$s),
   ]);
 }
 
-function slice(vtrees, counter, length) {
-  return vtrees.slice(counter.count, counter.count += length);
+function slice(vtree$s, counter, length) {
+  return vtree$s.slice(counter.count, counter.count += length);
 }
 
 function view({state$, id}, ...vtree$s) {
-  return state$.combineLatest(
-    vtree$s,
-    (state, ...vtrees) => {
+  return state$.map(
+    (state) => {
       const {componentName, className} = state;
       const counter = {count: 0};
 
@@ -24,21 +23,21 @@ function view({state$, id}, ...vtree$s) {
           id, componentName, className,
           `template-DemoPages_sectionContainer isVertical`
         )}, [
-          renderSection(`Text input`, slice(vtrees, counter, 5)),
-          renderSection(`Text area`, slice(vtrees, counter, 3)),
-          renderSection(`Validation`, slice(vtrees, counter, 3).concat(
+          renderSection(`Text input`, slice(vtree$s, counter, 5)),
+          renderSection(`Text area`, slice(vtree$s, counter, 3)),
+          renderSection(`Validation`, slice(vtree$s, counter, 3).concat(
             h(`div`, [
               h(`br`),
               h(`button.${componentName}_validateButton`, `Validate!`),
             ])
-          ).concat(slice(vtrees, counter, 1))),
-          renderSection(`Character counter`, slice(vtrees, counter, 3)),
-          renderSection(`Prefixes and suffixes`, slice(vtrees, counter, 2)),
-          renderSection(`Complex inputs`, slice(vtrees, counter, 1)),
+          ).concat(slice(vtree$s, counter, 1))),
+          renderSection(`Character counter`, slice(vtree$s, counter, 3)),
+          renderSection(`Prefixes and suffixes`, slice(vtree$s, counter, 2)),
+          renderSection(`Complex inputs`, slice(vtree$s, counter, 1)),
         ]
       );
     }
-  ).distinctUntilChanged();
+  );
 }
 
 export default view;
