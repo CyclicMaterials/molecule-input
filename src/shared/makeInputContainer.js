@@ -1,4 +1,4 @@
-import InputContainer, {COMPONENT_NAME} from './../InputContainer/index';
+import InputContainer, {COMPONENT_CLASS} from './../InputContainer/index';
 import InputError from './../InputError/index';
 import InputCharCounter from './../InputCharCounter/index';
 import renderLabel from './renderLabel.js';
@@ -20,7 +20,7 @@ function makeInputContainer({DOM, input$, props$}) {
         }
 
         return merge(props, {
-            label: renderLabel({componentName: COMPONENT_NAME, label}),
+            label: renderLabel({componentClass: COMPONENT_CLASS, label}),
             input: inputVTree,
             addOns,
           }

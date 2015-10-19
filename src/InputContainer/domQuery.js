@@ -16,12 +16,12 @@ function getInputElement({DOM, id}) {
   );
 }
 
-function domQuery({DOM, id, componentName}) {
+function domQuery({DOM, id, componentClass}) {
   return {
     inputElement$: getInputElement({DOM, id}),
 
     floatLabelOffsetLeft$: DOM
-      .select(`.${id} .${componentName}_labelAndInputContainer`).observable
+      .select(`.${id} .${componentClass}_labelAndInputContainer`).observable
       .filter(elements => elements.length > 0)
       .map(elements => `left: -${elements[0].offsetLeft}px;`)
       .startWith(`left: 0;`),

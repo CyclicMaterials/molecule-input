@@ -1,6 +1,6 @@
-function intent({DOM, id, componentName}) {
+function intent({DOM, id, componentClass}) {
   return {
-    validate$: DOM.select(`.${id} .${componentName}_validateButton`)
+    validate$: DOM.select(`.${id} .${componentClass}_validateButton`)
       .events(`click`).map(() => true).startWith(false),
   };
 }

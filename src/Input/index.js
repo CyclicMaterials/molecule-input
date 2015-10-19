@@ -6,13 +6,13 @@ import view from './view';
 import {clone} from 'ramda';
 import {predicateObjectOfObservable} from '@cyclic/util-predicate';
 
-const COMPONENT_NAME = `molecule-Input`;
+const COMPONENT_CLASS = `molecule-Input`;
 
 function Input(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const state$ = model({props$, componentName: COMPONENT_NAME});
+  const state$ = model({props$, componentClass: COMPONENT_CLASS});
   const input$ = view({state$, id});
   const inputContainer = makeInputContainer({
     DOM,
@@ -27,6 +27,6 @@ function Input(sources) {
   };
 }
 
-export {COMPONENT_NAME};
+export {COMPONENT_CLASS};
 
 export default Input;

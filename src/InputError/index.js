@@ -5,12 +5,12 @@ import view from './view';
 import {clone} from 'ramda';
 import {predicateObjectOfObservable} from '@cyclic/util-predicate';
 
-const COMPONENT_NAME = `molecule-InputError`;
+const COMPONENT_CLASS = `molecule-InputError`;
 
 function InputError(sources) {
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const state$ = model({props$, componentName: COMPONENT_NAME});
+  const state$ = model({props$, componentClass: COMPONENT_CLASS});
 
   return {
     DOM: view({state$, id}),
@@ -19,6 +19,6 @@ function InputError(sources) {
   };
 }
 
-export {COMPONENT_NAME};
+export {COMPONENT_CLASS};
 
 export default InputError;

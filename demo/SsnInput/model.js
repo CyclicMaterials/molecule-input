@@ -1,6 +1,6 @@
 import {merge} from 'ramda';
 
-function model({props$, actions, componentName}) {
+function model({props$, actions, componentClass}) {
   return props$.combineLatest(
     actions.areaNumber$,
     actions.groupNumber$,
@@ -11,7 +11,7 @@ function model({props$, actions, componentName}) {
       const bindValue =
         `${areaNumber.trim()}-${groupNumber.trim()}-${serialNumber.trim()}`;
 
-      return merge(props, {componentName, bindValue});
+      return merge(props, {componentClass, bindValue});
     }
   ).distinctUntilChanged();
 }

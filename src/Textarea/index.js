@@ -8,13 +8,13 @@ import view from './view';
 import {clone} from 'ramda';
 import {predicateObjectOfObservable} from '@cyclic/util-predicate';
 
-const COMPONENT_NAME = `molecule-Textarea`;
+const COMPONENT_CLASS = `molecule-Textarea`;
 
 function Textarea(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const id = cuid();
-  const state$ = model({componentName: COMPONENT_NAME, props$});
+  const state$ = model({componentClass: COMPONENT_CLASS, props$});
 
   const textareaDOM = AutogrowTextarea({
     DOM, props$: state$.map((state) => clone(state)),
@@ -35,6 +35,6 @@ function Textarea(sources) {
   };
 }
 
-export {COMPONENT_NAME};
+export {COMPONENT_CLASS};
 
 export default Textarea;

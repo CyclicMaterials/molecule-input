@@ -8,7 +8,7 @@ function view({state$, id}) {
       autocapitalize,
       autocomplete,
       autofocus,
-      componentName,
+      componentClass,
       isDisabled,
       isInvalid,
       list,
@@ -24,8 +24,8 @@ function view({state$, id}) {
       step,
       type,
       value,
-    }) => h(`div`, {className: combineClassNames(id, componentName)},
-      h(`input.${componentName}_input`, {
+    }) => h(`div`, {className: combineClassNames(id, componentClass)},
+      h(`input.${componentClass}_input`, {
         attributes: {
           maxlength: maxLength,
           readonly,

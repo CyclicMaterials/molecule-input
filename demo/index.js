@@ -10,12 +10,12 @@ import Input from './../src/Input/index';
 import {Rx} from '@cycle/core';
 import Textarea from './../src/Textarea/index';
 
-const COMPONENT_NAME = `page-Demo`;
+const COMPONENT_CLASS = `page-Demo`;
 
 function demo({DOM}) {
   const id = cuid();
-  const actions = intent({DOM, id, componentName: COMPONENT_NAME});
-  const state$ = model({actions, componentName: COMPONENT_NAME});
+  const actions = intent({DOM, id, componentClass: COMPONENT_CLASS});
+  const state$ = model({actions, componentClass: COMPONENT_CLASS});
   const vtree$s = [
 
     /* TEXT INPUT */

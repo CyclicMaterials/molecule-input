@@ -15,12 +15,12 @@ function slice(vtree$s, counter, length) {
 function view({state$, id}, ...vtree$s) {
   return state$.map(
     (state) => {
-      const {componentName, className} = state;
+      const {componentClass, className} = state;
       const counter = {count: 0};
 
       return h(`div`,
         {className: combineClassNames(
-          id, componentName, className,
+          id, componentClass, className,
           `template-DemoPages_sectionContainer isVertical`
         )}, [
           renderSection(`Text input`, slice(vtree$s, counter, 5)),
@@ -28,7 +28,7 @@ function view({state$, id}, ...vtree$s) {
           renderSection(`Validation`, slice(vtree$s, counter, 3).concat(
             h(`div`, [
               h(`br`),
-              h(`button.${componentName}_validateButton`, `Validate!`),
+              h(`button.${componentClass}_validateButton`, `Validate!`),
             ])
           ).concat(slice(vtree$s, counter, 1))),
           renderSection(`Character counter`, slice(vtree$s, counter, 3)),

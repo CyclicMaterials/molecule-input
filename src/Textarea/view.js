@@ -4,9 +4,9 @@ import {h} from '@cycle/dom';
 function view({id, state$, textareaDOM}) {
   return state$.combineLatest(
     textareaDOM,
-    ({componentName}, textarea) => {
+    ({componentClass}, textarea) => {
       return h(`div`,
-        {className: combineClassNames(id, componentName)},
+        {className: combineClassNames(id, componentClass)},
         textarea
       );
     }

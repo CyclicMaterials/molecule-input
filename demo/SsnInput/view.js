@@ -4,12 +4,12 @@ import {h} from '@cycle/dom';
 function view({state$, id}) {
   return state$.map(
     (state) => {
-      const {componentName, className} = state;
+      const {componentClass, className} = state;
 
       return h(`div`,
-        {className: combineClassNames(id, componentName, className)},
+        {className: combineClassNames(id, componentClass, className)},
         [
-          h(`input.${componentName}_input.${componentName}_areaNumber`,
+          h(`input.${componentClass}_input.${componentClass}_areaNumber`,
             {
               size: 3,
               attributes: {
@@ -19,7 +19,7 @@ function view({state$, id}) {
             }
           ),
           h(`text`, `-`),
-          h(`input.${componentName}_input.${componentName}_groupNumber`,
+          h(`input.${componentClass}_input.${componentClass}_groupNumber`,
             {
               size: 2,
               attributes: {
@@ -29,7 +29,7 @@ function view({state$, id}) {
             }
           ),
           h(`text`, `-`),
-          h(`input.${componentName}_input.${componentName}_serialNumber`,
+          h(`input.${componentClass}_input.${componentClass}_serialNumber`,
             {
               size: 4,
               attributes: {

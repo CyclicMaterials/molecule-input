@@ -10,7 +10,7 @@ import {clone} from 'ramda';
 import {predicateObjectOfObservable} from '@cyclic/util-predicate';
 import {Rx} from '@cycle/core';
 
-const COMPONENT_NAME = `molecule-InputContainer`;
+const COMPONENT_CLASS = `molecule-InputContainer`;
 
 function initAddOns({DOM, state$}) {
   return state$.map(
@@ -33,9 +33,9 @@ function InputContainer(sources) {
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const {id = cuid()} = sources;
   const actions = intent({DOM, id});
-  const layout = domQuery({componentName: COMPONENT_NAME, DOM, id});
+  const layout = domQuery({componentClass: COMPONENT_CLASS, DOM, id});
   const state$ = model(
-    {actions, componentName: COMPONENT_NAME, layout, props$}
+    {actions, componentClass: COMPONENT_CLASS, layout, props$}
   );
   const decoration$ = decorator({actions, layout, state$});
   const addOn$s$ = initAddOns({DOM, state$});
@@ -47,6 +47,6 @@ function InputContainer(sources) {
   };
 }
 
-export {COMPONENT_NAME};
+export {COMPONENT_CLASS};
 
 export default InputContainer;

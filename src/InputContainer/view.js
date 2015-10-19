@@ -3,39 +3,39 @@ import {decode} from 'ent';
 import {h} from '@cycle/dom';
 
 function renderFloatedLabelPlaceholder(state) {
-  const {componentName, disableLabelFloat} = state;
+  const {componentClass, disableLabelFloat} = state;
 
   if (!disableLabelFloat) {
     return h(
-      `div.${componentName}_floatedLabelPlaceholder.atom-Typography--caption`,
+      `div.${componentClass}_floatedLabelPlaceholder.atom-Typography--caption`,
       decode(`&nbsp;`)
     );
   }
 }
 
 function renderPrefix(state) {
-  const {componentName, prefix} = state;
+  const {componentClass, prefix} = state;
 
   if (prefix) {
-    return h(`div.${componentName}_prefix.atom-Typography--subhead`, prefix);
+    return h(`div.${componentClass}_prefix.atom-Typography--subhead`, prefix);
   }
 }
 
 function renderSuffix(state) {
-  const {componentName, suffix} = state;
+  const {componentClass, suffix} = state;
 
   if (suffix) {
-    return h(`div.${componentName}_suffix.atom-Typography--subhead`, suffix);
+    return h(`div.${componentClass}_suffix.atom-Typography--subhead`, suffix);
   }
 }
 
 function renderInputContent(state, decoration) {
-  const {componentName, input} = state;
+  const {componentClass, input} = state;
 
-  return h(`div.${componentName}_inputContent` +
+  return h(`div.${componentClass}_inputContent` +
     `.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
       renderPrefix(state),
-      h(`div.${componentName}_labelAndInputContainer.atom-FlexLayout_flex` +
+      h(`div.${componentClass}_labelAndInputContainer.atom-FlexLayout_flex` +
         `.atom-Layout--relative.atom-Typography--subhead`, [
           decoration.label,
           input,
@@ -47,19 +47,19 @@ function renderInputContent(state, decoration) {
 }
 
 function renderUnderline(state) {
-  const {componentName} = state;
+  const {componentClass} = state;
 
-  return h(`div.${componentName}_underline`, [
-    h(`div.${componentName}_unfocusedLine.atom-Layout--fit`),
-    h(`div.${componentName}_focusedLine.atom-Layout--fit`),
+  return h(`div.${componentClass}_underline`, [
+    h(`div.${componentClass}_unfocusedLine.atom-Layout--fit`),
+    h(`div.${componentClass}_focusedLine.atom-Layout--fit`),
   ]);
 }
 
 function renderAddOns(state, ...addOn$s) {
-  const {componentName} = state;
+  const {componentClass} = state;
 
   if (addOn$s.length > 0) {
-    return h(`div.${componentName}_addOnContent`, addOn$s);
+    return h(`div.${componentClass}_addOnContent`, addOn$s);
   }
 }
 
@@ -68,13 +68,13 @@ function view({addOn$s$, decoration$, id, state$}) {
     decoration$,
     addOn$s$,
     (state, decoration, addOn$s) => {
-      const {componentName, className} = state;
+      const {componentClass, className} = state;
       const {classNameMods} = decoration;
 
       return h(`div`,
         {
           className: combineClassNames(
-            id, componentName, className, classNameMods
+            id, componentClass, className, classNameMods
           ),
         }, [
           renderFloatedLabelPlaceholder(state),
