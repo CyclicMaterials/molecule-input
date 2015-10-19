@@ -43,8 +43,8 @@
     "ramda": "0.18.0"
   },
   "devDependencies": {
-    "@cycle/core": "3.1.0",
-    "@cycle/dom": "5.3.1",
+    "@cycle/core": "4.0.1",
+    "@cycle/dom": "^6.0.0",
     "@cyclic/template-demo-pages": "1.0.1",
     "babel": "5.8.23",
     "babelify": "6.3.0",
@@ -55,6 +55,7 @@
     "eslint-plugin-cycle": "1.0.1",
     "eslint-plugin-no-class": "0.1.0",
     "faucet": "0.0.1",
+    "glob": "5.0.15",
     "markdox": "0.1.10",
     "minifyify": "7.1.0",
     "postcss": "5.0.9",
@@ -69,7 +70,7 @@
   "scripts": {
     "prelint": "rm -f demo/bundle.js",
     "lint": "eslint ./src/**/. ./demo/. --ignore-path .gitignore",
-    "test-js": "babel-node ./src/**/*.test.js | faucet",
+    "test-js": "babel-node test/index | faucet",
     "test-css": "npm run demo-css",
     "test": "npm run test-css && npm run lint && npm run test-js",
     "demo-css": "postcss -c postcss.config.json demo/index.css -o demo/styles.css",
