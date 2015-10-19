@@ -7,11 +7,6 @@ const props = {
   },
 
   //allowedPattern: string,
-
-  //autoCorrect: {
-  //  type: string,
-  //  default: `off`,
-  //},
   //
   //autoSave: string,
 
@@ -20,19 +15,12 @@ const props = {
     default: false,
   },
 
-  //charCounter: {
-  //  type: boolean,
-  //  default: false,
-  //},
-
   disableLabelFloat: {
     type: boolean,
     default: false,
   },
 
-  //errorMessage: string,
-
-  //bindValue: string,
+  bindValue: string,
 
   label: object,
 

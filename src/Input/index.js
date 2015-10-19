@@ -11,13 +11,14 @@ const COMPONENT_CLASS = `molecule-Input`;
 function Input(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
-  const id = cuid();
+  const {id = cuid()} = sources;
   const state$ = model({props$, componentClass: COMPONENT_CLASS});
-  const input$ = view({state$, id});
+  const input$ = view({state$});
   const inputContainer = makeInputContainer({
     DOM,
-    props$: state$.map((state) => clone(state)),
+    id,
     input$,
+    props$: state$.map((state) => clone(state)),
   });
 
   return {

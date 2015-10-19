@@ -3,7 +3,7 @@
 import InputCharCounter from './../InputCharCounter/index';
 import InputContainer, {COMPONENT_CLASS} from './index';
 import test from 'tape';
-import toHTML from 'vdom-to-html';
+import vdomToHtml from './../../test/adapters/vdomToHtml/index';
 import {decode} from 'ent';
 import {h, mockDOMResponse} from '@cycle/dom'; // eslint-disable-line
 import {Rx} from '@cycle/core';
@@ -26,7 +26,7 @@ test(testDescription, (assert) => {
   const DOMSource = mockDOMResponse();
   const input = SUT({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.looseEqual(toHTML(vtree), toHTML(
+    assert.looseEqual(vdomToHtml(vtree), vdomToHtml(
       h(`div.${COMPONENT_CLASS}`, [
         h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
         h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
@@ -58,7 +58,7 @@ test(testDescription, (assert) => {
   const DOMSource = mockDOMResponse();
   const input = SUT({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.looseEqual(toHTML(vtree), toHTML(
+    assert.looseEqual(vdomToHtml(vtree), vdomToHtml(
       h(`div.${COMPONENT_CLASS}`, [
         h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
         h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
@@ -85,7 +85,7 @@ test(testDescription, (assert) => {
   const DOMSource = mockDOMResponse();
   const input = SUT({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.equal(toHTML(vtree), toHTML(
+    assert.equal(vdomToHtml(vtree), vdomToHtml(
         h(`div.${COMPONENT_CLASS}`, [
           h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
             h(`div.${COMPONENT_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
@@ -111,7 +111,7 @@ test(testDescription, (assert) => {
   const DOMSource = mockDOMResponse();
   const input = SUT({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.equal(toHTML(vtree), toHTML(
+    assert.equal(vdomToHtml(vtree), vdomToHtml(
         h(`div.${COMPONENT_CLASS}`, [
           h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
           h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
@@ -140,7 +140,7 @@ test(testDescription, (assert) => {
   const DOMSource = mockDOMResponse();
   const input = SUT({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.equal(toHTML(vtree), toHTML(
+    assert.equal(vdomToHtml(vtree), vdomToHtml(
         h(`div.${COMPONENT_CLASS}.is-floatedLabel`, [
           h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
           h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
@@ -166,7 +166,7 @@ test(testDescription, (assert) => {
   const DOMSource = mockDOMResponse();
   const input = SUT({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.looseEqual(toHTML(vtree), toHTML(
+    assert.looseEqual(vdomToHtml(vtree), vdomToHtml(
         h(`div.${COMPONENT_CLASS}`, [
           h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
           h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
@@ -194,7 +194,7 @@ test(testDescription, (assert) => {
   const DOMSource = mockDOMResponse();
   const input = SUT({DOM: DOMSource, id: ``, props$});
   input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.looseEqual(toHTML(vtree), toHTML(
+    assert.looseEqual(vdomToHtml(vtree), vdomToHtml(
         h(`div.${COMPONENT_CLASS}`, [
           h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
           h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [

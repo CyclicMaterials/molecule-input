@@ -11,7 +11,22 @@ const props = {
     default: `off`,
   },
 
-  autofocus: boolean,
+  autocorrect: {
+    type: string,
+    default: `off`,
+  },
+
+  autofocus: {
+    type: boolean,
+    default: false,
+  },
+
+  charCounter: {
+    type: boolean,
+    default: false,
+  },
+
+  errorMessage: string,
 
   isDisabled: {
     type: boolean,
@@ -22,6 +37,8 @@ const props = {
     type: boolean,
     default: false,
   },
+
+  label: string,
 
   list: string,
 
