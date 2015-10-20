@@ -1,4 +1,4 @@
-import {Rx} from '@cycle/core';
+import Rx from 'rx';
 import {getInputElement} from './domQuery';
 
 function intent({DOM, id}) {

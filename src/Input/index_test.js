@@ -7,7 +7,7 @@ import vdomToHtml from './../../test/adapters/vdomToHtml/index';
 import {decode} from 'ent';
 import {h, mockDOMResponse} from '@cycle/dom'; // eslint-disable-line
 import {merge} from 'ramda';
-import {Rx} from '@cycle/core';
+import Rx from 'rx';
 
 const SUT = Input;
 const COMPONENT_NAME = `Input`;

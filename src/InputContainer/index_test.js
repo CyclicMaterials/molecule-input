@@ -2,11 +2,11 @@
 
 import InputCharCounter from './../InputCharCounter/index';
 import InputContainer, {COMPONENT_CLASS} from './index';
+import Rx from 'rx';
 import test from 'tape';
 import vdomToHtml from './../../test/adapters/vdomToHtml/index';
 import {decode} from 'ent';
-import {h, mockDOMResponse} from '@cycle/dom'; // eslint-disable-line
-import {Rx} from '@cycle/core';
+import {h, mockDOMResponse} from '@cycle/dom';
 
 const SUT = InputContainer;
 const COMPONENT_NAME = `InputContainer`;

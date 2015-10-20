@@ -1,14 +1,14 @@
 /** @jsx hJSX */
 
 import cuid from 'cuid';
+import Input from './../src/Input/index';
 import intent from './intent';
 import model from './model';
+import Rx from 'rx';
 import SsnInput from './SsnInput/index';
+import Textarea from './../src/Textarea/index';
 import view from './view';
 import {clone} from 'ramda';
-import Input from './../src/Input/index';
-import {Rx} from '@cycle/core';
-import Textarea from './../src/Textarea/index';
 
 const COMPONENT_CLASS = `page-Demo`;
 

@@ -5,10 +5,10 @@ import domQuery from './domQuery';
 import intent from './intent';
 import model from './model';
 import props from './props';
+import Rx from 'rx';
 import view from './view';
 import {clone} from 'ramda';
 import {predicateObjectOfObservable} from '@cyclic/util-predicate';
-import {Rx} from '@cycle/core';
 
 const COMPONENT_CLASS = `molecule-InputContainer`;
 

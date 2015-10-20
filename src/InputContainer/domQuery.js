@@ -1,4 +1,4 @@
-import {Rx} from '@cycle/core';
+import Rx from 'rx';
 
 function getInputElement({DOM, id}) {
   const inputSelector = `.${id} INPUT`;
