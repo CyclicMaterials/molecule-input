@@ -46,7 +46,7 @@
     "@cycle/dom": "5.3.1",
     "@cyclic/template-demo-pages": "1.0.1",
     "babel": "5.8.23",
-    "babelify": "6.3.0",
+    "babelify": "6.4.0",
     "browserify": "11.2.0",
     "cli-release": "1.0.3",
     "eslint": "1.0.0",
