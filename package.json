@@ -57,7 +57,7 @@
     "markdox": "0.1.10",
     "minifyify": "7.1.0",
     "postcss": "5.0.9",
-    "postcss-cli": "2.2.0",
+    "postcss-cli": "2.3.0",
     "postcss-cssnext": "2.1.0",
     "postcss-custom-properties": "5.0.0",
     "postcss-import": "7.0.0",
