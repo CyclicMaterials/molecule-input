@@ -17,8 +17,8 @@ describe(`InputContainer`, () => {
     const props = {};
     const props$ = Rx.Observable.just(props);
     const DOMSource = mockDOMResponse();
-    const input = InputContainer({DOM: DOMSource, id: ``, props$});
-    input.DOM.elementAt(0).subscribe((vtree) => {
+    const inputContainer = InputContainer({DOM: DOMSource, id: ``, props$});
+    inputContainer.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
         h(`div.${INPUTCONTAINER_CLASS}`, [
           h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
@@ -47,8 +47,8 @@ describe(`InputContainer`, () => {
     };
     const props$ = Rx.Observable.just(props);
     const DOMSource = mockDOMResponse();
-    const input = InputContainer({DOM: DOMSource, id: ``, props$});
-    input.DOM.elementAt(0).subscribe((vtree) => {
+    const inputContainer = InputContainer({DOM: DOMSource, id: ``, props$});
+    inputContainer.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
         h(`div.${INPUTCONTAINER_CLASS}`, [
           h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
@@ -72,8 +72,8 @@ describe(`InputContainer`, () => {
     };
     const props$ = Rx.Observable.just(props);
     const DOMSource = mockDOMResponse();
-    const input = InputContainer({DOM: DOMSource, id: ``, props$});
-    input.DOM.elementAt(0).subscribe((vtree) => {
+    const inputContainer = InputContainer({DOM: DOMSource, id: ``, props$});
+    inputContainer.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
         h(`div.${INPUTCONTAINER_CLASS}`, [
           h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
@@ -96,8 +96,8 @@ describe(`InputContainer`, () => {
     };
     const props$ = Rx.Observable.just(props);
     const DOMSource = mockDOMResponse();
-    const input = InputContainer({DOM: DOMSource, id: ``, props$});
-    input.DOM.elementAt(0).subscribe((vtree) => {
+    const inputContainer = InputContainer({DOM: DOMSource, id: ``, props$});
+    inputContainer.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
         h(`div.${INPUTCONTAINER_CLASS}`, [
           h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
@@ -123,8 +123,8 @@ describe(`InputContainer`, () => {
     };
     const props$ = Rx.Observable.just(props);
     const DOMSource = mockDOMResponse();
-    const input = InputContainer({DOM: DOMSource, id: ``, props$});
-    input.DOM.elementAt(0).subscribe((vtree) => {
+    const inputContainer = InputContainer({DOM: DOMSource, id: ``, props$});
+    inputContainer.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
         h(`div.${INPUTCONTAINER_CLASS}.is-floatedLabel`, [
           h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
@@ -147,8 +147,8 @@ describe(`InputContainer`, () => {
     };
     const props$ = Rx.Observable.just(props);
     const DOMSource = mockDOMResponse();
-    const input = InputContainer({DOM: DOMSource, id: ``, props$});
-    input.DOM.elementAt(0).subscribe((vtree) => {
+    const inputContainer = InputContainer({DOM: DOMSource, id: ``, props$});
+    inputContainer.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
         h(`div.${INPUTCONTAINER_CLASS}`, [
           h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
@@ -173,8 +173,8 @@ describe(`InputContainer`, () => {
     };
     const props$ = Rx.Observable.just(props);
     const DOMSource = mockDOMResponse();
-    const input = InputContainer({DOM: DOMSource, id: ``, props$});
-    input.DOM.elementAt(0).subscribe((vtree) => {
+    const inputContainer = InputContainer({DOM: DOMSource, id: ``, props$});
+    inputContainer.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
         h(`div.${INPUTCONTAINER_CLASS}`, [
           h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
