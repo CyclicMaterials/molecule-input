@@ -1,214 +1,195 @@
-/* eslint-disable */
-
-import InputCharCounter from './../InputCharCounter/index';
-import InputContainer, {COMPONENT_CLASS} from './index';
+/* eslint max-nested-callbacks: 0, max-len: 0 */
+/* global describe, it */
+import chai from 'chai';
+const expect = chai.expect;
+chai.use(require(`chai-virtual-dom`));
+import InputContainer, {COMPONENT_CLASS as INPUTCONTAINER_CLASS} from './index';
 import Rx from 'rx';
-import test from 'tape';
-import vdomToHtml from './../../test/adapters/vdomToHtml/index';
-import {decode} from 'ent';
 import {h, mockDOMResponse} from '@cycle/dom';
+import {decode} from 'ent';
 
-const SUT = InputContainer;
-const COMPONENT_NAME = `InputContainer`;
-let testDescription = ``;
-
-testDescription = `${COMPONENT_NAME} should be a function`;
-test(testDescription, (assert) => {
-  assert.equal(typeof SUT, `function`,
-    `Failed: ${testDescription}`);
-  assert.end();
-});
-
-testDescription = `${COMPONENT_NAME} should output DOM`;
-test(testDescription, (assert) => {
-  const props = {};
-  const props$ = Rx.Observable.just(props);
-  const DOMSource = mockDOMResponse();
-  const input = SUT({DOM: DOMSource, id: ``, props$});
-  input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.looseEqual(vdomToHtml(vtree), vdomToHtml(
-      h(`div.${COMPONENT_CLASS}`, [
-        h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-        h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-          h(`div.${COMPONENT_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
-        ),
-        h(`div.${COMPONENT_CLASS}_underline`, [
-          h(`div.${COMPONENT_CLASS}_unfocusedLine.atom-Layout--fit`),
-          h(`div.${COMPONENT_CLASS}_focusedLine.atom-Layout--fit`)
-        ])
-      ])),
-      `Failed: ${testDescription}`
-    );
+describe(`InputContainer`, () => {
+  it(`should be a function`, () => {
+    expect(InputContainer).to.be.a(`function`);
   });
-  assert.end();
-});
 
-testDescription = `${COMPONENT_NAME} should output DOM with add-ons`;
-test(testDescription, (assert) => {
-  const addOn = function addOn() {
-    return {
-      // mockDOMResponse won’t render this!
-      DOM: Rx.Observable.just(h(`div`, `addOn`)),
-    };
-  };
-  const props = {
-    addOns: [addOn],
-  };
-  const props$ = Rx.Observable.just(props);
-  const DOMSource = mockDOMResponse();
-  const input = SUT({DOM: DOMSource, id: ``, props$});
-  input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.looseEqual(vdomToHtml(vtree), vdomToHtml(
-      h(`div.${COMPONENT_CLASS}`, [
-        h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-        h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-          h(`div.${COMPONENT_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
-        ),
-        h(`div.${COMPONENT_CLASS}_underline`, [
-          h(`div.${COMPONENT_CLASS}_unfocusedLine.atom-Layout--fit`),
-          h(`div.${COMPONENT_CLASS}_focusedLine.atom-Layout--fit`)
-        ]),
-        h(`div.${COMPONENT_CLASS}_addOnContent`)
-      ])),
-      `Failed: ${testDescription}`
-    );
-  });
-  assert.end();
-});
-
-testDescription = `${COMPONENT_NAME} should output DOM without floated label placeholder when label float is disabled`;
-test(testDescription, (assert) => {
-  const props = {
-    disableLabelFloat: true,
-  };
-  const props$ = Rx.Observable.just(props);
-  const DOMSource = mockDOMResponse();
-  const input = SUT({DOM: DOMSource, id: ``, props$});
-  input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.equal(vdomToHtml(vtree), vdomToHtml(
-        h(`div.${COMPONENT_CLASS}`, [
-          h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${COMPONENT_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+  it(`should output DOM`, (done) => {
+    const props = {};
+    const props$ = Rx.Observable.just(props);
+    const DOMSource = mockDOMResponse();
+    const input = InputContainer({DOM: DOMSource, id: ``, props$});
+    input.DOM.elementAt(0).subscribe((vtree) => {
+      expect(vtree).to.look.like(
+        h(`div.${INPUTCONTAINER_CLASS}`, [
+          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
           ),
-          h(`div.${COMPONENT_CLASS}_underline`, [
-            h(`div.${COMPONENT_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${COMPONENT_CLASS}_focusedLine.atom-Layout--fit`)
-          ])
-        ])),
-      `Failed: ${testDescription}`
-    );
+          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
+            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          ]),
+        ])
+      );
+      done();
+    });
   });
-  assert.end();
-});
 
-testDescription = `${COMPONENT_NAME} should output DOM with label and input when set`;
-test(testDescription, (assert) => {
-  const props = {
-    label: h(`label`, `label`),
-    input: h(`input`)
-  };
-  const props$ = Rx.Observable.just(props);
-  const DOMSource = mockDOMResponse();
-  const input = SUT({DOM: DOMSource, id: ``, props$});
-  input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.equal(vdomToHtml(vtree), vdomToHtml(
-        h(`div.${COMPONENT_CLASS}`, [
-          h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${COMPONENT_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+  it(`should output DOM with add-ons`, (done) => {
+    const addOn = function addOn() {
+      return {
+        // mockDOMResponse won’t render this!
+        DOM: Rx.Observable.just(h(`div`, `addOn`)),
+      };
+    };
+    const props = {
+      addOns: [addOn],
+    };
+    const props$ = Rx.Observable.just(props);
+    const DOMSource = mockDOMResponse();
+    const input = InputContainer({DOM: DOMSource, id: ``, props$});
+    input.DOM.elementAt(0).subscribe((vtree) => {
+      expect(vtree).to.look.like(
+        h(`div.${INPUTCONTAINER_CLASS}`, [
+          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+          ),
+          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
+            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          ]),
+          h(`div.${INPUTCONTAINER_CLASS}_addOnContent`),
+        ])
+      );
+      done();
+    });
+  });
+
+  it(`should output DOM without floated label placeholder when label float is disabled`, (done) => {
+    const props = {
+      disableLabelFloat: true,
+    };
+    const props$ = Rx.Observable.just(props);
+    const DOMSource = mockDOMResponse();
+    const input = InputContainer({DOM: DOMSource, id: ``, props$});
+    input.DOM.elementAt(0).subscribe((vtree) => {
+      expect(vtree).to.look.like(
+        h(`div.${INPUTCONTAINER_CLASS}`, [
+          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+          ),
+          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
+            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          ]),
+        ])
+      );
+      done();
+    });
+  });
+
+  it(`should output DOM with label and input when set`, (done) => {
+    const props = {
+      label: h(`label`, `label`),
+      input: h(`input`),
+    };
+    const props$ = Rx.Observable.just(props);
+    const DOMSource = mockDOMResponse();
+    const input = InputContainer({DOM: DOMSource, id: ``, props$});
+    input.DOM.elementAt(0).subscribe((vtree) => {
+      expect(vtree).to.look.like(
+        h(`div.${INPUTCONTAINER_CLASS}`, [
+          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
               h(`label`, `label`),
-              h(`input`)
+              h(`input`),
             ])
           ),
-          h(`div.${COMPONENT_CLASS}_underline`, [
-            h(`div.${COMPONENT_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${COMPONENT_CLASS}_focusedLine.atom-Layout--fit`)
-          ])
-        ])),
-      `Failed: ${testDescription}`
-    );
+          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
+            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          ]),
+        ])
+      );
+      done();
+    });
   });
-  assert.end();
-});
 
-testDescription = `${COMPONENT_NAME} should output DOM with persisted label float when set`;
-test(testDescription, (assert) => {
-  const props = {
-    persistLabelFloat: true,
-  };
-  const props$ = Rx.Observable.just(props);
-  const DOMSource = mockDOMResponse();
-  const input = SUT({DOM: DOMSource, id: ``, props$});
-  input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.equal(vdomToHtml(vtree), vdomToHtml(
-        h(`div.${COMPONENT_CLASS}.is-floatedLabel`, [
-          h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${COMPONENT_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+  it(`should output DOM with persisted label float when set`, (done) => {
+    const props = {
+      persistLabelFloat: true,
+    };
+    const props$ = Rx.Observable.just(props);
+    const DOMSource = mockDOMResponse();
+    const input = InputContainer({DOM: DOMSource, id: ``, props$});
+    input.DOM.elementAt(0).subscribe((vtree) => {
+      expect(vtree).to.look.like(
+        h(`div.${INPUTCONTAINER_CLASS}.is-floatedLabel`, [
+          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
           ),
-          h(`div.${COMPONENT_CLASS}_underline`, [
-            h(`div.${COMPONENT_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${COMPONENT_CLASS}_focusedLine.atom-Layout--fit`)
-          ])
-        ])),
-      `Failed: ${testDescription}`
-    );
+          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
+            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          ]),
+        ])
+      );
+      done();
+    });
   });
-  assert.end();
-});
 
-testDescription = `${COMPONENT_NAME} should output DOM with prefix when set`;
-test(testDescription, (assert) => {
-  const props = {
-    prefix: `$`
-  };
-  const props$ = Rx.Observable.just(props);
-  const DOMSource = mockDOMResponse();
-  const input = SUT({DOM: DOMSource, id: ``, props$});
-  input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.looseEqual(vdomToHtml(vtree), vdomToHtml(
-        h(`div.${COMPONENT_CLASS}`, [
-          h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
-              h(`div.${COMPONENT_CLASS}_prefix.atom-Typography--subhead`, `$`),
-              h(`div.${COMPONENT_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`)
+  it(`should output DOM with prefix when set`, (done) => {
+    const props = {
+      prefix: `$`,
+    };
+    const props$ = Rx.Observable.just(props);
+    const DOMSource = mockDOMResponse();
+    const input = InputContainer({DOM: DOMSource, id: ``, props$});
+    input.DOM.elementAt(0).subscribe((vtree) => {
+      expect(vtree).to.look.like(
+        h(`div.${INPUTCONTAINER_CLASS}`, [
+          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
+              h(`div.${INPUTCONTAINER_CLASS}_prefix.atom-Typography--subhead`, `$`),
+              h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`),
             ]
           ),
-          h(`div.${COMPONENT_CLASS}_underline`, [
-            h(`div.${COMPONENT_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${COMPONENT_CLASS}_focusedLine.atom-Layout--fit`)
-          ])
-        ])),
-      `Failed: ${testDescription}`
-    );
+          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
+            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          ]),
+        ])
+      );
+      done();
+    });
   });
-  assert.end();
-});
 
-testDescription = `${COMPONENT_NAME} should output DOM with suffix when set`;
-test(testDescription, (assert) => {
-  const props = {
-    suffix: `@email.com`
-  };
-  const props$ = Rx.Observable.just(props);
-  const DOMSource = mockDOMResponse();
-  const input = SUT({DOM: DOMSource, id: ``, props$});
-  input.DOM.elementAt(0).subscribe((vtree) => {
-    assert.looseEqual(vdomToHtml(vtree), vdomToHtml(
-        h(`div.${COMPONENT_CLASS}`, [
-          h(`div.${COMPONENT_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${COMPONENT_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
-              h(`div.${COMPONENT_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`),
-              h(`div.${COMPONENT_CLASS}_suffix.atom-Typography--subhead`, `@email.com`)
+  it(`should output DOM with suffix when set`, (done) => {
+    const props = {
+      suffix: `@email.com`,
+    };
+    const props$ = Rx.Observable.just(props);
+    const DOMSource = mockDOMResponse();
+    const input = InputContainer({DOM: DOMSource, id: ``, props$});
+    input.DOM.elementAt(0).subscribe((vtree) => {
+      expect(vtree).to.look.like(
+        h(`div.${INPUTCONTAINER_CLASS}`, [
+          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`, [
+              h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`),
+              h(`div.${INPUTCONTAINER_CLASS}_suffix.atom-Typography--subhead`, `@email.com`),
             ]
           ),
-          h(`div.${COMPONENT_CLASS}_underline`, [
-            h(`div.${COMPONENT_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${COMPONENT_CLASS}_focusedLine.atom-Layout--fit`)
-          ])
-        ])),
-      `Failed: ${testDescription}`
-    );
+          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
+            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          ]),
+        ])
+      );
+      done();
+    });
   });
-  assert.end();
 });
