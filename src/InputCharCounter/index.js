@@ -9,7 +9,7 @@ const COMPONENT_CLASS = `molecule-InputCharCounter`;
 
 function InputCharCounter(sources) {
   const props$ = predicateObjectOfObservable(props)(sources.props$);
-  const id = cuid();
+  const {id = cuid()} = sources;
   const state$ = model({props$, componentClass: COMPONENT_CLASS});
 
   return {
