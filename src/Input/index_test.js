@@ -5,7 +5,7 @@ const expect = chai.expect;
 chai.use(require(`chai-virtual-dom`));
 import Input, {COMPONENT_CLASS as INPUT_CLASS}
   from './index';
-import {COMPONENT_CLASS as INPUTCONTAINER_CLASS}
+import {COMPONENT_CLASS as INPUT_CONTAINER_CLASS}
   from './../InputContainer/index';
 import Rx from 'rx';
 import {h, mockDOMResponse} from '@cycle/dom';
@@ -23,11 +23,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -37,9 +37,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -54,11 +54,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `words`,
@@ -68,9 +68,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -85,11 +85,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -99,9 +99,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -116,11 +116,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -130,9 +130,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -147,11 +147,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -162,9 +162,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -179,11 +179,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -193,11 +193,11 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
-          h(`div.${INPUTCONTAINER_CLASS}_addOnContent`),
+          h(`div.${INPUT_CONTAINER_CLASS}_addOnContent`),
         ])
       );
       done();
@@ -211,11 +211,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -225,11 +225,11 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
-          h(`div.${INPUTCONTAINER_CLASS}_addOnContent`),
+          h(`div.${INPUT_CONTAINER_CLASS}_addOnContent`),
         ])
       );
       done();
@@ -243,11 +243,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -257,9 +257,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -274,11 +274,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, `label`),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, `label`),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -288,9 +288,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -305,11 +305,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -320,9 +320,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -337,11 +337,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -352,9 +352,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -369,11 +369,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   attributes: {maxlength: 10},
@@ -384,9 +384,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -401,11 +401,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -416,9 +416,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -433,11 +433,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -448,9 +448,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -465,11 +465,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -480,9 +480,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -497,11 +497,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   attributes: {readonly: true},
@@ -512,9 +512,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -529,11 +529,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -544,9 +544,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -561,11 +561,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -576,9 +576,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -593,11 +593,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -608,9 +608,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
@@ -625,11 +625,11 @@ describe(`Input`, () => {
     const input = Input({DOM: DOMSource, id: ``, props$});
     input.DOM.elementAt(0).subscribe((vtree) => {
       expect(vtree).to.look.like(
-        h(`div.${INPUTCONTAINER_CLASS}`, [
-          h(`div.${INPUTCONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
-          h(`div.${INPUTCONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
-            h(`div.${INPUTCONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
-              h(`label.${INPUTCONTAINER_CLASS}_label`, {hidden: true}),
+        h(`div.${INPUT_CONTAINER_CLASS}`, [
+          h(`div.${INPUT_CONTAINER_CLASS}_floatedLabelPlaceholder.atom-Typography--caption`, decode(`&nbsp;`)),
+          h(`div.${INPUT_CONTAINER_CLASS}_inputContent.atom-FlexLayout--horizontal.atom-FlexLayout--end`,
+            h(`div.${INPUT_CONTAINER_CLASS}_labelAndInputContainer.atom-FlexLayout_flex.atom-Layout--relative.atom-Typography--subhead`, [
+              h(`label.${INPUT_CONTAINER_CLASS}_label`, {hidden: true}),
               h(`div.${INPUT_CLASS}`,
                 h(`input.${INPUT_CLASS}_input`, {
                   autocapitalize: `none`,
@@ -640,9 +640,9 @@ describe(`Input`, () => {
               ),
             ])
           ),
-          h(`div.${INPUTCONTAINER_CLASS}_underline`, [
-            h(`div.${INPUTCONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
-            h(`div.${INPUTCONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
+          h(`div.${INPUT_CONTAINER_CLASS}_underline`, [
+            h(`div.${INPUT_CONTAINER_CLASS}_unfocusedLine.atom-Layout--fit`),
+            h(`div.${INPUT_CONTAINER_CLASS}_focusedLine.atom-Layout--fit`),
           ]),
         ])
       );
