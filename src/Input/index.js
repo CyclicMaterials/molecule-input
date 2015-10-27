@@ -12,7 +12,7 @@ function Input(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const {id = cuid()} = sources;
-  const state$ = model({props$, componentClass: COMPONENT_CLASS});
+  const state$ = model({componentClass: COMPONENT_CLASS, props$});
   const input$ = view({state$});
   const inputContainer = makeInputContainer({
     DOM,
