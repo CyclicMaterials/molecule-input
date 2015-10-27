@@ -6,113 +6,143 @@
 @import "../InputError/index.css";
 @import "../InputCharCounter/index.css";
 
+/*------------------------------------*\
+    #INPUT-CONTAINER
+\*------------------------------------*/
+
+
+/**
+ * CONTENTS
+ *
+ * COMPONENT
+ * molecule-InputContainer......................Input container.
+ *
+ * DESCENDENTS
+ * molecule-InputContainer_underline............Underline.
+ * molecule-InputContainer_focusedLine..........Focused line.
+ * molecule-InputContainer_unfocusedLine........Unfocused line.
+ * molecule-InputContainer_inputContent.........Input content.
+ *                                              Label, input, prefix and suffix
+ *                                              are children.
+ * molecule-InputContainer_prefix...............prefix.
+ * molecule-InputContainer_suffix...............suffix.
+ * molecule-InputContainer_addOnContent.........Add-on content.
+ *
+ * COMPONENT STATE MODIFIERS
+ * is-disabled..................................Disabled state.
+ * is-highlighted...............................Highlighted state.
+ * is-invalid...................................Invalid state.
+ * is-floatedLabel..............................Floated label state.
+ * is-hiddenLabel...............................Hidden label state.
+ */
+
 .molecule-InputContainer {
-  display: block;
-  padding: 8px 0;
+    display: block;
+    padding: 8px 0;
 }
 
 .molecule-InputContainer.is-disabled {
-  pointer-events: none;
-  opacity: 0.33;
+    pointer-events: none;
+    opacity: 0.33;
 }
 
-.molecule-InputContainer_underline {
-  position: relative;
-}
+    .molecule-InputContainer_underline {
+        position: relative;
+    }
 
-.molecule-InputContainer_focusedLine {
-  height: 2px;
-  transform-origin: center center;
-  transform: scale3d(0, 1, 1);
-  background: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
-}
+    .molecule-InputContainer_focusedLine {
+        height: 2px;
+        transform-origin: center center;
+        transform: scale3d(0, 1, 1);
+        background: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
+    }
 
-.molecule-InputContainer.is-highlighted .molecule-InputContainer_focusedLine {
-  transform: none;
-  transition: 0.25s;
-}
+    .molecule-InputContainer.is-highlighted .molecule-InputContainer_focusedLine {
+        transform: none;
+        transition: 0.25s;
+    }
 
-.molecule-InputContainer.is-invalid .molecule-InputContainer_focusedLine {
-  background: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
-  transform: none;
-  transition: 0.25s;
-}
+    .molecule-InputContainer.is-invalid .molecule-InputContainer_focusedLine {
+        background: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
+        transform: none;
+        transition: 0.25s;
+    }
 
-.molecule-InputContainer_unfocusedLine {
-  height: 1px;
-  background: var(--molecule-InputContainer-color, var(--secondary-text-color));
-}
+    .molecule-InputContainer_unfocusedLine {
+        height: 1px;
+        background: var(--molecule-InputContainer-color, var(--secondary-text-color));
+    }
 
-.molecule-InputContainer.is-disabled .molecule-InputContainer_unfocusedLine {
-  border-bottom: 1px dashed;
-  border-color: var(--molecule-InputContainer-color, var(--secondary-text-color));
-  background: transparent;
-}
+    .molecule-InputContainer.is-disabled .molecule-InputContainer_unfocusedLine {
+        border-bottom: 1px dashed;
+        border-color: var(--molecule-InputContainer-color, var(--secondary-text-color));
+        background: transparent;
+    }
 
-.molecule-InputContainer_inputContent {
-  position: relative;
-}
+    .molecule-InputContainer_inputContent {
+        position: relative;
+    }
 
-.molecule-InputContainer_inputContent LABEL,
-.molecule-InputContainer_inputContent .molecule-Input_label {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  color: var(--molecule-InputContainer-color, var(--secondary-text-color));
-  font: inherit;
-}
+    .molecule-InputContainer_inputContent LABEL,
+    .molecule-InputContainer_inputContent .molecule-Input_label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        color: var(--molecule-InputContainer-color, var(--secondary-text-color));
+        font: inherit;
+    }
 
-.molecule-InputContainer.is-floatedLabel LABEL,
-.molecule-InputContainer.is-floatedLabel .molecule-Input_label {
-  transform: translate3d(0, -75%, 0) scale(0.75);
-  transform-origin: left top;
-  transition: 0.25s;
-}
+    .molecule-InputContainer.is-floatedLabel LABEL,
+    .molecule-InputContainer.is-floatedLabel .molecule-Input_label {
+        transform: translate3d(0, -75%, 0) scale(0.75);
+        transform-origin: left top;
+        transition: 0.25s;
+    }
 
-.molecule-InputContainer.is-highlighted LABEL,
-.molecule-InputContainer.is-highlighted .molecule-Input_label {
-  color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
-}
+    .molecule-InputContainer.is-highlighted LABEL,
+    .molecule-InputContainer.is-highlighted .molecule-Input_label {
+        color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
+    }
 
-.molecule-InputContainer.is-invalid LABEL,
-.molecule-InputContainer.is-invalid .molecule-Input_label {
-  color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
-}
+    .molecule-InputContainer.is-invalid LABEL,
+    .molecule-InputContainer.is-invalid .molecule-Input_label {
+        color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
+    }
 
-.molecule-InputContainer.is-hiddenLabel LABEL,
-.molecule-InputContainer.is-hiddenLabel .molecule-Input_label {
-  visibility: hidden;
-}
+    .molecule-InputContainer.is-hiddenLabel LABEL,
+    .molecule-InputContainer.is-hiddenLabel .molecule-Input_label {
+        visibility: hidden;
+    }
 
-.molecule-InputContainer_inputContent INPUT,
-.molecule-InputContainer_inputContent TEXTAREA,
-.molecule-InputContainer_inputContent .atom-AutogrowTextarea,
-.molecule-InputContainer_inputContent .molecule-Input_input {
-  position: relative;
-  outline: none;
-  box-shadow: none;
-  padding: 0;
-  width: 100%;
-  background: transparent;
-  border: none;
-  color: var(--molecule-InputContainer-input-color, var(--primary-text-color));
-  font: inherit;
-}
+    .molecule-InputContainer_inputContent INPUT,
+    .molecule-InputContainer_inputContent TEXTAREA,
+    .molecule-InputContainer_inputContent .atom-AutogrowTextarea,
+    .molecule-InputContainer_inputContent .molecule-Input_input {
+        position: relative;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: var(--molecule-InputContainer-input-color, var(--primary-text-color));
+        font: inherit;
+    }
 
-/* Firefox sets min-width on the input, which can cause layout issues. */
-.molecule-InputContainer_inputContent INPUT {
-  min-width: 0;
-}
+    /* Firefox sets min-width on the input, which can cause layout issues. */
+    .molecule-InputContainer_inputContent INPUT {
+        min-width: 0;
+    }
 
-.molecule-InputContainer_inputContent TEXTAREA {
-  resize: none;
-}
+    .molecule-InputContainer_inputContent TEXTAREA {
+        resize: none;
+    }
 
-.molecule-InputContainer.is-highlighted .molecule-InputContainer_addOnContent * {
-  color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
-}
+    .molecule-InputContainer.is-highlighted .molecule-InputContainer_addOnContent * {
+        color: var(--molecule-InputContainer-focus-color, var(--default-primary-color));
+    }
 
-.molecule-InputContainer.is-invalid .molecule-InputContainer_addOnContent * {
-  color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
-}
+    .molecule-InputContainer.is-invalid .molecule-InputContainer_addOnContent * {
+        color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
+    }

@@ -1,19 +1,34 @@
 @import "../InputContainer/index.css";
 @import "@cyclic/atom-styles/atom-default-theme.css";
 
+/*------------------------------------*\
+    #INPUT
+\*------------------------------------*/
+
+
+/**
+ * CONTENTS
+ *
+ * COMPONENT
+ * molecule-Input...............................Input.
+ *
+ * DESCENDENTS
+ * molecule-Input_input.........................Input element.
+ */
+
 .molecule-Input {
-  display: block;
+    display: block;
 }
 
-.molecule-Input_input::-webkit-input-placeholder {
-  color: var(--molecule-input-color, var(--secondary-text-color));
-}
-.molecule-Input_input:-moz-placeholder {
-  color: var(--molecule-input-color, var(--secondary-text-color));
-}
-.molecule-Input_input::-moz-placeholder {
-  color: var(--molecule-input-color, var(--secondary-text-color));
-}
-.molecule-Input_input:-ms-input-placeholder {
-  color: var(--molecule-input-color, var(--secondary-text-color));
-}
+    .molecule-Input_input::-webkit-input-placeholder {
+        color: var(--molecule-input-color, var(--secondary-text-color));
+    }
+    .molecule-Input_input:-moz-placeholder {
+        color: var(--molecule-input-color, var(--secondary-text-color));
+    }
+    .molecule-Input_input::-moz-placeholder {
+        color: var(--molecule-input-color, var(--secondary-text-color));
+    }
+    .molecule-Input_input:-ms-input-placeholder {
+        color: var(--molecule-input-color, var(--secondary-text-color));
+    }

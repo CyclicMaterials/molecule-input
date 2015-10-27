@@ -1,12 +1,12 @@
-import InputContainer, {COMPONENT_NAME} from './../InputContainer/index';
+import InputContainer, {COMPONENT_CLASS} from './../InputContainer/index';
 import InputError from './../InputError/index';
 import InputCharCounter from './../InputCharCounter/index';
 import renderLabel from './renderLabel.js';
 import {isNil, merge, not, or} from 'ramda';
 
-function makeInputContainer({DOM, input$, props$}) {
+function makeInputContainer({DOM, id, input$, props$}) {
   return InputContainer({
-    DOM, props$: props$.combineLatest(
+    DOM, id, props$: props$.combineLatest(
       input$,
       (props, inputVTree) => {
         const {charCounter, errorMessage, label} = props;
@@ -20,7 +20,7 @@ function makeInputContainer({DOM, input$, props$}) {
         }
 
         return merge(props, {
-            label: renderLabel({componentName: COMPONENT_NAME, label}),
+            label: renderLabel({componentClass: COMPONENT_CLASS, label}),
             input: inputVTree,
             addOns,
           }
