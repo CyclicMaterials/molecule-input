@@ -69,7 +69,6 @@
     "vdom-to-html": "2.1.1"
   },
   "scripts": {
-    "prelint": "rm -f demo/bundle.js",
     "lint": "eslint ./src/**/. ./demo/. --ignore-path .gitignore",
     "test-js": "mocha --compilers js:babel/register 'src/**/*_test.js'",
     "test-css": "npm run demo-css",
