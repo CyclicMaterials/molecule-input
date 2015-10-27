@@ -32,7 +32,7 @@ function InputContainer(sources) {
   const {DOM} = sources;
   const props$ = predicateObjectOfObservable(props)(sources.props$);
   const {id = cuid()} = sources;
-  const actions = intent({DOM, id});
+  const actions = intent({componentClass: COMPONENT_CLASS, DOM, id});
   const layout = domQuery({componentClass: COMPONENT_CLASS, DOM, id});
   const state$ = model(
     {actions, componentClass: COMPONENT_CLASS, layout, props$}

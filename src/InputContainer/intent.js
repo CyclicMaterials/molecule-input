@@ -1,14 +1,14 @@
 import Rx from 'rx';
 import {getInputElement} from './domQuery';
 
-function intent({DOM, id}) {
-  const dialogueSelector = `.${id}`;
-  const inputElement$ = getInputElement({DOM, id});
-  const blurred$ = DOM.select(dialogueSelector).events(`blur`, true);
+function intent({componentClass, DOM, id}) {
+  const inputContainerSelector = `${id && `.` + id}.${componentClass}`;
+  const inputElement$ = getInputElement({DOM, inputContainerSelector});
+  const blurred$ = DOM.select(inputContainerSelector).events(`blur`, true);
 
   return {
     highlight$: Rx.Observable.merge(
-      DOM.select(dialogueSelector).events(`focus`, true).map(() => true),
+      DOM.select(inputContainerSelector).events(`focus`, true).map(() => true),
       blurred$.map(() => false)
     ).startWith(false),
 
@@ -18,7 +18,7 @@ function intent({DOM, id}) {
       .filter(element => !!element)
       .map(element => element.value)
       .merge(
-        DOM.select(dialogueSelector).events(`input`)
+        DOM.select(inputContainerSelector).events(`input`)
           .map(e => e.target.value)
     ).startWith(``),
   };
