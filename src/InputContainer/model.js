@@ -6,7 +6,7 @@ function isValueInvalid(value, inputElement, validator) {
     inputElement && !inputElement.checkValidity();
 }
 
-function model({props$, actions, layout, componentName}) {
+function model({props$, actions, layout, componentClass}) {
   return props$.combineLatest(
     actions.lostHighlight,
     actions.inputValue$,
@@ -23,7 +23,7 @@ function model({props$, actions, layout, componentName}) {
         isValueInvalid(value, inputElement, validator) :
         false;
 
-      return merge(props, {componentName, value, isInvalid});
+      return merge(props, {componentClass, value, isInvalid});
     }
   ).distinctUntilChanged();
 }

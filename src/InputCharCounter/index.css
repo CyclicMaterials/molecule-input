@@ -1,5 +1,17 @@
 @import "@cyclic/atom-typography/atom-typography.css";
 
+/*------------------------------------*\
+    #INPUT-CHAR-COUNTER
+\*------------------------------------*/
+
+
+/**
+ * CONTENTS
+ *
+ * COMPONENT
+ * molecule-InputCharCounter....................Input char counter.
+ */
+
 .molecule-InputCharCounter {
   display: inline-block;
   float: right;
