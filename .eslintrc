@@ -6,7 +6,6 @@
     "node": true
   },
   "ecmaFeatures": {
-    "jsx": true,
     "modules": true
   },
   "rules": {

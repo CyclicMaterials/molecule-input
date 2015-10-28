@@ -1,13 +1,28 @@
 @import "@cyclic/atom-color/atom-color.css";
 @import "@cyclic/atom-typography/atom-typography.css";
 
+/*------------------------------------*\
+    #INPUT-ERROR
+\*------------------------------------*/
+
+
+/**
+ * CONTENTS
+ *
+ * COMPONENT
+ * molecule-InputError..........................Input error.
+ *
+ * COMPONENT STATE MODIFIERS
+ * is-invalid...................................Invalid state.
+ */
+
 .molecule-InputError {
-  display: inline-block;
-  visibility: hidden;
-  float: left;
-  color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
+    display: inline-block;
+    visibility: hidden;
+    float: left;
+    color: var(--molecule-InputContainer-invalid-color, var(--atom-Color-red-700));
 }
 
 .molecule-InputError.is-invalid {
-  visibility: visible;
+    visibility: visible;
 }

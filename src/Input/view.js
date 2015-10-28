@@ -1,15 +1,14 @@
-/** @jsx hJSX */
-
-import {hJSX} from '@cycle/dom'; // eslint-disable-line
+import {h} from '@cycle/dom';
 import ControlledInputHook from './../hooks/ControlledInputHook';
 
-function view({state$, id}) {
+function view({state$}) {
   return state$.map(
     ({
       autocapitalize,
       autocomplete,
+      autocorrect,
       autofocus,
-      componentName,
+      componentClass,
       isDisabled,
       isInvalid,
       list,
@@ -25,35 +24,31 @@ function view({state$, id}) {
       step,
       type,
       value,
-    }) => {
-      return (// eslint-disable-line
-        <div className={`${id} ${componentName}`}>
-          <input
-            attributes={{
-              maxlength: maxLength,
-              readonly,
-            }}
-            autocapitalize={autocapitalize}
-            autocomplete={autocomplete}
-            autofocus={autofocus}
-            className={`${componentName}_input`}
-            data-hook={new ControlledInputHook(value)}
-            disabled={isDisabled}
-            invalid={isInvalid}
-            list={list}
-            max={max}
-            min={min}
-            name={name}
-            pattern={pattern}
-            placeholder={placeholder}
-            required={required}
-            size={size}
-            step={step}
-            type={type}/>
-        </div>
-      );
-    }
-  );
+    }) => h(`div.${componentClass}`,
+      h(`input.${componentClass}_input`, {
+        attributes: {
+          maxlength: maxLength,
+          readonly,
+        },
+        autocapitalize: autocapitalize,
+        autocomplete: autocomplete,
+        autocorrect: autocorrect,
+        autofocus: autofocus,
+        'data-hook': new ControlledInputHook(value),
+        disabled: isDisabled,
+        invalid: isInvalid,
+        list: list,
+        max: max,
+        min: min,
+        name: name,
+        pattern: pattern,
+        placeholder: placeholder,
+        required: required,
+        size: size,
+        step: step,
+        type: type,
+      })
+    ));
 }
 
 export default view;
