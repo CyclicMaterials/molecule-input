@@ -62,7 +62,7 @@
     "mocha": "^2.3.3",
     "postcss": "5.0.10",
     "postcss-cli": "2.2.0",
-    "postcss-cssnext": "2.1.0",
+    "postcss-cssnext": "2.2.0",
     "postcss-custom-properties": "5.0.0",
     "postcss-import": "7.1.0",
     "validate-commit-message": "3.0.1",
