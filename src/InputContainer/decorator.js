@@ -11,7 +11,7 @@ function hasInputContent(inputElement, value) {
 function styledLabel(state, labelLeft) {
   let label;
 
-  if (state.prefix) {
+  if (state.prefix && state.label) {
     label = clone(state.label);
 
     const labelAttributes = label.properties.attributes =

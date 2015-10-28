@@ -1,7 +1,7 @@
 import {merge} from 'ramda';
 
-function model({componentName, props$}) {
-  return props$.map((props) => merge(props, {componentName}));
+function model({componentClass, props$}) {
+  return props$.map((props) => merge(props, {componentClass}));
 }
 
 export default model;
