@@ -1,5 +1,17 @@
 @import "@cyclic/atom-autogrow-textarea/src/AutogrowTextarea";
 
+/*------------------------------------*\
+    #TEXTAREA
+\*------------------------------------*/
+
+
+/**
+ * CONTENTS
+ *
+ * COMPONENT
+ * molecule-Textarea............................Input textarea.
+ */
+
 .molecule-Textarea {
   display: block;
 }
