@@ -5,12 +5,12 @@ import view from './view';
 import makeInputContainer from './../../src/shared/makeInputContainer';
 import {merge} from 'ramda';
 
-const COMPONENT_NAME = `demo-SsnInput`;
+const COMPONENT_CLASS = `demo-SsnInput`;
 
 function SsnInput({DOM, props$}) {
   const id = cuid();
-  const actions = intent({DOM, id, componentName: COMPONENT_NAME});
-  const state$ = model({props$, actions, componentName: COMPONENT_NAME});
+  const actions = intent({DOM, id, componentClass: COMPONENT_CLASS});
+  const state$ = model({props$, actions, componentClass: COMPONENT_CLASS});
   const input$ = view({state$, id});
   const inputContainer = makeInputContainer({
     DOM,
@@ -33,6 +33,6 @@ function SsnInput({DOM, props$}) {
   };
 }
 
-export {COMPONENT_NAME};
+export {COMPONENT_CLASS};
 
 export default SsnInput;

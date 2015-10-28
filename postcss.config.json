@@ -1,8 +1,8 @@
 {
   "use": [
-    "postcss-cssnext",
     "postcss-import",
-    "postcss-custom-properties"
+    "postcss-custom-properties",
+    "postcss-cssnext"
   ],
   "postcss-cssnext": {
     "browsers": [

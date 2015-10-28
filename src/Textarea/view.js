@@ -1,15 +1,13 @@
-/** @jsx hJSX */
-
-import {hJSX} from '@cycle/dom'; // eslint-disable-line
+import combineClassNames from '@cyclic/util-combine-class-names';
+import {h} from '@cycle/dom';
 
 function view({id, state$, textareaDOM}) {
   return state$.combineLatest(
     textareaDOM,
-    ({componentName}, textarea) => {
-      return (// eslint-disable-line
-        <div className={`${id} ${componentName}`}>
-          {textarea}
-        </div>
+    ({componentClass}, textarea) => {
+      return h(`div`,
+        {className: combineClassNames(id, componentClass)},
+        textarea
       );
     }
   ).distinctUntilChanged();
