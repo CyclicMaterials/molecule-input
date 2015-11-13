@@ -60,7 +60,7 @@
     "markdox": "0.1.10",
     "minifyify": "7.1.0",
     "mocha": "2.3.3",
-    "postcss": "5.0.10",
+    "postcss": "5.0.12",
     "postcss-cli": "2.3.2",
     "postcss-cssnext": "2.2.0",
     "postcss-custom-properties": "5.0.0",
